@@ -1,0 +1,76 @@
+
+\newlength{\realtextwidth}
+
+%%%%% marginpar macros and new realtextwidth
+\newcommand{\margintext}[1]
+{\mbox{}\marginpar{\sf\tiny\bf\hspace{0pt}#1}}
+\marginparwidth 60pt
+\setlength{\realtextwidth}{380pt}
+%\setlength{\realtextwidth}{\textwidth}
+%\addtolength{\realtextwidth}{\marginparwidth}
+%\addtolength{\realtextwidth}{\marginparsep}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------
+% MACROs
+%--------------------------------------------------
+\newcommand{\commento}[1]{\begin{quote}{\small\it #1}\end{quote}}
+\newenvironment{javacode}{\begin{changemargin}{30pt}{0pt}\ \nopagebreak[4]\newline\noindent\small
+%\smallskip\hrulefill\newline\noindent%linea da eliminare 
+}
+{\noindent\nopagebreak[4]\normalsize
+\end{changemargin}\noindent
+%\hrulefill\smallskip%linea  da eliminare
+}
+\newcommand{\codice}[1]{{\tt #1}}
+
+
+\newcommand{\nota}[1]{\begin{center}\fbox{{\footnotesize\tt #1}}\end{center}}
+
+
+\newenvironment{boxedpar}{\begin{center}
+\begin{tabular}{|p{\figtextwidth}|} \hline}{\\ \hline
+\end{tabular}\end{center}}
+
+%per la visualizzazione di interazioni a video (compilazioni etc.)
+\newenvironment{monitor}{\begin{boxedpar}\begin{verbatim}}
+{\end{verbatim}\end{boxedpar}}
+
+
+% Environment changemargine: Esempio: \begin{changemargin}{0pt}{-60pt}
+\newenvironment{changemargin}[2]{%
+ \begin{list}{}{%
+  \setlength{\topsep}{0pt}%
+  \setlength{\leftmargin}{#1}%
+  \setlength{\rightmargin}{#2}%
+  \setlength{\listparindent}{\parindent}%
+  \setlength{\itemindent}{\parindent}%
+  \setlength{\parsep}{\parskip}%
+ }%
+\item[]}{\end{list}}
+
+\newcommand{\rosso}{\centerline{\color[rgb]{1.00,0.00,0.00}\fbox{Rosso}}}
+\newcommand{\verde}{\centerline{\color[rgb]{0.00,1.00,0.00}\fbox{Verde}}}
+%-------------------------------- end MACROs
+
+
+
+%%%%% Larghezza e lunghezza massima delle figure
+\newlength{\figtextwidth}
+\setlength{\figtextwidth}{\textwidth}
+\addtolength{\figtextwidth}{-12pt}
+\newlength{\smallfigtextwidth}
+\setlength{\smallfigtextwidth}{\textwidth}
+\addtolength{\smallfigtextwidth}{-70pt}
+\newlength{\figmaxheight}
+\setlength{\figmaxheight}{\textheight}
+\addtolength{\figmaxheight}{-2truecm}
+
+% per il package verbatimtab:la dimensione del tab
+\renewcommand\verbatimtabsize{4\relax}
+
+
+

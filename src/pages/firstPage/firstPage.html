@@ -1,0 +1,51 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+      <p style="color:white">Welcome!</p>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div text-center style="margin-bottom: 50px">
+    <img width="700" height="200" style="border-radius: 15%" src="assets/imgs/biglogo.png" />
+  </div>
+
+  <div text-center>
+    <button ion-button (click)="showLogInPage()" round outline large>
+      LOG IN
+    </button>
+  </div>
+
+  <div text-center>
+    <button ion-button (click)="showRegistrationPage()" round large>
+      ISCRIVITI
+    </button>
+  </div>
+
+  <div style="width: 100%; height: 13px; border-bottom: 1px solid grey; text-align: center; margin-top: 30px; margin-bottom: 30px;">
+    <span style="font-size: 20px; background-color: white; padding: 0 10px;margin-top: 500px">
+      OR
+      <!--Padding is optional-->
+    </span>
+  </div>
+
+  <div text-center>
+    <button ion-button style="background-color: #3b5998" (click)="loginWithFacebook()" icon-only large>
+      <ion-icon name="logo-facebook"></ion-icon>
+    </button>
+    <button ion-button style="background-color: #dd4b39" (click)="loginWithGoogle()" icon-only large>
+      <ion-icon name="logo-google"></ion-icon>
+    </button>
+  </div>
+
+</ion-content>

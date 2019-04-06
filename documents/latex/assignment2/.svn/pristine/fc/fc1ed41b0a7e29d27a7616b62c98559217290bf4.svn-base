@@ -1,0 +1,9 @@
+L'obbiettivo del progetto è quello di analizzare una mole di dati, realizzando alcuni grafici con il software R.\\
+R è un potente sistema che utilizza un linguaggio di programmazione, costituito da una varietà di strumenti per l'analisi statistica dei dati e per la loro visualizzazione. R è quindi un ambiente integrato che permette di elaborare i dati, eseguire i calcoli e produrre grafici.\newline
+Sulla fonte dei dati scelti, effettueremo l'analisi delle frequenze assolute e relativem generando grafici specifici(grafici a barre, a torta, ecc.), esamineremo gli indici di posizione e di dispersione, la correlazione tra le variabili e, infine, effettueremo l'analisi dei cluster.\newline
+Per effettuare l'analisi richiesta sono stati scelti dei dati dal sito http://www.istat.it. L'ISTAT è L'Istituto Nazionale di Statistica ed è il principale produttore di statistica ufficiale a supporto dei cittadini.
+\subsection{Organizzazione del lavoro}
+Il seguente lavoro è stato così suddiviso:
+\begin{itemize}
+\item Nel capitolo 2 verrano descritti i dati utilizzati e gli strumenti
+\end{itemize}

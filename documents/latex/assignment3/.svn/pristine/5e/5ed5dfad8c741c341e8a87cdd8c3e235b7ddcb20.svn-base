@@ -1,0 +1,126 @@
+\documentclass[11pt,oneside]{book}
+
+% per stampare fronteretro
+%\documentclass[11pt,twoside]{book}
+
+%\captionheaderfont{\sl\bfseries}
+%\captionbodyfont{\sl}
+
+%%\renewcommand{\tableshortname}{Table}
+%%\renewcommand{\figureshortname{Figure}
+%%\chapapp{\chaptername}
+\usepackage[italian,english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{epsfig}
+\usepackage{psfig}
+\usepackage{cite}
+\usepackage{amsmath}
+%\usepackage[italian]{minitoc}
+\usepackage{fancybox}
+\usepackage{psfig}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{color}
+%\usepackage{concmath}
+\usepackage{moreverb}
+%HYPERREF per uso con dvi
+%\usepackage[final,backref,breaklinks,pagebackref,colorlinks]{hyperref}
+%HYPERREF per uso con con pdf (con bookmark)
+%\usepackage[final,bookmarks,backref,breaklinks,dvips,colorlinks]{hyperref}
+\usepackage{listings}
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+
+
+\lstset{language=Java,
+basicstyle=\footnotesize,
+keywordstyle=\color{javapurple}\bfseries,
+stringstyle=\color{javared},
+commentstyle=\color{javagreen},
+morecomment=[s][\color{javadocblue}]{/**}{*/},
+numbers=left,
+numberstyle=\tiny\color{black},
+breaklines=true,
+tabsize=2,
+showspaces=false,
+showstringspaces=false}
+
+\input{IsisMacro.tex}
+
+
+\begin{document}
+\selectlanguage{italian}
+
+\begin{titlepage}
+\begin{center}
+\epsfig{file=Figure/logounisa.eps,width=1.5truecm}\\[0.2truecm]
+{\Large Università degli Studi di Salerno}\\[0.2truecm]
+{\large Facoltà di Scienze Matematiche Fisiche e Naturali}\\
+\hrulefill
+\vfill
+{\large Corso di Ingegneria del Software II}\\[0.2truecm]
+\vfill\vfill
+{\Huge I-Residence}
+\vfill\vfill
+
+
+\ \ \ \ {\bf Cordinatore} \hfill {\bf Studenti}\ \ \ \ \ \ \  \ \\
+Andrea De Lucia \hfill Francesco Fabiano \\
+Fabio Palomba \hfill Miriam Granatello \\
+\hfill Maria Domenica Guida
+
+\vfill
+\hrulefill 
+
+Anno Accademico 2013-2014
+
+\end{center}
+\end{titlepage}
+
+\pagenumbering{arabic}
+\vfill
+
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduzione}
+%\setcounter{page}{1} 		% devono seguire solo il primo capitolo
+	% devono seguire solo il primo capitolo
+\input{Capitolo1.tex}
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Il PageRank}
+\input{Capitolo2.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Il PageRank e il paradigma MapReduce}
+\input{Capitolo3.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Risultati dei test}
+\input{Capitolo4.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Conclusioni}
+\input{Capitolo5.tex}
+
+
+%\chapter*{Bibliografia}
+
+
+\begin{thebibliography}{ssssss}
+\addcontentsline{toc}{chapter}{Bibliografia}% inserisce nell'indice la bibliografia
+\bibitem{hdg} 	Tom White - ``Hadoop: The Definitive Guide, 3rd Edition''.
+\bibitem{her} \url{https://webarchive.jira.com/wiki/display/Heritrix/Heritrix}
+\bibitem{} \url{http://en.wikipedia.org/wiki/PageRank}
+\bibitem{} \url{http://wiki.apache.org/hadoop/}
+\end{thebibliography}
+\end{document}

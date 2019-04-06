@@ -1,0 +1,165 @@
+\documentclass[11pt,oneside]{article}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{transparent,colortbl}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\AtBeginDocument{%
+	\hypersetup{
+		citecolor=Gray
+	}
+}
+\usepackage{adjustbox}
+\newtheorem{thm}{Teorema}
+\newtheorem{dfn}{Definizione}
+\useunder{\uline}{\ul}{}
+\usepackage{afterpage}
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
+\usepackage{ gensymb }
+\newenvironment{dedication}
+{%\clearpage           % we want a new page          %% I commented this
+	\thispagestyle{empty}% no header and footer
+	\vspace*{\stretch{3}}% some space at the top
+	\itshape             % the text is in italics
+	\raggedleft          % flush to the right margin
+}
+{\par % end the paragraph
+	\vspace{\stretch{3}} % space at bottom is three times that at the top
+	\clearpage           % finish off the page
+}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{widetable}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{ dsfont }
+\usepackage{fancyhdr}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig}
+\usepackage{psfig}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{float}
+
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{4}
+
+\definecolor{Gray}{gray}{0.75}
+\setlength\arrayrulewidth{0.9pt}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\raggedright
+\usepackage{color}
+\pagestyle{fancy}
+\rowcolors{1}{cyan!30}{cyan!10}{\centering}
+%aumenta la spaziatura tra le righe
+\renewcommand\arraystretch{1.2}
+
+\cfoot{\begin{scriptsize}Assistive Technology and Universal Design \end{scriptsize}}
+
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\newcommand*{\authorimg}[1]{%
+	\raisebox{-.3\baselineskip}{%
+		\includegraphics[
+		height=\baselineskip,
+		width=4cm,
+		keepaspectratio,
+		]{#1}%
+	}%
+}
+
+
+\begin{document}
+	%\thispagestyle{empty}
+	
+	\begin{titlepage}
+		\begin{center}
+			\hrulefill
+			
+			\begin{figure}[ht]\centering
+				\includegraphics[width=3truecm]{Figure/logounisa.eps}
+			\end{figure}
+			
+			
+			%\begin{right}
+			%\epsfig{file=Figure/logounisa.eps,width=1.5truecm}\\[0.2truecm]
+			{\Large Università degli Studi di Salerno}\\[0.2truecm]
+			\hrulefill
+			\vfill
+		\end{center}
+		
+		
+		
+		
+		\begin{center}
+			
+			\textbf{\Large I.T. Department}\\
+			\vfill
+			\textbf{\Large Assistive Technology and Universal Design}
+		\end{center}
+		\vfill  	
+		\begin{center}
+			\textbf{\Huge Assignment 2}\\[0.2truecm]
+		\end{center}
+		\vfill \vfill
+		
+		
+		\vspace*{\fill}
+		
+		{\bf Studente } \hfill {\bf Docente}\ \ \\
+		Vitale Federico \\ Antonio Pizza \hfill Prof.ssa Vitiello Giuliana\\
+		
+		\begin{center}
+			\textbf{Anno Accademico 2018/2019}
+		\end{center}
+		
+	\end{titlepage}
+
+	
+		
+	\vspace*{0.5cm}
+
+	
+		\pagenumbering{arabic}
+		
+		
+		
+		\vspace*{-0.5cm}
+		\tableofcontents
+		\newpage
+
+
+
+\justify
+\section{Activity design}
+\input{capitolo1.tex}
+
+\justify
+\section{Information design}
+\input{capitolo2.tex}
+
+\justify
+\section{Interaction design}
+\input{capitolo3.tex}
+\end{document}

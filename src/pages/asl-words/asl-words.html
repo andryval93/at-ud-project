@@ -1,0 +1,37 @@
+<!--
+  Generated template for the AslWordsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+      <p style="color:white">ASL Words</p>
+    </ion-title>
+    <ion-buttons end> <button ion-button (click)="operUserProfile()" icon-only end><ion-icon style="font-size: 30px; color: white" name="person"></ion-icon></button> </ion-buttons> 
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-row nowrap>
+      <ion-searchbar [(ngModel)]="searchTerm" animated></ion-searchbar>
+      <button ion-button (click)="onClick()" icon-only style="margin-top: 10px;">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-row>
+    <!--<ion-input required type="text" placeholder="mariorossi@gmail.com" [(ngModel)]="searchTerm"></ion-input>
+    <ion-col align-self-end bottom-form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+      Login button
+      <button style="margin-top: 50px; font-size: 20px" ion-button round outline large text-capitalize (click)="onClick()">ACCEDI</button>
+    </ion-col>-->
+  </div>
+
+  <ion-card *ngFor="let post of values">
+    <img [src]="post.images.downsized_medium.url" (click)="openImage(post.images.original.url)">
+  </ion-card>
+</ion-content>

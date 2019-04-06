@@ -1,0 +1,56 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+      <p style="color:white">Log In</p>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid no-padding>
+    <ion-row padding-horizontal text-center>
+      <ion-col align-self-start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <img width="300" height="200" src="assets/imgs/login.gif" />
+      </ion-col>
+
+
+      <ion-col align-self-start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <!---Input field username-->
+        <ion-item no-padding margin-top>
+          <ion-label color="primary" style="font-size: 20px" stacked>Email Address</ion-label>
+          <ion-input required type="text" placeholder="mariorossi@gmail.com" [(ngModel)]="username"></ion-input>
+        </ion-item>
+        <!---Input field password-->
+        <ion-item no-padding>
+          <ion-label color="dark" style="font-size: 20px" stacked>Password</ion-label>
+          <ion-input required type="password" placeholder="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col align-self-end bottom-form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <!---Login button-->
+        <button style="margin-top: 50px; font-size: 20px" ion-button round outline large text-capitalize (click)="onLogin()">LOGIN</button>
+      </ion-col>
+
+      <ion-col align-self-end bottom-form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>  
+        <div text-center>
+          <label style="font-size: 15px"><input style="margin-right: 5px; margin-top: 20px; width: 15px; height: 15px;" type="checkbox" [value]="false" [(ngModel)]="connesso" (click)="onClick()">Remember Me!</label>
+        </div>
+      </ion-col>
+
+      <ion-col align-self-end bottom-form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <button ion-button style="margin-top: 50px;" button-clear clear text-capitalize (click)="onForgot()">Forgot Password?</button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

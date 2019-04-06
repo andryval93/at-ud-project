@@ -1,0 +1,14 @@
+import javax.naming.*;
+public class HelloServer {
+public static void main(String[] args) {
+	try {
+		HelloImpl helloRef = new HelloImpl();
+		Context ic = new InitialContext();
+		ic.rebind("HelloService", helloRef );
+		System.out.println("Hello Server: Ready...");
+	} catch (Exception e) {
+		System.out.println("Eccezione: " + e);
+		e.printStackTrace();
+	} 
+ }
+}

@@ -1,0 +1,17 @@
+\BOOKMARK [0][-]{chapter.1}{Introduzione}{}% 1
+\BOOKMARK [1][-]{subsection.1.0.1}{Organizzazione della tesina}{chapter.1}% 2
+\BOOKMARK [0][-]{chapter.2}{Il PageRank}{}% 3
+\BOOKMARK [1][-]{subsection.2.0.2}{Perch\350 Hadoop?}{chapter.2}% 4
+\BOOKMARK [0][-]{chapter.3}{Il PageRank e il paradigma MapReduce}{}% 5
+\BOOKMARK [1][-]{section.3.1}{Input iniziale}{chapter.3}% 6
+\BOOKMARK [2][-]{subsection.3.1.1}{Il formato dell'input}{section.3.1}% 7
+\BOOKMARK [1][-]{section.3.2}{Il codice}{chapter.3}% 8
+\BOOKMARK [2][-]{subsection.3.2.1}{Map}{section.3.2}% 9
+\BOOKMARK [2][-]{subsection.3.2.2}{Reduce}{section.3.2}% 10
+\BOOKMARK [0][-]{chapter.4}{Risultati dei test}{}% 11
+\BOOKMARK [1][-]{section.4.1}{La configurazione di Hadoop}{chapter.4}% 12
+\BOOKMARK [1][-]{section.4.2}{Prestazioni con input di grandi dimensioni}{chapter.4}% 13
+\BOOKMARK [1][-]{section.4.3}{Test di scalabilit\340 con input ridotto}{chapter.4}% 14
+\BOOKMARK [1][-]{section.4.4}{Approcci di split differenti}{chapter.4}% 15
+\BOOKMARK [1][-]{section.4.5}{Numero di repliche differenti}{chapter.4}% 16
+\BOOKMARK [0][-]{chapter*.2}{Bibliografia}{}% 17

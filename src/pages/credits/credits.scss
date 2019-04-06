@@ -1,0 +1,95 @@
+page-credits {
+    #profile-image {
+        border-radius: 50%;
+        width: auto;
+        height: 100px;
+        margin: 0 auto 0;
+        box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
+      }
+      #profile-info {
+        position:relative;
+        width: 100%;
+        top: -70px;
+        z-index: 2;
+        text-align: center;
+      }
+      #profile-name {
+        color: #444;
+        font-size: 26px;
+      }
+      .profile-description {
+        font-size: 15px;
+        color: #888;
+      }
+
+      .fa {
+        padding: 12px;
+        font-size: 20px;
+        width: 50px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 25%
+      }
+      
+      .fa:hover {
+          opacity: 0.7;
+      }
+      
+      .fa-facebook {
+        background: #3B5998;
+        color: white;
+        box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+      }
+      
+      .fa-twitter {
+        background: #55ACEE;
+        color: white;
+        box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+      }
+      
+      .fa-google {
+        background: #dd4b39;
+        color: white;
+        box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+      }
+      
+      .fa-linkedin {
+        background: #007bb5;
+        color: white;
+        box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+      }
+      
+      .fa-youtube {
+        background: #bb0000;
+        color: white;
+        box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+      }
+      
+      .fa-instagram {
+        background: #d6249f;
+        background: radial-gradient(circle at 30% 107%, 
+        #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,
+        #285AEB 90%);
+        box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+        color: white;
+      }
+      
+      .fa-skype {
+        background: #00aff0;
+        color: white;
+        box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+      }
+
+      .fa-telegram {
+        background-color: #54a9eb;
+        color: white;
+        box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+      }
+
+      .fa-whatsapp {
+        background-color: #25d366;
+        color: white;
+        box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+      }
+}

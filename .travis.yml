@@ -1,0 +1,69 @@
+language: node_js
+node_js:
+  - "6.11.4"
+
+branches:
+  only:
+  - master
+
+matrix:
+  include:
+  - os: linux
+    sudo: false
+    language: android
+    android:
+      components:
+      - tools
+      - platform-tools
+      - tools
+      - build-tools-26.0.0
+      - android-25
+      - extra-google-google_play_services
+      - extra-google-m2repository
+      - extra-android-m2repository
+    addons:
+      apt:
+        sources:
+        - sourceline: deb https://dl.yarnpkg.com/debian/ stable main
+          key_url: https://dl.yarnpkg.com/debian/pubkey.gpg
+        packages:
+        - oracle-java8-installer
+        - oracle-java8-set-default
+        - jq
+    licenses:
+    - android-sdk-preview-license-.+
+    - android-sdk-license-.+
+    - google-gdk-license-.+
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -f  $HOME/.gradle/caches/transforms-1/transforms-1.lock
+- rm -rf $HOME/.gradle/caches/3.5/fileHashes/
+- rm -rf $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
+before_install:
+- export LANG=en_US.UTF-8
+- nvm install 8
+- npm install -g ionic cordova
+- chmod +x ./travis/build-android.sh
+- npm i
+script:
+- ./travis/build-android.sh && ./travis/package-android.sh 
+env:
+  global:
+  - JAVA_HOME=/usr/lib/jvm/java-8-oracle
+deploy:
+  provider: releases
+  github-token: $GITHUB_TOKEN 
+  file_glob: true
+  file: output/*
+  skip_cleanup: true
+  overwrite: true
+  on:
+    branch: master
+
+
+
+ 

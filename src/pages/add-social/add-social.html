@@ -1,0 +1,62 @@
+<!--
+  Generated template for the AddSocialPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+      <p style="color:white">Add Social</p>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row style="margin-bottom: 10px">
+    <ion-icon style="width:20%; font-size: 40px;margin-top: 5px;margin-right: 2px;" name="logo-facebook"></ion-icon>
+    <ion-input style="width:80%;border-color: gray;border:inset;font-size: 20px" placeholder="link o nome profilo" type="text"
+      [(ngModel)]="facebook"></ion-input>
+  </ion-row>
+
+  <ion-row style="margin-bottom: 10px">
+    <ion-icon style="width:20%;font-size: 40px;margin-top: 5px;margin-right: 2px;" name="logo-instagram"></ion-icon>
+    <ion-input style="width:80%;border-color: gray;border:inset; font-size: 20px" placeholder="link o nome profilo" type="text"
+      [(ngModel)]="instagram"></ion-input>
+  </ion-row>
+
+  <ion-row style="margin-bottom: 10px">
+    <ion-icon style="width:20%;font-size: 40px;margin-top: 5px;margin-right: 2px;" name="logo-linkedin"></ion-icon>
+    <ion-input style="width:80%;border-color: gray;border:inset; font-size: 20px" placeholder="link o nome profilo" type="text"
+      [(ngModel)]="linkedin"></ion-input>
+  </ion-row>
+
+  <ion-row style="margin-bottom: 10px">
+    <ion-icon style="width:20%;font-size: 40px;margin-top: 5px;margin-right: 2px;" name="paper-plane"></ion-icon>
+    <ion-input style="width:80%;border-color: gray;border:inset; font-size: 20px" placeholder="link o nickname" type="text"
+      [(ngModel)]="telegram"></ion-input>
+  </ion-row>
+
+  <ion-row style="margin-bottom: 10px">
+    <ion-icon style="width:20%;font-size: 40px;margin-top: 5px;margin-right: 2px;" name="logo-twitter"></ion-icon>
+    <ion-input style="width:80%;border-color: gray;border:inset; font-size: 20px" placeholder="link o nickname" type="text" [(ngModel)]="twitter"></ion-input>
+  </ion-row>
+
+  <ion-row style="margin-bottom: 10px">
+    <ion-icon style="width:20%;font-size: 40px;margin-top: 5px;margin-right: 2px;" name="logo-whatsapp"></ion-icon>
+    <ion-input style="width:80%;border-color: gray;border:inset; font-size: 20px" placeholder="numero" type="tel" [(ngModel)]="whatsapp"></ion-input>
+  </ion-row>
+
+  <ion-row style="margin-bottom: 10px">
+    <ion-icon style="width:20%;font-size: 40px;margin-top: 5px;margin-right: 2px;" name="logo-youtube"></ion-icon>
+    <ion-input style="width:80%;border-color: gray;border:inset; font-size: 20px" placeholder="link o nickname" type="text" [(ngModel)]="youtube"></ion-input>
+  </ion-row>
+
+  <ion-row style="margin-top:40px; margin-bottom: 10px; margin-left: auto; margin-right: auto">
+    <button ion-button round style="font-size: 20px; margin-left: auto; margin-right: auto" (click)="onRegister()">CONFIRM</button>
+    <button ion-button round style="font-size: 20px; margin-left: auto; margin-right: auto" (click)="onBack()">CANCEL</button>
+  </ion-row>
+</ion-content>

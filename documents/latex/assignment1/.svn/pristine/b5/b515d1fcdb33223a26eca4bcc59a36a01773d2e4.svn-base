@@ -1,0 +1,65 @@
+\relax 
+\catcode `"\active 
+\select@language{english}
+\@writefile{toc}{\select@language{english}}
+\@writefile{lof}{\select@language{english}}
+\@writefile{lot}{\select@language{english}}
+\select@language{italian}
+\@writefile{toc}{\select@language{italian}}
+\@writefile{lof}{\select@language{italian}}
+\@writefile{lot}{\select@language{italian}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduzione}{2}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.0.1}Organizzazione della tesina}{3}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Il PageRank}{4}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Rappresentazione grafica del PageRank. Fonte:Wikipedia}}{5}}
+\newlabel{fig:pr}{{2.1}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.0.2}Perch\`e Hadoop?}{6}}
+\citation{her}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Il PageRank e il paradigma MapReduce}{7}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Input iniziale}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Il formato dell'input}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Il paradigma MapReduce}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Il paradigma MapReduce}}{9}}
+\newlabel{fig:mapRedDia}{{3.1}{9}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Il codice}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Map}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Reduce}{11}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Risultati dei test}{12}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}La configurazione di Hadoop}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Test di scalabilit\`a con input di grandi dimensioni}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Test di scalabilit\`a con input 40GB}}{13}}
+\newlabel{fig:scal40}{{4.1}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Localit\`a}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Grado di localit\`a su input di 40GB: la parte in blu rappresenta la percentuale di dati gi\`a presenti sul nodo mentre la parte arancione i dati prelevati da altri nodi.}}{14}}
+\newlabel{fig:localita40}{{4.2}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Test di scalabilit\`a con input di dimensioni ridotte}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Test di scalabilit\`a con input 10GB}}{15}}
+\newlabel{fig:scal10}{{4.3}{15}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Approcci di splitting differenti}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Approcci di splitting differenti}}{16}}
+\newlabel{fig:split}{{4.4}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Numero di repliche differenti}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Test con differente numero di repliche}}{17}}
+\newlabel{fig:repliche}{{4.5}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Localit\`a}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Grado di localit\`a su input di 10gb variando il fattore di replica}}{18}}
+\newlabel{fig:localitaRepliche}{{4.6}{18}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Il numero di reduce}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Test con differenti numero di reduce}}{19}}
+\newlabel{fig:Reduce}{{4.7}{19}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusioni}{20}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\bibcite{hdg}{1}
+\bibcite{her}{2}
+\bibcite{}{3}
+\bibcite{}{4}
+\@writefile{toc}{\contentsline {chapter}{Bibliografia}{21}}

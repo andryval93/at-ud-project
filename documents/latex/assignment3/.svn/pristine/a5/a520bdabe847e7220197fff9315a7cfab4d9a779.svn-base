@@ -1,0 +1,152 @@
+\documentclass[11pt,oneside]{article}
+
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage[italian,english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig}
+\usepackage{psfig}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{multirow}
+\pagestyle{fancy}
+\lhead{I-Residence\\ Project Management Plan}
+\rhead{Versione\\ Data}
+\cfoot{Ingegneria del Software 2013/2014}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+\selectlanguage{italian}
+%\thispagestyle{empty}
+
+\begin{titlepage}
+\begin{center}
+\hrulefill
+
+\begin{figure}[h]
+\begin{center}
+   \includegraphics[scale=0.1]{Figure/logounisa.eps}
+ \end{center}
+\end{figure} 
+
+
+%\begin{right}
+%\epsfig{file=Figure/logounisa.eps,width=1.5truecm}\\[0.2truecm]
+{\Large Università degli Studi di Salerno}\\[0.2truecm]
+{\large Corso di Ingegneria del Software II}\\[0.2truecm]
+\hrulefill
+\vfill\vfill
+\end{center}
+\begin{flushright}
+\textbf{\Huge I-Residence}\\[0.2truecm]
+\textbf{\large Project Management Plan}\\[0.2truecm]
+\textbf{\large Versione <xx.yy>}
+
+\vfill\vfill
+\end{flushright}
+\begin{center}
+DATA
+\vfill
+\end{center}
+\end{titlepage}
+
+\vspace*{0.7cm}
+
+\begin{tabular}{%
+|p{14.9cm} |}
+\multicolumn{1}{c}{\textbf{Coordinatori del progetto}}\\
+\multicolumn{1}{c}{}\\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+Andrea De Lucia \\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+Fabio Palomba\\
+\hline
+\end{tabular}
+\\ \\
+
+\begin{tabular}{%
+|p{10cm}%
+|p{4.5cm} |}
+\multicolumn{2}{c}{}\\
+\multicolumn{2}{c}{\textbf{Partecipanti}}\\
+\multicolumn{2}{c}{}\\
+\hline
+\multicolumn{1}{|l|}{\rule[-4.5mm]{0mm}{1.3cm}\textbf{Nome}} &
+\multicolumn{1}{l|}{\textbf{Matricola}}\\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+Francesco Fabiano & non immatricolato \\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+Miriam Granatello & 05225\\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+Maria Domenica Guida & 05225000236 \\
+\hline
+\end{tabular}
+\\ \\ \\
+
+\begin{tabular}{%
+|p{3.5cm}%
+|p{11.0cm} |}
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+\textbf{Scritto da:} &  \\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+\textbf{Revisionato da:} & \\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+\textbf{Approvato da:} &  \\
+\hline
+\end{tabular}
+\\ \\
+
+\begin{tabular}{%
+|p{2.8cm}%
+|p{2cm}%
+|p{6cm}%
+|p{2.8cm} |}
+\multicolumn{4}{c}{}\\
+\multicolumn{4}{c}{\textbf{\Large Revision History}}\\
+\multicolumn{4}{c}{}\\
+\hline
+\multicolumn{1}{|c|}{\rule[-4.5mm]{0mm}{1.3cm}\textbf{Data}} &
+\multicolumn{1}{c|}{\textbf{Versione}} &
+\multicolumn{1}{c|}{\textbf{Descrizione}} &
+\multicolumn{1}{c|}{\textbf{Autore}}\\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+&  &  & \\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+&  &  & \\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+&  &  & \\
+\hline
+\rule[-3mm]{0mm}{0.9cm}
+&  &  & \\
+\hline
+\end{tabular}
+
+
+
+\newpage
+\pagenumbering{arabic}
+\vfill
+
+
+\vspace*{-0.5cm}
+\tableofcontents
+\newpage
+
+%\section{} %Qui va inserito il nome del paragrafo
+%\input {} %qui va inserito il file contente il paragrafo
+\end{document}

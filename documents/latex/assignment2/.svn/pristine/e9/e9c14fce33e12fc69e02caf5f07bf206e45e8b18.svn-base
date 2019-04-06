@@ -1,0 +1,232 @@
+\subsection{Distribuzione Normale}
+La distribuzione normale o gaussiana per variabili continue è considerata
+una delle più importanti in quanto essa costituisce un limite al quale tendono anche le altre funzioni di distribuzione sotto opportune ipotesi.\\
+Data una variabile aleatoria X la formula della distribuzione gaussiana è la seguente:
+\[ f_{X} = \dfrac{1}{\sigma\sqrt{2\pi}}exp\left\lbrace  -\dfrac{(x-\mu)^{2}}{2\sigma^{2}} \right\rbrace \quad x\in \mathbb{R}, \sigma >0 \]
+Dove $ \mu $ rappresenta la media, $ \sigma $ la deviazione standard e $ \sigma^{2} $ la varianza, si dice che $X$ ha distribuzione normale di parametri $ \mu $ e $ \sigma $.\\
+Nel caso monodimensionale a livello geometrico la gaussiana è rappresentata da una funzione a campana.\\
+In R sono disponibili differenti funzioni per lavorare con le gaussiane che descriveremo di seguito.
+\subsection*{Densità normale}
+\begin{lstlisting}
+	dnorm (x, mean = mu, sd = sigma, log = FALSE)
+\end{lstlisting}
+Dove:
+\begin{itemize}
+	\item x è il valore assunto (o i valori assunti) dalla variabile aleatoria normale.
+	\item mean e sd rappresentano il valore medio e la deviazione standard della densità normale.
+	\item log se tale parametro è TRUE le probabilità sono espresse in forma logaritmica come $log(p)$.\\
+\end{itemize}
+Viene riportato di seguito un esempio con il relativo codice R.\\
+\begin{lstlisting}
+	> curve(dnorm(x,mean=0.5,sd=2.0),from=-10,to=10,ylab="f(x)",
+	   xlab="x" ,main="Densita' variabile normale con mu=0.5 e sd=2.0")
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/densitaNormale.png}
+\\\end{figure}
+È possibile notare come variando $\mu$ si ha una traslazione della gaussiana lungo l'asse delle ascisse, mentre variando $\sigma$ si ha una traslazione lungo l'asse delle ordinate.\\
+Illustriamo questi due casi graficamente iniziando con la variazione di $\mu$\\
+\begin{lstlisting}
+	> curve(dnorm(x,mean=1,sd=2.0),from=-10,to=10,ylab="f(x)",col="violet",
+	   xlab="x", main="Densita' variabile normale con mu=1,2,3,4 e sd=2.0")
+	> curve(dnorm(x,mean=2,sd=2.0),from=-10,to=10,ylab="f(x)",col="green"
+	   ,xlab="x",add=TRUE)
+	> curve(dnorm(x,mean=3,sd=2.0),from=-10,to=10,ylab="f(x)",xlab="x",
+	    col="red" ,add=TRUE)
+	> curve(dnorm(x,mean=4,sd=2.0),from=-10,to=10,ylab="f(x)",xlab="x",
+	    col="blue",add=TRUE)
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/densitaNormale4.png}
+\\\end{figure}
+Osserviamo i cambiamenti variando $\sigma$\\
+\begin{lstlisting}
+	> curve(dnorm(x,mean=0.5,sd=2.0),from=-10,to=10,ylab="f(x)",col="violet",
+	   xlab="x", main="Densita' variabile normale con mu=0.5 e sd=2.0, 2.5, 3, 3.5")
+	> curve(dnorm(x,mean=0.5,sd=2.5),from=-10,to=10,ylab="f(x)",col="green",
+	   xlab="x",add=TRUE)
+	> curve(dnorm(x,mean=0.5,sd=3.0),from=-10,to=10,ylab="f(x)",xlab="x",
+	   col="red" ,add=TRUE)
+	> curve(dnorm(x,mean=0.5,sd=3.5),from=-10,to=10,ylab="f(x)",xlab="x",
+	   col="blue",add=TRUE)
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/densitaNormaleSigma.png}
+\\\end{figure}
+
+\subsubsection*{Quantili della distribuzione}
+\begin{lstlisting}
+	qnorm (x, mean = mu, sd = sigma, lower.tail = TRUE, log.z = FALSE )
+\end{lstlisting}
+Dove:
+\begin{itemize}
+	\item lower.tail se tale parametro è TRUE (caso di default) calcola $P(X\leqslant q)$ mentre se tale parametro è FALSE calcola $P(X>q)$.\\
+\end{itemize}
+\subsubsection*{Funzione di distribuzione}
+\begin{lstlisting}
+	pnorm(x, mean = mu, sd = sigma , lower.tail = TRUE, log.p = FALSE)
+\end{lstlisting}
+
+\subsubsection*{Simulazione di una variabile aleatoria gaussiana}
+\begin{lstlisting}
+	rnorm(N, mean = mu, sd = sigma)
+\end{lstlisting}
+dove:
+\begin{itemize}
+	\item N è la lunghezza della sequenza da generare;
+	\item Mean e sd sono il valore medio e la deviazione standard della densità normale.
+\end{itemize}
+Tale funzione ritornerà utile per il calcolo degli intervalli di confidenza e per questo motivo di seguito verranno generate due popolazioni per mostrarne il funzionamento.\\
+Nel primo caso generiamo una popolazione di 1000 unità, con valore medio 45 e deviazione standard 7.
+\begin{lstlisting}
+	> popolazione1 <- rnorm(1000, mean=45, sd=10)
+	> par(mfrow = c(1,2))   
+	> curve(dnorm(x, mean=45, sd=10), from=0, to=90,xlab="", ylab="",
+	   main="Teorica", las=1)
+	> hist(popolazione1 , breaks=50, xlab="", ylab="",main = "Simulata",
+	   las=1,ylim=c(0,50))
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/gaussiana.png}
+\\\end{figure}
+Generiamo ora una popolazione di 10000 individui.
+\begin{lstlisting}
+> popolazione2 <- rnorm(10000, mean=45, sd=10)
+> par(mfrow = c(1,2))   
+> curve(dnorm(x, mean=45, sd=10), from=0, to=90,xlab="", ylab="",
+main="Teorica", las=1)
+> hist(popolazione2 , breaks=50, xlab="", ylab="",main = "Simulata",
+las=1,ylim=c(0,50))
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/gaussiana2.png}
+\\\end{figure}
+Si può notare come al crescere della popolazione la variabile simulata si
+avvicina a quella teorica.
+
+\subsubsection{Distribuzione chi-quadrato}
+La distribuzione chi-quadrato descrive la somma di quadrati di alcune variabili aleatorie indipendenti aventi distribuzione normale standard.\\
+In statistica, viene particolarmente utilizzata per l’omonimo test di verifica d’ipotesi $test -X^{2}$ che permette di confrontare una serie di dati osservarti sperimentalmente con la serie dei dati attesi in base a unipotesi teorica e di stimare la bontà di questa ipotesi.\\
+Una variabile aleatoria X di densità di probabilità:
+$$ f_{X}(x) = \left\{
+\begin{array}{l}
+\dfrac{1}{\varGamma(n/2)}\left( \dfrac{1}{2}\right) ^{n/2} x^{(n/2)-1}\;e^{-x/2},\quad \quad se\  x>0\\
+\\
+0,\qquad\qquad\qquad\qquad\qquad\qquad\quad\quad\quad se\ x\leqslant0
+\end{array}
+\right.
+$$
+con n intero positivo e $\varGamma(\nu)$ definita nel seguente modo:
+\[\varGamma(\nu) = \int^{+\infty}_{0} x^{\nu - 1}\ e^{- x}\ dx, \quad con\ \nu>0\]
+si dice distribuzione chi-quadrato con n gradi di libertà.\\
+R permette di calcolare la densità di probabilità, la funzione di distribuzione e i quantili di una variabile aleatoria chi–quadrato e anche di simulare tale variabile.
+\subsubsection*{Densità di propabilità}
+\begin{lstlisting}
+	dchisq (x, df , log = FALSE )
+\end{lstlisting}
+Dove:
+\begin{itemize}
+	\item \textit{x} è il valore assunto dalla variabile aleatoria chi-quadrato;
+	\item \textit{df} è il numero di gradi di libertà;
+	\item \textit{log} se tale parametro è TRUE le probabilità sono espresse in forma logaritmica.
+\end{itemize}
+Viene riportato di seguito un esempio con R.
+\begin{lstlisting}
+	> curve(dchisq(x,df=2),xlab="x", col = "violet", ylab="f(x)",
+	   main="Densita' chi-quadrato con n=2,3,4",from=0,to=20,ylim=c(0,0.50))
+	> curve(dchisq(x,df=3), add = TRUE , col = "green")
+	> curve(dchisq(x,df=4), add = TRUE , col = "red")
+	> text(4,0.18,"n=4")
+	> text(3,0.27,"n=2")
+	> text(3.5,0.23,"n=3")
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=14truecm]{Figure/densitaChi.png}
+\end{figure}
+
+\subsubsection*{Funzione di distribuzione}
+\begin{lstlisting}
+	> pchisq (q, df , lower .tail = TRUE , log .p = FALSE )
+\end{lstlisting}
+Dove:
+\begin{itemize}
+	\item \textit{lower.tail} se tale parametro è TRUE(caso di default) calcola $P(X\leqslant q)$ mentre se tale parametro è FALSE calcola $P(X > q)$.
+\end{itemize}
+\begin{lstlisting}
+	> curve(pchisq(x,df=2),xlab="",col ="violet",ylab=expression(P(X<=x)),
+	   main="Funzione di distribuzione variabile chi-quadrato con df=2,3,4",
+	   from=0,to=20,ylim=c(0,1))
+	> curve(pchisq(x,df=4),add=TRUE , lty=3, col = "red")
+	> curve(pchisq(x,df=3),add=TRUE , lty=2, col = "green")
+	> text(4.2,0.7,"n=3",col="green")
+	> text(3.2,0.85,"n=2", col="violet")
+	> text(4.7,0.57,"n=4", col="red")
+	
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/distribuzioneChi.png}
+\end{figure}
+
+\subsubsection*{Calcolo dei quantili}
+\begin{lstlisting}
+	> qchisq (p, df , lower .tail = TRUE , log .p = FALSE )
+\end{lstlisting}
+
+\subsubsection*{Simulazione di una variabile chi-quadrato}
+\begin{lstlisting}
+	rchisq (N, df)
+\end{lstlisting}
+
+\subsubsection{Distribuzione Student}
+In teoria delle probabilità, la distribuzione di Student, o t di Student, è una distribuzione di probabilità continua che governa il rapporto tra due variabili aleatorie, la prima con distribuzione normale e la seconda il cui quadrato ha distribuzione chi quadrato.\\
+È impiegata nel \textit{t-test} che serve per confrontare le medie di due campioni che seguono la distribuzione normale e viene utilizzato o quando non è nota la varianza della popolazione o quando il campione è molto piccolo.\\
+In termini formali una variabile aleatoria X di densità di probabilità:
+\[ f_{X}(x) = \dfrac{\varGamma \left( \dfrac{n+1}{2} \right)  }{\sqrt{n\pi}\varGamma \left( \dfrac{n}{2} \right) } \left( 1+ \dfrac{x^{2}}{n} \right) ^{-\dfrac{n+1}{2}} \quad x \in \mathbb{R} \]
+Con $n$ intero positivo e $\varGamma(\nu)$ definita come per chi-quadrato, si dice \textit{distribuzione di Student}, o avere \textit{distribuzione t di Student}, con $n$ gradi di libertà.
+
+\subsubsection*{Densità}
+Per il calcolo della densità si può utilizzare il comando:
+\begin{lstlisting}
+	dt(x, df , log = FALSE )
+\end{lstlisting}
+dove:
+\begin{itemize}
+	\item \textit{x} `e il valore assunto (o i valori assunti) dalla variabile aleatoria di Student;
+	\item \textit{df} numero di gradi di libertà;
+	\item \textit{log} se tale parametro è TRUE le probabilità sono espresse in forma logaritmica come $log(p)$.
+\end{itemize}
+Di seguito è riportato un esempio con R:
+\begin{lstlisting}
+	> curve(dt(x, df=4), from=-4, to=4, xlab="x", col = "blue", ylab="f(x)", 
+	   main="Densita' variabile Student df=2,4")
+	> curve(dt(x, df=2), from=-4, to=4, xlab="x", col = "red", ylab="f(x)", 
+	   add=TRUE, lty=2)
+	> text(0.8,0.30,"df=4")
+	> text(0,0.31,"df=2")
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=14truecm]{Figure/densitaStudent.png}
+\\\end{figure}
+
+\subsubsection*{Funzione di distribuzione}
+\begin{lstlisting}
+	pt(q, df , lower .tail = TRUE , log .p = FALSE )
+\end{lstlisting}
+Gli argomenti di tale funzione sono:
+\begin{itemize}
+	\item \textit{q} è il valore assunto (o i valori assunti) dalla variabile aleatoria di Student;
+	\item \textit{df} è il numero di gradi di libertà;
+	\item \textit{lower.tail} se tale parametro è TRUE calcola $P(X \leqslant q)$, se è FALSE calcola $P(X > q)$;
+	\item \textit{log.p} se TRUE le probabilità sono espresse in forma logaritmica come $log(p)$.
+\end{itemize} 
+
+\subsubsection*{Calcolo dei quantili}
+\begin{lstlisting}
+	qt(p, df , lower .tail = TRUE , log .p = FALSE )
+\end{lstlisting}
+
+\subsubsection*{Simulazione di una variabile di Student}
+\begin{lstlisting}
+	rt(N, df)
+\end{lstlisting}
+

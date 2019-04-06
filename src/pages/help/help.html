@@ -1,0 +1,67 @@
+<!--
+  Generated template for the HelpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+      <p style="color:white">Contatta Assistenza</p>
+    </ion-title>
+
+    <ion-buttons end>
+      <div>
+        <div style="z-index:20;position:absolute;right: 0px;top: -20px;width: 50px;">
+          <ion-select [(ngModel)]="selected" (ionChange)="navigateTo($event, selected)" style="opacity:0" multiple="false" interface="popover">
+            <ion-option value="profile">👤 Profilo</ion-option>
+            <ion-option value="verifyUser" *ngIf="admin">✅ Verifica Utente</ion-option>
+            <ion-option value="contacts">👪︎ Rubrica</ion-option>
+            <ion-option value="help">⛔Contatta Assistenza</ion-option>
+            <ion-option value="credits">✨ Credits</ion-option>
+            <!--<ion-option value="settings">⚙ Impostazioni</ion-option>-->
+            <ion-option value="privacy">🗎 Informativa sulla Privacy</ion-option>
+            <ion-option value="logout">🔙 Log-Out</ion-option>
+          </ion-select>
+        </div>
+        <div style="position: absolute;right: 0px;top: -15px;">
+          <button style="display: block" ion-button icon-only>
+            <ion-icon name="more"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content text-center padding>
+  <h1>Tramite questa pagina è possibile contattare l'assistenza per qualunque problema o consiglio relativo questa app. Si prega
+    di compilare i seguenti form.</h1>
+
+  <ion-item>
+    <ion-label>Categoria</ion-label>
+    <ion-select [(ngModel)]="category" multiple="false" interface="popover">
+      <ion-option value="access">Problemi relativi all'accesso</ion-option>
+      <ion-option value="errors">Errori nell'app</ion-option>
+      <ion-option value="security">Problemi relativi ai contenuti dell'app</ion-option>
+      <ion-option value="usability">Problemi nell'utilizzo</ion-option>
+      <ion-option value="advice">Consigli o altri contributi</ion-option>
+      <ion-option value="others">Altri problemi...</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary">Oggetto:</ion-label>
+    <ion-input placeholder="Text Input" [(ngModel)]="subject"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-textarea rows="12" style="resize: none;font-size: 20px;width: auto; height: 300px;" [(ngModel)]="messaggio" placeholder="Spiega il problema nel dettaglio, specificando anche come si è ottenuto il problema."></ion-textarea>
+  </ion-item>
+
+  <button style="margin-top: 5px" ion-button (click)="send()" round>Conferma</button>
+</ion-content>

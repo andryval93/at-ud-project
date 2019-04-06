@@ -1,0 +1,306 @@
+Lo scopo del clustering è quello di partizionare i dati in gruppi in modo tale da rendere minima la dissimilarità tra oggetti appartenenti ad uno stesso cluster e massima la dissimilarità tra oggetti appartenenti a cluster differenti.\\
+In questo modo si otterrà quindi un'alta omogeneità all'interno dei gruppi
+ed un'alta eterogeneità tra gruppi distinti.\\
+Il clustering può essere sfruttato per molti scopi tra i quali:
+\begin{itemize}
+	\item Ridurre i dati in caso di un grande numero di osservazioni che risultano intrattabili a meno che non vengano classificati in gruppi che possono essere considerati come singole unità;
+	\item Generare ipotesi sulla natura dei dati;
+	\item Produrre gruppi che formano la base di uno schema di classificazione utile in studi successivi per scopi di previsioni di un qualche tipo.
+\end{itemize}
+Formalmente sia $I = {I_{1}, I_{2}, ..., I_{n}}$ un insieme di $n$ unità appartenenti ad una popolazione ideale.\\
+Assumiamo che esista un insieme di caratteristiche (chiamate anche features) $C = {C_{1}, C_{2}, ..., C_{p}} $ osservabili. Il problema dell'analisi dei cluster consiste nel determinare $m$ sottoinsiemi (detti cluster) d'individui $I$, con $m$ intero minore di $n$ tale che $I_{i}$ appartenga soltando ad un unico sottoinsieme.\\
+Gli individui che appartengono ad uno stesso cluster vengono detti simili,
+mentre quelli che appartengono a cluster differenti dissimili, risulta quindi cruciale per il problema del clustering definire in maniera precisa i termini di somiglianza e differenza.\\
+La somiglianza può essere definita attraverso un \textit{coefficiente di similarità} oppure mediante una \textit{misura di distanza}, mentre i coefficienti di similarità assumono valori compresi tra 0 e 1 le misure di distanza possono assumere qualsiasi valore maggiore o uguale di zero.\\
+Date queste considerazioni, il primo passo per effettuare un raggruppamento dei dati in input è quello di calcolare le distanze tra tutte le possibili coppie di unità e d'inserirle in una matrice denominata matrice delle distanze.\\
+Per costruire la matrice delle distanze è possibile scegliere tra diverse metriche in base al problema in esame, le opzioni sono:
+\begin{itemize}
+	\item Metrica euclidea;
+	\item Metrica del valore assoluto o metrica di Manhattan;
+	\item Metrica del massimo o metrica di Chebycey;
+	\item Metrica di Minkowski;
+	\item Distanza di Canberra;
+	\item Distanza di Jaccar.
+\end{itemize}
+Tra queste la più nota è la metrica euclidea così definita:
+\[ d_{2}(X_{i},X_{j}) = \left[ \sum\limits_{k=1}^p(x_{ik}-x{jk})^2\right] ^{1/2} \]
+dove $x_{ik}$ è il valore della $k-esima$ caratterisica dell'individuo $I$.
+Sebbene la metrica euclidea non tenga conto della forma della distribuzione e sia fortemente influenzata dall'unità di misura in base alla quale è valutata ciascuna delle p caratteristiche, è molto diffusa e di facile utilizzo e per questo motivo è stata scelta come metrica per costruire la matrice delle distanze per i dati presi in considerazione per questa tesina.\\
+Una volta calcolata la matrice delle distanze, il passo successivo risulta essere quello di scegliere un algoritmo per il raggruppamento.\\
+I metodi di raggruppamento si distinguono in tre tipi:
+\begin{itemize}
+	\item Metodi di enumerazione completa;
+	\item Metodi gerarchici;
+	\item Metodi non gerarchici.
+\end{itemize}
+I metodi di enumerazione spesso sono computazionalmente onerosi perchè
+prevedono il calcolo della funzione obiettivo per ogni possibile partizione dell’insieme totale di $n$ individui di $m$ cluster, per questo motivo spesso si preferiscono i metodi gerarchici e non gerarchici che verranno trattati in dettaglio nelle sezioni successive.
+
+\subsection{Cluster gerarchico}
+I metodi di clustering gerarchico possono essere di due tipi:
+\begin{itemize}
+	\item \textbf{Agglomerativi:} si parte da una situazione in cui si hanno $n$ cluster distinti ognuno contenente un solo individuo per poi giungere alla fine ad una situazione in cui si ha un unico cluster che contiene tutti gli individui;
+	\item \textbf{Divisivi:} si parte da una situazione in cui si ha un solo cluster che contiene tutti gli $n$ individui, per poi giungere, ad una situazione in cui si hanno $n$ cluster distinti ognuno contenente un solo individuo.
+\end{itemize}
+In entrambi metodi lo scopo è quello di ottenere una partizione dei dati
+che possa essere rappresentata su un particolare diagramma ad albero detto
+dendogramma.\\
+In seguito approfondiremo i metodi agglomerativi, tralasciando quelli divisivi.\\
+Sebbene esistano diversi metodi gerarchici agglomerativi, essi possiedono
+una struttura di fondo comune che può essere esplicitata attraverso i seguenti passi:
+\begin{itemize}
+	\item \textbf{Passo 1:} a partire dalla matrice $X$ originaria dei dati o dalla matrice scalata si costruisce la matrice delle distanze;
+	\item \textbf{Passo2:} Si individuano i due cluster meno distanti e si raggruppano in un unico cluster. Fatto questo si calcola la distanza tra il cluster originato dopo l'agglomerazione e tutti gli altri gruppi già esistenti;
+	\item \textbf{Passo 3:} Si ricalcola la matrice delle distanze eliminando una riga ed una colonna;
+	\item \textbf{Passo 4:} Si ripete il procedimento a partire dal passo 2 fino ad esaurire tute le possibilità di raggruppamento;
+	\item \textbf{Passo 5:} Si rappresentare il risultato ottenuto attraverso un dendogramma dove ad ogni livello di distanza corrisponde una partizione.
+\end{itemize}
+Dopo aver scelto l’opportuna metrica al passo 1, ciò che differenza sostanzialmente i vari algoritmi gerarchici di tipo agglomerativo è soltanto la definizione del concetto di distanza tra cluster al passo 2. Le tecniche che prenderemo in considerazione per calcolare la distanza saranno:
+\begin{itemize}
+	\item Metodo del legame singolo
+	\item Metodo del legame completo
+	\item Metodo del legame medio
+	\item Metodo del centroide
+	\item Metodo della mediana
+\end{itemize}
+Prima di applicare qualsiasi di queste metodologie è stato necessario effettuare delle operazioni preliminari come la standardizzazione dei valori attraverso il comando scale() di R e la costruzione della matrice delle distanze.
+Il codice eseguito è il seguente:
+\begin{lstlisting}
+	#dati scalati
+	> datiScalati <- scale(matriceAnalisi[,1:7])
+	#matrice delle distanze
+	> matriceDistanze <- dist(datiScalati,method="euclidean",diag=TRUE,upper=TRUE)
+	
+\end{lstlisting}
+
+\subsubsection{Metodo del legame singolo}
+Nel metodo del legame singolo (chiamato anche single linkage) la distanza tra due cluster è definita come la distanza tra i due oggetti più vicini.
+Un vantaggio di tale metodo è quello di individuare gruppi di qualsiasi forma e di mettere in luce eventuali valori anomali. Uno svantaggio è che può dare origine a catene d’individui.\\
+Di seguito viene riportato il codice R usato per generare il dendogramma.
+\begin{lstlisting}
+	> singleLinkage <-hclust(matriceDistanze,method="single")
+	> plot(singleLinkage,main="Single linkage",xlab="Regioni",
+	   ylab="Altezza",sub="")
+	> axis(side=4, at=round(c(0, singleLinkage$height),1))
+	> rect.hclust(singleLinkage , k=4, border="red")
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/legameSingolo4.png}
+\\\end{figure}
+Grazie all'ausilio del comando \textit{cutree} è possibile ottenere una matrice che indica a quale cluster appartiene ogni regione.
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/cutreeSingolo.png}
+\\\end{figure}
+Ovvero:
+\begin{itemize}
+	\item \textbf{C1:} Piemonte, Veneto, Umbria, Campania, Sardegna, Friuli Venezia Giulia, Marche, Lombardia, Emilia Romagna, Abruzzo, Provincia Autonoma Trento, Toscana;
+	\item \textbf{C2:} Valle D'Aosta;
+	\item \textbf{C3:} Provincia Autonoma Bolzano;
+	\item \textbf{C4:} Puglia, Liguria, Lazio, Basilicata, Calabria, Molise, Sicilia.
+\end{itemize}
+
+\subsubsection{Metodo del legame completo}
+Nel metodo del legame completo (chiamato anche complete linkage) ad ogni passo per ogni coppia di cluster si prende in considerazione la distanza tra i due elementi più lontani.\\
+La coppia di cluster che alla fine presenta il minimo di queste distanze viene scelta per l’unione.
+Questo metodo individua soprattuto i gruppi di forma ellissoidale, ossia una serie di punti che si addensano attorno ad un nucleo centrale. Il dendrogramma costruito con questo metodo ha i rami molto più lunghi rispetto al dendrogramma ottenuto con il metodo del legame singolo poichè i gruppi si formano a livelli di distanza maggiori.\\
+Di seguito viene riportato il codice R per generare il dendogramma.
+\begin{lstlisting}
+	#metodo legame completo
+	> completeLinkage <-hclust(matriceDistanze ,method="complete")
+	> plot(completeLinkage ,main="Complete linkage",xlab="Regioni",
+	   ylab="Altezza",sub="")
+	> axis(side=4, at=round(c(0, completeLinkage$height),1))
+	> rect.hclust(completeLinkage , k=4, border="red")
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/legameCompleto.png}
+	\\\end{figure}
+Come prima, grazie all'ausilio del comando \textit{cutree} è possibile ottenere una matrice che indica a quale cluster appartiene ogni regione.
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/cutreeCompleto.png}
+\\\end{figure}
+Ovvero:
+\begin{itemize}
+	\item \textbf{C1:} Piemonte, Veneto, Valle D'Aosta, Emilia Romagna, Provincia Autonoma Trento;
+	\item \textbf{C2:} Umbria, Campania, Sardegna, Friuli Venezia Giulia, Marche, Lombardia, Toscana;
+	\item \textbf{C3:} Provincia Autonoma Bolzano;
+	\item \textbf{C4:} Puglia, Liguria, Lazio, Basilicata, Calabria, Molise, Sicilia.
+\end{itemize}
+
+\subsubsection{Metodo del legame medio}
+Nel metodo del legame medio (average linkage method) la distanza tra due
+cluster è rappresentata dalla media delle distanze tra tutte le coppie di elementi presenti nei due gruppi.\\
+Uno svantaggio di questo metodo è che nel caso in cui si considerano cluster molto differenti, la distanza sarà molto vicina a quella del cluster più numeroso.\\
+Di seguito viene riportato il codice R per generare il dendogramma.
+\begin{lstlisting}
+	#metodo del legame medio
+	> averageLinkage <-hclust(matriceDistanze ,method="average")
+	> plot(averageLinkage ,main="Average linkage",xlab="Regioni",
+	   ylab="Altezza",sub="")
+	> axis(side=4, at=round(c(0, averageLinkage$height),1))
+	> rect.hclust(averageLinkage , k=4, border="red")
+
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/legameMedio.png}
+	\\\end{figure}
+Come prima, grazie all'ausilio del comando \textit{cutree} è possibile ottenere una matrice che indica a quale cluster appartiene ogni regione.
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/cutreeMedio.png}
+	\\\end{figure}
+Ovvero:
+\begin{itemize}
+	\item \textbf{C1:} Piemonte, Veneto, Umbria, Campania, Sardegna, Friuli Venezia Giulia, Marche, Lombardia, Emilia Romagna, Abruzzo, Provincia Autonoma Trento, Toscana;
+	\item \textbf{C2:} Valle D'Aosta;
+	\item \textbf{C3:} Provincia Autonoma Bolzano;
+	\item \textbf{C4:} Puglia, Liguria, Lazio, Basilicata, Calabria, Molise, Sicilia.
+\end{itemize}
+
+\subsubsection{Metodo del centroide}
+Nel metodo del centroide la distanza tra due cluster è definita come la distanza tra i centroidi, ossia tra le medie campionarie calcolate sugli individui appartenenti ai due gruppi.\\
+Il metodo del centroide può dare origine a fenomeni gravitazionali, per cui i gruppi grandi tendono ad attrarre al loro interno i piccoli gruppi. Inoltre le distanze in cui si verificano le successive agglomerazioni possono essere non crescenti. Uno svantaggio del metodo del centroide è che se le misure dei due cluster da unire sono molto differenti il centroide del nuovo cluster sarà molto vicino a quello del cluster più numeroso. A differenza dei casi precendenti, per il metodo del centroide bisogna elevare la matrice delle distanze al quadrato.\\
+Di seguito viene riportato il codice R per generare il dendogramma.
+\begin{lstlisting}
+#metodo del legame medio
+> averageLinkage <-hclust(matriceDistanze ,method="average")
+> plot(averageLinkage ,main="Average linkage",xlab="Regioni",
+ylab="Altezza",sub="")
+> axis(side=4, at=round(c(0, averageLinkage$height),1))
+> rect.hclust(averageLinkage , k=4, border="red")
+
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/centroide.png}
+	\\\end{figure}
+Come prima, grazie all'ausilio del comando \textit{cutree} è possibile ottenere una matrice che indica a quale cluster appartiene ogni regione.
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/cutreeCentroide.png}
+	\\\end{figure}
+Ovvero:
+\begin{itemize}
+	\item \textbf{C1:} Piemonte, Veneto, Umbria, Campania, Sardegna, Friuli Venezia Giulia, Marche, Lombardia, Abruzzo, Toscana;
+	\item \textbf{C2:} Valle D'Aosta, Emilia Romagna, Provincia Autonoma Trento;
+	\item \textbf{C3:} Provincia Autonoma Bolzano;
+	\item \textbf{C4:} Puglia, Liguria, Lazio, Basilicata, Calabria, Molise, Sicilia.
+\end{itemize}
+
+\subsubsection{Metodo della mediana}
+Il metodo della mediana è simile a quello del centroide, con la differenza
+che la dimensione del cluster non influisce sul calcolo del centroide. Infatti, quando due cluster si aggregano, il nuovo centroide risulta essere la semisomma dei due centroidi precedenti.
+Come il metodo del legame singolo può comportare la formazione di una
+catena tra gli individui.\\
+Di seguito viene riportato il codice R usato per generare il dendogramma.
+\begin{lstlisting}
+#metodo del legame medio
+> averageLinkage <-hclust(matriceDistanze ,method="average")
+> plot(averageLinkage ,main="Average linkage",xlab="Regioni",
+ylab="Altezza",sub="")
+> axis(side=4, at=round(c(0, averageLinkage$height),1))
+> rect.hclust(averageLinkage , k=4, border="red")
+
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/mediana.png}
+	\\\end{figure}
+Come prima, grazie all'ausilio del comando \textit{cutree} è possibile ottenere una matrice che indica a quale cluster appartiene ogni regione.
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/cutreeMedian.png}
+	\\\end{figure}
+Ovvero:
+\begin{itemize}
+	\item \textbf{C1:} Piemonte, Veneto, Umbria, Campania, Sardegna, Friuli Venezia Giulia, Marche, Lombardia, Abruzzo, Toscana;
+	\item \textbf{C2:} Valle D'Aosta, Emilia Romagna, Provincia Autonoma Trento;
+	\item \textbf{C3:} Provincia Autonoma Bolzano;
+	\item \textbf{C4:} Puglia, Liguria, Lazio, Basilicata, Calabria, Molise, Sicilia.
+\end{itemize}
+
+\subsection{Metodi non gerarchici}
+Lo scopo dei metodi non gerarchici è quello di ottenere un’unica partizione degli n individui di partenza in cluster. A differenza dei metodi gerarchici in tali tecniche è consentito riallocare gli individui già classificati ad un livello precedente dell'analisi.\\
+Esistono numerose tecniche di metodi non gerarchici ed è impossibile raggrupparli tutti in un unico tipo; in alcuni bisogna fissare a priori il numero di cluster da formare mentre in altri viene determinato durante l'analisi. In molti casi, inoltre, bisogna fissare un insieme di punti di riferimento. In generale gli algoritmi di tipo non gerarchico procedono, data una prima partizione, a riallocare gli individui nel gruppo con centroide più vicino, fino a che per nessun individuo si verifica che sia minima la distanza rispetto al centroide di un gruppo diverso da quello a cui esso appartiene.
+
+\subsubsection{K-Means}
+Il metodo non gerarchico più utilizzato è noto come k-means e consiste nei
+seguenti passi:
+\begin{itemize}
+	\item \textbf{Passo 1:} fissare a priori il numero k di cluster da formare specificando k punti di riferimento iniziali;
+	\item \textbf{Passo 2:} Considerare tutti gli individui e attribuire ciascuno di essi al cluster individuato dal punto di riferimento da cui ha distanza minore;
+	\item \textbf{Passo 3:} Calcolare il centroide di ognuno dei k gruppi così ottenuti. Tali centroidi costituiscono i punti di riferimento per i nuovi cluster;
+	\item \textbf{Passo 4:} Valutare la distanza di ogni unità da ogni centroide ottenuto al passo precedente. Se la distanza minima non è ottenuta in corrispondenza del centroide del gruppo di appartenenza, allora si procede a spostare l’individuo presso il cluster che ha il centroide più vicino;
+	\item \textbf{Passo 5:} Ricalcolare i centroidi dei k gruppi così ottenuti;
+	\item \textbf{Passo 6:} Ripetere il procedimento a partire dal punto (4) fino a che i centroidi non subiscono ulteriori modifiche rispetto all’iterazione precedente. Si procede così iterativamente a spostamenti successivi fino a raggiungere una configurazione stabile, ossia gli individui all'interno di ogni cluster non cambiano al ripetersi del procedimento.
+\end{itemize}
+Il k-means è un metodo veloce a livello computazionale ma presenta il problema dei minimi locali infatti, dal momento che i valori iniziali possono essere diversi, ogni specifica allocazione porterà ad un ottimo che è locale al problema ma non è necessariamente quello globale.\\
+Inoltre, vi è il problema di dover determinare a priori il numero di cluster da utilizzare.\\
+In R l’analisi del metodo del k-means viene fatta attraverso l’utilizzo della funzione \textit{kmeans()}:
+\begin{lstlisting}
+	kmeans(X, centers , iter.max = N, nstart = M)
+\end{lstlisting}
+Dove X rappresenta l'input iniziale, centers il numero di cluster che vogliamo formare, iter.max il numero d'iterazioni che vogliamo effettuare (di default è 10) e nstart il numero di volte in cui vogliamo ripetere la procedura di scelta casuale dei punti di riferimento.\\
+\subsubsection*{Scelta casuale dei punti di riferimento}
+Di seguito viene applicato il metodo del k-means scegliendo casualmente i
+punti di riferimento iniziali ed effettuando 10 iterazioni.\\
+Il comando utilizzato è:
+\begin{lstlisting}
+	> km <- kmeans(matriceAnalisi, centers=3, iter.max=10, nstart=1)
+\end{lstlisting}
+Con il seguente risultato:
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/kmeans.png}
+\\\end{figure}
+In questo caso il k-means ha individuato la seguente partizione:
+\begin{itemize}
+	\item \textbf{C1:} Campania, Sardegna, Lombardia, Provincia Autonoma Bolzano, Toscana, Abruzzo.
+	\item \textbf{C2:} Puglia, Liguria, Lazio, Basilicata, Calabria, Molise, Sicilia.
+	\item \textbf{C3:} Piemonte, Veneto, Umbria, Valle D'Aosta, Friuli Venezia Giulia, Marche, Emilia Romagna, Provincia Autonoma Trento.
+\end{itemize}
+È possibile rappresentare graficamente i cluster:
+\begin{lstlisting}
+	> pairs(matriceAnalisi ,col=km$cluster , main="Metodo non gerarchico del k-means")
+\end{lstlisting}
+con il seguente risultato:
+\begin{figure}[H]\centering
+	\includegraphics[width=14truecm]{Figure/kmeanGrafico.png}
+\\\end{figure}
+
+\subsubsection*{Ripetizione della procedura di scelta casuale dei punti di riferimento}
+Dal momento che la partizione iniziale è scelta casualmente non è detto che la procedura del k-means conduca sempre allo stesso risultato con configurazioni iniziali differenti, per questo motivo in questa sezione si è deciso di porre il parametro \textit{nstart = 10} ed osservare i risultati.
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/kmeans10.png}
+\\\end{figure}
+Dopo 10 iterazioni sono stati formati 3 cluster:
+\begin{itemize}
+		\item \textbf{C1:} Campania, Sardegna, Valle D'Aosta, Lombardia, Provincia Autonoma Bolzano, Abruzzo, Toscana.
+		\item \textbf{C2:} Molise, Sicilia, Puglia, Liguria, Lazio, Basilicata, Calabria.
+		\item \textbf{C3:} Piemonte, Veneto, Umbria, Friuli Venezia Giulia, Marche, Emilia Romagna, Toscana.
+\end{itemize}
+Come si può notare il risultato è differente dal precedente raggruppamento.
+\begin{figure}[H]\centering
+	\includegraphics[width=14truecm]{Figure/kmeanGrafico10.png}
+\\\end{figure}
+
+\subsubsection*{Scelta dei centroidi}
+In alternativa alla scelta casuale dei punti di riferimento si possono utilizzare i centroidi dei cluster ottenuti con la tecnica del centroide utilizzando la funzione \textit{aggregate()}.
+\begin{lstlisting}
+	#tecnica dei centroidi
+	tree<-hclust(matriceDistanze2 ,method="centroid")
+	> taglio<-cutree(tree ,k=3,h=NULL)
+	> tagliolist<-list(taglio)
+	> centroidiIniziali<-aggregate(matriceAnalisi[,1:7],tagliolist,mean)[,-1]
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/centroidiIniziali.png}
+\\\end{figure}
+\begin{lstlisting}
+	> k <- kmeans(matriceAnalisi[,1:7],centers=centroidiIniziali,iter.max =10)
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/k.png}
+\\\end{figure}
+\begin{itemize}
+	\item \textbf{C1:} Piemonte, Provincia Autonoma Trento, Emilia Romagna, Veneto, Friuli Venezia Giulia, Umbria, Marche.
+	\item \textbf{C2:} Sardegna, Valle D'Aosta, Toscana, Abruzzo, Lombardia, Campania, Provincia Autonoma Bolzano.
+	\item \textbf{C3:} Lazio, Puglia, Basilicata, Calabria, Molise, Liguria, Sicilia.
+\end{itemize}
+\begin{figure}[H]\centering
+	\includegraphics[width=14truecm]{Figure/kmeanGrafico2.png}
+\\\end{figure}

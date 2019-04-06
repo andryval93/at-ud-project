@@ -1,0 +1,33 @@
+\BOOKMARK [1][-]{section.1}{Contextual Investigation Plan}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Presentation of the problem}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Planning the collection of information during contextual investigations}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Field interview}{subsection.1.2}% 4
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Online Survey Interview}{subsection.1.2}% 5
+\BOOKMARK [1][-]{section.2}{Analysis of the Contextual Investigation}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{Interviews Answers}{section.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Interviews with deaf peolple}{subsection.2.1}% 8
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Interviews with friends and family}{subsection.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.2}{Result of the contextual survey}{section.2}% 10
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Question 1: What activities do users currently perform?}{subsection.2.2}% 11
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Question 2: Which tasks would you like to do?}{subsection.2.2}% 12
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Question 3: How are the activities to be learned?}{subsection.2.2}% 13
+\BOOKMARK [3][-]{subsubsection.2.2.4}{Question 4: Where are the activities carried out?}{subsection.2.2}% 14
+\BOOKMARK [3][-]{subsubsection.2.2.5}{Question 5: What is the relationship between the user and the data \(personal data, private data, public data, their meaning for the user, etc.\)?}{subsection.2.2}% 15
+\BOOKMARK [3][-]{subsubsection.2.2.6}{Question 6: What other tools does the user have to complete the task?}{subsection.2.2}% 16
+\BOOKMARK [3][-]{subsubsection.2.2.7}{Question 7: How often are tasks executed?}{subsection.2.2}% 17
+\BOOKMARK [3][-]{subsubsection.2.2.8}{Question 8: What are the time constraints on tasks, if any?}{subsection.2.2}% 18
+\BOOKMARK [3][-]{subsubsection.2.2.9}{Question 9: What happens when things go wrong during task execution?}{subsection.2.2}% 19
+\BOOKMARK [3][-]{subsubsection.2.2.10}{Question 10: How do users communicate with each other about tasks?}{subsection.2.2}% 20
+\BOOKMARK [1][-]{section.3}{Problem Design}{}% 21
+\BOOKMARK [2][-]{subsection.3.1}{Personas}{section.3}% 22
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Mario - Studente}{subsection.3.1}% 23
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Luca - Studente}{subsection.3.1}% 24
+\BOOKMARK [2][-]{subsection.3.2}{Scenarios}{section.3}% 25
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Mario}{subsection.3.2}% 26
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Luca}{subsection.3.2}% 27
+\BOOKMARK [2][-]{subsection.3.3}{Claim}{section.3}% 28
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Mario}{subsection.3.3}% 29
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Luca}{subsection.3.3}% 30
+\BOOKMARK [1][-]{section.4}{Functional and Non-Functional Requirements}{}% 31
+\BOOKMARK [2][-]{subsection.4.1}{Functional Requirements}{section.4}% 32
+\BOOKMARK [2][-]{subsection.4.2}{Non-Functional Requirements}{section.4}% 33

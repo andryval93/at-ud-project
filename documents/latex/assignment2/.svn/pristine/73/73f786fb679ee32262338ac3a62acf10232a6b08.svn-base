@@ -1,0 +1,100 @@
+\relax 
+\select@language{english}
+\@writefile{toc}{\select@language{english}}
+\@writefile{lof}{\select@language{english}}
+\@writefile{lot}{\select@language{english}}
+\select@language{italian}
+\@writefile{toc}{\select@language{italian}}
+\@writefile{lof}{\select@language{italian}}
+\@writefile{lot}{\select@language{italian}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduzione}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Organizzazione del lavoro}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Strumenti e dati utilizzati}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Strumenti}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Fonte Dati}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Analisi dei dati}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Inserimento dati}{5}}
+\newlabel{a_label}{{1}{5}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}Inserimento della tabella in R.}{5}}
+\newlabel{a_label}{{2}{5}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}creazione della matrice}{5}}
+\newlabel{a_label}{{3.1}{5}}
+\newlabel{a_label}{{3.1}{6}}
+\newlabel{a_label}{{3.1}{6}}
+\newlabel{a_label}{{3.1}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Ripartizione dati}{6}}
+\newlabel{a_label}{{3.2}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Dati in percentuale}{7}}
+\newlabel{a_label}{{3.3}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Matrice dei dati con percentuale}}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Matrice dei dati ripartita con percentuale}}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Analisi Grafica}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Rappresentazione grafica}{9}}
+\newlabel{a_label}{{4.1}{9}}
+\newlabel{a_label}{{4.1}{10}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Carta e Cartone}{11}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Vetro}{12}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Plastica}{13}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.4}Metalli}{14}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.5}Raccolta Selettiva}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.6}Rifiuti verdi, organici e legno}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.7}Altro}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Rappresentazione dei valori numerici}{17}}
+\newlabel{a_label}{{4.2}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Carta e Cartone}{19}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Vetro}{20}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Plastica}{21}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Metalli}{22}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.5}Raccolta Selettiva}{23}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.6}Rifiuti verdi, organici e legno}{24}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.7}Altro}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Confronto tra Nord, Centro e Sud}{26}}
+\newlabel{a_label}{{4.3}{26}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Carta e Cartone}{26}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Vetro}{27}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Plastica}{27}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.4}Metalli}{28}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.5}Raccolta Selettiva}{28}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.6}Rifiuti verdi, organici e legno}{29}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.7}Altro}{29}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Variabili a confronto}{30}}
+\newlabel{a_label}{{4.4}{30}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Statistica descrittiva con R}{31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Indici di sintesi: posizione e dispersione}{31}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Indice di posizione}{31}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Calcolo degli indici di posizione con R}{32}}
+\newlabel{a_label}{{5.1.2}{32}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.3}Indici di dispersione}{32}}
+\newlabel{a_label}{{5.1.3}{33}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.4}Calcolo degli indici di dispersione con R}{33}}
+\newlabel{a_label}{{5.1.4}{33}}
+\newlabel{a_label}{{5.1.4}{33}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.5}Boxplot}{34}}
+\newlabel{a_label}{{5.1.5}{34}}
+\newlabel{a_label}{{5.1.5}{34}}
+\newlabel{a_label}{{5.1.5}{35}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Correlazioni tra le variabili}{35}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}Covarianza campionaria}{36}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}Coefficiente di correlazione campionario}{36}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.3}Scatterplot}{37}}
+\newlabel{a_label}{{5.2.3}{37}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Clustering}{38}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Cluster gerarchico}{39}}
+\newlabel{a_label}{{6.1}{40}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.1}Metodo del legame singolo}{40}}
+\newlabel{a_label}{{6.1.1}{40}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.2}Metodo del legame completo}{41}}
+\newlabel{a_label}{{6.1.2}{42}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.3}Metodo del legame medio}{43}}
+\newlabel{a_label}{{6.1.3}{43}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.4}Metodo del centroide}{44}}
+\newlabel{a_label}{{6.1.4}{44}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.5}Metodo della mediana}{45}}
+\newlabel{a_label}{{6.1.5}{46}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Metodi non gerarchici}{47}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}K-Means}{47}}
+\newlabel{a_label}{{6.2.1}{47}}
+\newlabel{a_label}{{6.2.1}{48}}
+\newlabel{a_label}{{6.2.1}{48}}
+\newlabel{a_label}{{6.2.1}{52}}
+\newlabel{a_label}{{6.2.1}{52}}

@@ -1,0 +1,454 @@
+I metodi di stima puntuali anche se sembrano ipoteticamente sempre desiderabili, difficilmente potranno fornire delle stime che coincidono con un parametro incognito, poiché bisogna sempre tener conto di un certo errore di campionamento. Per questo motivo, alla stima puntuale di un parametro non noto di una popolazione (costituita da un singolo valore reale) spesso si preferisce sostituire un intervallo di valori, detto \textit{intervallo di confidenza}.\\
+In pratica, si cerca di determinare in base ai dati in possesso due limiti (uno superiore ed uno inferiore) entro i quali sia compreso il parametro non noto con un certo \textit{coefficiente di confidenza} (detto anche grado di fiducia) $1 -  \alpha$ che rappresenta la probabilità di contenere il vero parametro della popolazione.\\
+Definiamo formalmente quanto appena detto.
+Sia $X_{1},X_{2}, ...,X_{n}$ un campione casuale di ampiezza $n$ estratto da una popolazione con funzione di probabilità (nel caso discreto) oppure densità di probabilità (nel caso assolutamente continuo) $f(x; \vartheta)$, dove $\vartheta$ denota il parametro non noto della popolazione. Denotiamo con $\underline{C}_{n} = g_{1}(X_{1},X_{2}, ...,X_{n})$ e con $\overline{C}_{n} = g_{2}(X_{1},X_{2}, ...,X_{n})$ due statistiche (funzioni osservabili del campione casuale) che soddisfino la condizione $\underline{C}_n < \overline{C}$, cioè che godono della proprietà che per ogni possibile fisasato campione osservato $x =(x_{1},x_{2}, ...,x_{n}$ risulti $g_{1}(x) < g_{2}(x)$.\\
+Fissato un coefficiente di confidenza $1 - \alpha $ con $(0 < \alpha < 1)$, se possibile scegliere le statistiche $\underline{C}_{n}$ e $\overline{C}_{n}$ in modo tale che:
+\[ P(\underline{C}_{n} < \alpha < \overline{C}_{n}) = 1- \alpha \]
+allora si dice che $(\underline{C}_{n}; \overline{C}_{n})$ è un intervallo di confidenza di grado $1 - \alpha$ per $\vartheta$.\\
+Inoltre, le statistiche $\underline{C}_{n}$ e $\overline{C}_{n}$ sono dette limite superiore e limite inferiore dell'intervallo di confidenza.\\
+Se $g_{1}(x)$ e $g_{2}(x)$ sono i valori assunti dalle statistiche $\underline{C}_{n}$ e $\overline{C}_{n}$ per il campione osservato $x =(x_{1},x_{2}, ...,x_{n})$, allora l'intervallo  $(g_{1}(x); g_{2}(x))$ è detto stima dell'intervallo di confidenza di grado $1-\alpha$ per $\vartheta$ ed i punti finali  $g_{1}(x) e g_{2}(x)$ di tale intervallo sono detti rispettivamente stima del limite inferiore e stima del limite superiore dell'intervallo di confidenza.\\
+Un metodo per la costruzione degli intervalli di confidenza è il metodo \textit{pivoitale}. Tale metodo consiste essenzialmente nel determinare una variabile aleatoria di pivot  $\lambda(X_{1},X_{2}, ...,X_{n}; \vartheta)$ che presenta le seguenti caratteristiche:
+\begin{itemize}
+	\item Dipende dal campione casuale $X_{1},X_{2}, ...,X_{n}$.
+	\item Dipende dal parametro non noto $\vartheta$.
+	\item La funzione di distribuzione non contiene il parametro da stimare.
+\end{itemize}
+Tale variabile aleatoria non è una statistica poichè non è osservabile.
+
+\subsubsection*{Intervalli di confidenza per una popolazione normale}
+Sia $X_{1},X_{2}, ...,X_{n}$ un campione casuale di ampiezza $n$ estratto da una popolazione normale con valore medio $\mu$ e varianza $\sigma^{2}$.\\
+Si possono analizzare i seguenti problemi:
+\begin{itemize}
+	\item Determinare un intervallo di confidenza di grado $1 - \vartheta$ per il valore medio $\mu$ nel caso in cui la varianza $\sigma^{2}$ della popolazione normale è nota;
+	\item Determinare un intervallo di confidenza di grado $1- \vartheta$ per il valore medio $\mu$ nel caso in cui la varianza $\sigma^{2}$ della popolazione normale non è nota;
+	\item Determinare un intervallo di confidenza di grado $1 - \vartheta$ per la varianza $\sigma^{2}$ nel caso in cui il valore medio della popolazione normale è noto;
+	\item Determinare un intervallo di confidenza di grado $1 - \vartheta$ per la varianza $\sigma^{2}$ nel caso in cui il valore medio della popolazione normale non è noto;
+\end{itemize}
+Di seguito illustreremo i casi sopra descritti.
+
+\subsection{Intervallo di confidenza per $\mu$ con $\sigma^{2}$ nota}
+Per determinare un intervallo di confidenza di grado $1 - \vartheta$ per valore medio $\mu$ in cui la varianza $\sigma^{2}$ è fissata si utilizza il metodo pivoitale considerando la variabile aleatoria di pivot così definita:
+\[ Z_{n} = \dfrac{X_{n} - \mu}{\sigma / \sqrt{n}} \]
+Tale variabile aleatoria è distribuita normalmente con valore medio nullo e varianza unitaria, dipende dal campione casuale e dal parametro non noto
+$\mu$ e quindi può essere interpretata come una variabile aleatoria di pivot.\\
+Scegliendo nel metodo pivoitale $\alpha_{1} = -z_{\alpha }/2 $ e $\alpha_{2} = +z_{\alpha}/2 $, dove $z_{\alpha}$ è tale che:
+\[P(Z_{n} < -z_{\alpha /2}) = P(Z_{n} > z_{\alpha /2}) = \dfrac{\alpha}{2}\]
+si ha:
+\[ P(-z_{\alpha / 2} < Z_{n} < z_{\alpha /2}) = 1- \alpha\]
+Sostituendo il valore di $Z_{n}$ otteniamo:
+\[ P \left( \overline{X}_{n} -z_{\alpha / 2} \frac{\alpha}{\sqrt{n}} < \mu < \overline{X}_{n} +z_{\alpha / 2} \frac{\alpha}{\sqrt{n}} \right)   \]
+Se poniamo
+\[\underline{C}_{n} = \overline{X}_{n} -z_{\alpha / 2} \frac{\alpha}{\sqrt{n}}, \quad \overline{C}_{n} = \overline{X}_{n} +z_{\alpha / 2} \frac{\alpha}{\sqrt{n}} \]
+allora $(\underline{C}_{n}; \overline{C}_{n})$ è un intervallo di confidenza di grado $1- \alpha$ per $\mu$ e le statistiche $(\underline{C}_{n} e \overline{C}_{n})$ rappresentano rispettivamente il limite inferiore e superiore di tale intervallo.\\
+Da ciò possiamo dimostrare il seguente enunciato:\\
+sia $x_{1}, x_{2}, ..., x_{n}$ un campione osservato di ampiezza $n$ estratto da una popolazione normale con varianza nota $\sigma^{2}$. Una stima dell’intervallo di confidenza di grado $1- \alpha$ per il valore medio $\mu$ è:
+\[ \overline{x}_{n} -z_{\alpha / 2} \frac{\alpha}{\sqrt{n}} < \mu < \overline{x}_{n} +z_{\alpha / 2} \frac{\alpha}{\sqrt{n}}\]
+dove
+\[  \overline{x}_{n} =  \dfrac{x_{1},x_{2}, ...,x_{n}}{n}\]
+denota la media campionaria delle n osservazioni.
+
+\subsubsection*{Esempio di applicazione con $1- \alpha = 0.99$}
+Di seguito viene mostrato un esempio prendendo un campione di 100 elementi
+della popolazione casuale generata in precedenza di 10000 unità.
+\begin{lstlisting}
+	> n <- 100
+	> x <- sample(popolazione2 , n, replace=TRUE)
+\end{lstlisting}
+Supponiamo che la popolazione dalla quale proviene il campione sia normale
+e calcoliamo un intervallo di confidenza di grado $1- \alpha = 0.99$ per la media $\mu$ degli elementi.
+In questo caso abbiamo che $\alpha= 0.01 e \alpha/2= 0.005$.
+Inseriamo i dati in R e procediamo al calcolo degli intervalli di confidenza:
+\begin{lstlisting}
+	> alpha <- 0.01
+	> alphaMezzi <- alpha/2
+	> mediaCampionaria <- mean(x)
+	> z <- qnorm(1-alphaMezzi, mean=0, sd=1)
+	> b <- sd(popolazione2)/sqrt(n)
+	> c_1 <- mediaCampionaria - z * b
+	> c_2 <- mediaCampionaria + z * b
+	> mediaCampionaria
+	[1] 46.23546
+	> z
+	[1] 2.575829
+	> c_1
+	[1] 43.67419
+	> c_2
+	[1] 48.79672
+\end{lstlisting}
+La stima dell'intervallo di confidenza per $\mu$ con $1-\alpha = 0.99 $ è pari a $(43.67419, 48.79672)$, ciò implica che il valore della media si trova in quell'intervallo con una probabilità $\mu$ con $1-\alpha = 0.99 $ o che alternativamente la media non si trova nell'intervallo che abbiamo stimato con probabilità $\sigma = 0.01 $.
+La lunghezza dell'intervallo di confidenza è pari a $48.79672 - 43.67419 = 5.122528$.\\
+Possiamo anche rappresentare graficamente quanto ottenuto implementando i seguenti comandi:
+\begin{lstlisting}
+	> curve(dnorm(x,mean=0,sd=1),from=-4.4, to=4.4, axes=FALSE , xlab="",
+	   ylab="Densita'", main="Densita' normale intervallo di confidenza
+	   per la media con varianza nota")
+	> text(0,0.05,expression(1-alpha))
+	> text(0,0.2,"Regione di \n accettazione")
+	> axis(1,c(-5,-z,0,z,5), c("",abbreviate(-z,5) ,0,abbreviate(z,4),""))
+	> vals<-seq(-4.4,-z, length =100)
+	> x1<-c(-4.4,vals ,-z,-4.4)
+	> y1<-c(0,dnorm(vals) ,0,0)
+	> polygon(x1,y1,density=20,angle=45, col="blue")
+	> vals<-seq(z,4.4, length=100)
+	> x1<-c(z,vals ,4,0)
+	> y1<-c(0,dnorm(vals) ,0,0)
+	> polygon(x1,y1,density=20,angle=45, col="blue")
+	> abline(h=0)
+	> text(-2.75,0.03, expression (alpha/2))
+	> text(-2.70,0.10,"Regione di rifiuto")
+	> text(2.75,0.03, expression (alpha/2))
+	> text(2.80,0.10,"Regione di rifiuto ")
+\end{lstlisting}
+Con il seguente risultato:
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/confidenza1.png}
+\\\end{figure}
+
+Per riempire il grafico (regione di rifiuto) è stato utilizzato il comando \textit{polygon} che necessita in input di due vettori di coordinate x e y.\\
+Il vettore \textit{vals} contiene una successione di 100 valori tra i due estremi e il vettore x è costruito in modo tale che la prima e l'ultima coordinata x dei punti del poligono coincidano. Il vettore y deve invece contenere tutti i punti di ordinata pari alla densità normale standard, esclusi i valori estremi in cui si pone y uguale a 0. Infine, la funzione \textit{polygon} traccia finalmente il poligono riempendolo di linee inclinate di 45 gradi e equispaziate.
+
+\subsubsection*{Esempio di applicazione con $1- \alpha = 0.95$ }
+In questo secondo esempio determiniamo la stima dell’intervallo di confidenza per $1- \alpha = 0.95$ del campione precedente per osservarne i risultati.
+In questo caso abbiamo che $\alpha = 0.05$ e $\alpha/2= 0.025$\\.
+Inseriamo i dati opportuni in R e procediamo al calcolo di $z_{\alpha/2} = z_{0.025}$
+\begin{lstlisting}
+	> alpha <- 0.05
+	> alphaMezzi <- alpha/2
+	> mediaCampionaria <- mean(x)
+	> z <- qnorm(1-alphaMezzi, mean=0, sd=1) 
+	> b <- sd(popolazione2)/sqrt(n)
+	> c1 <- mediaCampionaria - z * b
+	> c2 <- mediaCampionaria + z * b
+	> mediaCampionaria
+	[1] 44.79331
+	> z
+	[1] 1.959964
+	> c1
+	[1] 42.83057
+	> c2
+	[1] 46.75604
+\end{lstlisting}
+La stima dell'intervallo di confidenza per $\mu$ con $1-\alpha = 0.95 $ è pari a $(42.83057, 46.75604)$, ciò implica che il valore della media si trova in quell'intervallo con una probabilità $\mu$ con $1-\alpha = 0.95 $ o che alternativamente la media non si trova nell'intervallo che abbiamo stimato con probabilità $\sigma = 0.05 $.
+La lunghezza dell'intervallo di confidenza è pari a $46.75604 - 42.83057 = 3.925469$, rispetto all'esempio precedente la lunghezza dell’intervallo di confidenza è minore in
+quanto nel caso precedente viene richiesta una maggiore sicurezza di trovare il valore non noto e quindi ampliamo il range dei possibili valori disponibili.\\
+Possiamo anche rappresentare graficamente i risultati ottenuti riutilizzando il codice precedente, il risultato è il seguente:
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/confidenza2.png}
+\\\end{figure}
+
+\subsection{Intervallo di confidenza $\mu$ con $\sigma^{2}$ non nota} 
+Per determinare un intervallo di confidenza di grado $1-\alpha$ per valore medio $\mu$ in cui la varianza $\sigma^{2}$ della popolazione normale non è nota, utilizziamo il metodo pivoitale e consideriamo la seguente variabile aletoria di pivot:
+\[ T_{n} = \dfrac{\overline{X}_{n}-\mu}{S_{n}/\sqrt{n}}\]
+Dove $X_{n}$ ed $S_{n}$ rappresentano rispettivamente la media e la deviazione standard. $T_{n}$ dipende dal campione casuale e dal parametro non noto $\sigma^2$ e quindi può essere interpretata come variabile di pivot e si può dedurre che è distribuita con legge di Student con $n-1$ gradi di libertà.\\
+Scegliendo nel metodo pivoitale $\alpha_{1}= -t_{\alpha/2,\ n - 1}$ e $\alpha_{2}= +t_{\alpha/2,\ n - 1}$ dove $t_{\alpha/2,\ n - 1}$ è tale che:
+\[ P\left( T_{n} < -t_{\alpha/2,\ n - 1}\right)  =  P\left( T_{n} > +t_{\alpha/2,\ n - 1}\right)  = \dfrac{\alpha}{2}\]
+si ha
+\[ P\left( -t_{\alpha/2,\ n - 1} < T_{n} < +t_{\alpha/2,\ n - 1}\right) = 1-\alpha\]
+Sostituendo il valore di $T_{n}$ otteniamo:
+\[ P\left( \overline{X}_{n} -t_{\alpha /2,\ n - 1} \dfrac{S_{n}}{\sqrt{n}} < \mu < \overline{X}_{n} +t_{\alpha /2,\ n - 1} \dfrac{S_{n}}{\sqrt{n}} \right) = 1-\alpha  \]
+Se poniamo
+\[ \underline{C}_{n} = \overline{X}_{n} -t_{\alpha /2,\ n - 1} \dfrac{S_{n}}{\sqrt{n}}, \quad \quad \overline{C}_{n} = \overline{X}_{n} +t_{\alpha /2,\ n - 1} \dfrac{S_{n}}{\sqrt{n}} \]
+allora $(\underline{C}_{n}, \overline{C}_{n})$ è un intervallo di confidenza di grado $1-\alpha$ per $\mu$ e le statistiche $\underline{C}_{n}$ e $\overline{C}_{n}$ rappresentano rispettivamente il limite inferiore e superiore di tale intervallo.
+
+\subsubsection*{Esempio di applicazione con $1-\alpha = 0.95$}
+Prendiamo in considerazione un campione di 100 elementi da una popolazione
+di 1000 elementi:
+\begin{lstlisting}
+	> n <- 100
+	> x <- sample(popolazione1 , n, replace=TRUE)
+\end{lstlisting}
+Supponendo che la popolazione da cui proviene il campione risulta essere
+normale, calcoliamo un intervallo di confidenza di grado $1-\alpha= 0.95$ per la media $\mu$ senza avere informazioni sulla varianza.
+In questo caso abbiamo $\alpha=0.05 $ e $\alpha /2=0.025 $. 
+Inseriamo i dati in R e determiniamo il valore di $t_{\alpha /2, n-1} = t_{0.025,99}$:
+\begin{lstlisting}
+	> alpha <- 0.05
+	> alphaMezzi <- alpha/2
+	> mediaCampionaria <- mean(x)
+	> ta <- qt(1-alphaMezzi , df=n-1)
+	> ds <- sd(x)             			 #deviazione standard (varianza al quadrato)
+	> lowC <- mediaCampionaria - ta*ds/sqrt(n)
+	> highC <- mediaCampionaria + ta*ds/sqrt(n)
+	> mediaCampionaria
+	[1] 44.43933
+	> ta
+	[1] 1.984217
+	> ds
+	[1] 10.66209
+	> lowC
+	[1] 42.32374
+	> highC
+	[1] 46.55492
+\end{lstlisting}
+La stima dell'intervallo di confidenza di grado $1 - \alpha= 0.95$ è $(42.32374, 46.55492)$ e la lunghezza di tale intervallo è pari a $(46.55492-42.32374) = 4.231182$. Il codice per eseguire il grafico è il seguente:
+\begin{lstlisting}
+	> curve(dt(x,df=n-1),from=-4, to=4, axes=FALSE , xlab="", ylab="
+	Densita'", 
+	   main="Densita' Student intervallo di confidenza 1-alpha=0.95")
+	> axis(1,c(-4,-ta,0,ta,4),c("",abbreviate(-ta ,5),0,abbreviate(ta,4),""))
+	> text(0,0.05,expression(1-alpha))
+	> text(0,0.2,"Regione di \n accettazione")
+	> vals<-seq(-3,-ta, length =100)
+	> x1<-c(-4,vals ,-ta,-4)
+	> y1<-c(0,dt(vals ,n-1) ,0,0)
+	> polygon(x1,y1,density=20,angle=45, col="blue")
+	> vals<-seq(ta,4, length=100)
+	> x1<-c(ta,vals ,4,1)
+	> y1<-c(0,dt(vals ,n-1) ,0,0)
+	> polygon(x1,y1,density=20,angle=45, col="blue")
+	> abline(h=0)
+\end{lstlisting}
+Con il seguente risultato
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/confidenzaNo1.png}
+\\\end{figure}
+
+\subsubsection*{Esempio di applicazione con $1-\alpha = 0.99$}
+Riprendiamo in considerazione il campione esaminato in precedenza e calcoliamo un intervallo di confidenza di grado $1-\alpha = 0.00$ per $\mu$ senza avere informazioni sulla varianza.\\
+In questo caso abbiamo che $\alpha= 0.01$ e $\alpha/2 = 0.005$.\\
+Inseriamo i dati in R e procediamo al calcolo degli intervalli di confidenza:
+\begin{lstlisting}
+	alpha <- 0.01
+	alphaMezzi <- alpha/2
+	mediaCampionaria <- mean(x)
+	mediaCampionaria <- mean(x)
+	ta <- qt(1-alphaMezzi, df=n-1)
+	ds <- sd(x)              #deviazione standard (varianza al quadrato)
+	lowC <- mediaCampionaria - ta*ds/sqrt(n)
+	highC <- mediaCampionaria + ta*ds/sqrt(n)
+	> mediaCampionaria
+	[1] 46.0899
+	> ta
+	[1] 2.626405
+	> ds
+	[1] 9.991823
+	> lowC
+	[1] 43.46564
+	> highC
+	[1] 48.71416
+\end{lstlisting}
+La stima dell'intervallo di confidenza di grado $1-\alpha = 0.99$ è $(43.46564, 48.71416)$ e la lunghezza di tale intervallo è pari a $48.71416-43.46564= 5.248516$ che risulta maggiore di quello calcolato in precedenza. Di seguito vengono rappresentati graficamente i risultati ottenuti, il codice è equivalente a quello utilizzato in precedenza.
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/confidenzaNo2.png}
+\\\end{figure}
+
+\subsection{Intervallo di confidenza per $\sigma^2$ con $\mu$ nota}
+Per costruire un intervallo di confidenza di grado $1-\alpha$ per la varianza $\sigma^2$ nel caso in cui il valore medio $\mu$ della popolazione normale è noto viene utilizzato il metodo pivotale considerando la seguente variabile aleatoria di pivot:
+\[ V_{n} = \sum_{i=1}^{n} \left( \dfrac{X_{i} - \mu}{\sigma}\right)^{2}  \]
+Tale variabile dipende dal campione casuale e dal parametro non noto $\sigma^{2}$ ed è distribuita con legge chi-quadrato con $n$ gradi di libertà, essendo costituita dalla somma dei quadrati di $n$ variabili aleatorie normali standard. Possiamo riscrivere $V_{n}$ in termini di media e varianza:
+\[ V_{n} = \dfrac{(n-1)S^{2}}{\sigma^{2}} + \left( \dfrac{\overline{X}_{n}-\mu}{\mu/\sqrt{n}} \right)^{2}  \]
+Tale variabile aleatoria dipende dal campione casuale e dal parametro non
+noto $\sigma^{2}$ ed è distribuita con legge di chi-quadrato con n gradi di libertà, essendo costituita dalla somma dei quadrati di $n$ variabili aleatorie normali standard. Scegliendo nel metodo pivoitale $\alpha_{1} = X^{2}_{1-\alpha / 2, n}$ e $\alpha_{2} = X^{2}_{\alpha / 2, n}$ in maniera tale che:
+\[ P(0 < V_{n} < X^{2}_{1-\alpha / 2, n} )  = P(V_{n} > X^{2}_{\alpha / 2, n} ) = \dfrac{\alpha}{2}\]
+si ha:
+\[ P(X^{2}_{1-\alpha / 2, n} < V_{n} < X^{2}_{\alpha / 2, n} = 1 -\alpha)  \]
+Sostituendo il valore di $V_{n}$ otteniamo:
+\[ P \left (\dfrac{(n-1)S^{2}_{n} + n(\overline{X}_n-\mu)^{2}}{X^{2}_{\alpha / 2, n}  }< \sigma^{2} < \dfrac{(n-1)S^{2}_{n} + n(\overline{X}_n)- \mu^{2}}{X^{2}_{1-\alpha / 2, n}} \right) = 1-\alpha \]
+Se poniamo:
+\[ \underline{C}_{n} = \dfrac{(n-1)S^{2}_{n} + n(\overline{X}_n-\mu)^{2}}{X^{2}_{\alpha / 2, n}}; \quad \quad  \overline{C}_{n} = \dfrac{(n-1)S^{2}_{n} + n(\overline{X}_n)- \mu^{2}}{X^{2}_{1-\alpha / 2, n}} \]
+allora $(\underline{C}_{n}, \overline{C}_{n})$ è un intervallo di confidenza di grado $1-\alpha$ per $\sigma^{2}$ e le statistiche $\underline{C}_{n}$ e $\overline{C}_{n}$ rappresentano rispettivamente il limite inferiore e superiore di tale intervallo.
+
+\subsubsection*{Esempio di applicazione con $1-\alpha = 0.99$}
+Prendiamo in considerazione il seguente intervallo:
+\begin{lstlisting}
+	> n <- 100
+	> x <- sample(popolazione1 , n, replace=TRUE)
+\end{lstlisting}
+Supponendo che la popolazione da cui proviene il campione preso in considerazione è normale con $\mu= 41.70$ determiniamo una stima per l'intervallo di confidenza $1-\alpha= 0.99$ per la varianza $\sigma^2$.
+In questo caso  $\alpha= 0.01$, $\alpha/2 = 0.005$ e $ 1-\alpha/2 = 0.995$. I valori di $X^{2}_{1-\alpha/2,n} = X^{2}_{0.995,100}$ e $X^{2}_{\alpha/2,n} = X^{2}_{0.005,100}$ possono essere calcolati grazie ad R.\\
+I comandi sono i seguenti:
+\begin{lstlisting}
+	> alpha <- 0.01
+	> alphaMezzi <- alpha/2
+	> varianzaC <- var(x)
+	> z1 <- qchisq(1-alphaMezzi , df=n)
+	> z2 <- qchisq(alphaMezzi , df=n)
+	> lowC <- ((n-1)*varianzaC+n*((mean(x)-41.70)**2))/qchisq(1-alphaMezzi,df=n)
+	> highC <- ((n-1)*varianzaC+n*((mean(x)-41.70)**2))/qchisq(alphaMezzi,df=n)
+	> alpha
+	[1] 0.01
+	> alphaMezzi
+	[1] 0.005
+	> varianzaC
+	[1] 119.6361
+	> z1
+	[1] 140.1695
+	> z2
+	[1] 67.32756
+	> lowC
+	[1] 85.09089
+	> highC
+	[1] 177.151
+\end{lstlisting}
+La stima dell'intervallo di confidenza di grado $1-\alpha= 0.99$ è $(85.09089, 177.151)$ e la lunghezza dell'intervallo è pari a$ 177.151-85.09089 = 92.06011$. I risultati ottenuti
+possono essere rappresentati graficamente attraverso il seguente codice R.
+\begin{lstlisting}
+	> curve(dchisq(x, df=n), from=z2-z2/10, to=z1+z1/10, axes=FALSE ,xlab ="",
+	   ylab="Densita'",main="Densita' chi-quadrato per intervallo di confidenza
+	   1-alpha=0.99")
+	> axis(1,c(z2-z2/10,z2,n-2,z1,z1+z1/10),c("",abbreviate(z2,minl=5),n-2,
+	   abbreviate(z1,minl=5),""))
+	> vals<-seq(z2-z2/10,z2, length =100)
+	> x1<-c(z2-z2/10,vals ,z2 ,0)
+	> y1<-c(0,dchisq(vals ,n) ,0,0)
+	> polygon (x1,y1,density =20,angle=45, col="blue")
+	> vals<-seq(z1,z1+z1/10, length =100)
+	> x1<-c(z1,vals ,z1+z1/10,1)
+	> y1<-c(0,dchisq(vals ,n) ,0,0)
+	> polygon (x1,y1,density =20,angle=45, col="blue")
+	> abline(h=0)
+	> text(z1+3.5,0.004,expression(alpha/2))
+	> text(z1+3.5,0.0055,"Regione di rifiuto")
+	> text(98,0.003,expression(1-alpha))
+	> text(98,0.0045,"Regione di accettazione")
+	> text(z2 -3.5,0.0066,"Regione di \n rifiuto")
+	> text(z2 -3.5,0.004,expression(alpha/2))
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/confidenzaNo3.png}
+\\\end{figure}
+
+\subsubsection*{Esempio di applicazione con $1-\alpha= 0.95$}
+Riprendendo l’intervallo considerato in precedenza determiniamo una stima
+per l’intervallo di confidenza $1-\alpha= 0.99$ per la varianza $\sigma^2$.
+In questo caso  $\alpha= 0.05$, $\alpha/2 = 0.025$ e $ 1-\alpha/2 = 0.975$. I valori di $X^{2}_{1-\alpha/2,n} = X^{2}_{0.975,100}$ e  $X^{2}_{\alpha/2,n} = X^{2}_{0.025,100}$ possono essere calcolati grazie ad R.\\
+\begin{lstlisting}
+	> alpha <- 0.05
+	> alphaMezzi <- alpha/2
+	> varianzaC <- var(x)
+	> z1 <- qchisq(1-alphaMezzi , df=n)
+	> z2 <- qchisq(alphaMezzi , df=n)
+	> lowC <- ((n-1)*varianzaC+n*((mean(x) -41.70)**2))/qchisq(1-alphaMezzi,df=n)
+	> highC <- ((n-1)*varianzaC+n*((mean(x)-41.70)**2))/qchisq(alphaMezzi,df=n)
+	> alpha
+	[1] 0.05
+	> alphaMezzi
+	[1] 0.025
+	> varianzaC
+	[1] 83.76991
+	> z1
+	[1] 129.5612
+	> z2
+	[1] 74.22193
+	> lowC
+	[1] 71.94914
+	> highC
+	[1] 125.5938
+\end{lstlisting}
+La stima dell'intervallo di confidenza di grado $1-\alpha= 0.95$ è $(71.94914, 125.5938)$ e la lunghezza dell'intervallo è pari a$ 125.5938-71.94914 = 53.64466$. I risultati ottenuti possono essere rappresentati graficamente attraverso il codice R eseguito nell'esempio precedente.
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/confidenzaNo4.png}
+\\\end{figure}
+
+\subsubsection{Intervallo di confidenza per $\sigma^{2}$ con $\mu$ non nota}
+Per costruire un intervallo di confidenza di grado $1-\alpha$ per la varianza nel caso in cui il valore medio $\mu$ della popolazione normale non è noto viene utilizzato il metodo pivotale considerando la seguente variabile aleatoria di pivot:
+\[ Q_{n} = \frac{(n-1)S^{2}_{n}}{\sigma^{2}} = \dfrac{1}{\sigma^{2}}\sum_{i=1}^{n}(X_{i}-\overline{X}_{n})^{2} \]
+Tale variabile aleatoria dipende dal campione casuale e dal parametro non noto $\sigma^{2}$ ed è distribuita con legge di chi-quadrato con n gradi di libertà. Scegliendo nel metodo pivoitale $\alpha_{1} = X^{2}_{1-\alpha/2,n-1}$ e $\alpha_{2} = X^{2}_{\alpha/2,n-1}$ in maniera tale che:
+\[ P(0 < Q_{n} < X^{2}_{1-\alpha / 2, n-1} )  = P(Q_{n} > X^{2}_{\alpha / 2, n-1} ) = \dfrac{\alpha}{2}\]
+Si ha:
+\[ P(X^{2}_{1-\alpha / 2, n-1} < Q_{n} < X^{2}_{\alpha / 2, n-1} = 1 -\alpha)  \]
+Sostituendo il valore di $Q_{n}$ otteniamo:
+\[ P \left (\dfrac{(n-1)S^{2}_{n}}{X^{2}_{\alpha / 2, n-1}} < \sigma^{2} < \dfrac{(n-1)S^{2}_{n} }{X^{2}_{1-\alpha / 2, n-1}} \right) = 1-\alpha \]
+Se poniamo:
+\[ \underline{C}_{n} = \dfrac{(n-1)S^{2}_{n}}{X^{2}_{\alpha / 2, n-1}}; \quad \quad  \overline{C}_{n} = \dfrac{(n-1)S^{2}_{n}}{X^{2}_{1-\alpha / 2, n-1}} \]
+allora $(\underline{C}_{n}, \overline{C}_{n})$ è un intervallo di confidenza di grado $1-\alpha$ per $\sigma^{2}$ e le statistiche $\underline{C}_{n}$ e $\overline{C}_{n}$ rappresentano rispettivamente il limite inferiore e superiore di tale intervallo.
+
+\subsubsection*{Esempio di applicazione con  $1-\alpha = 0.95$}
+Prendiamo in considerazione il seguente intervallo:
+\begin{lstlisting}
+	> n <- 100
+	> x <- sample(popolazione1 , n, replace=TRUE)
+\end{lstlisting}
+Supponendo che la popolazione da cui proviene il campione sia normale, determiniamo una stima dell'intervallo di confidenza di grado $1-\alpha = 0.95$ per la varianza $\sigma^2$ degli elementi senza possedere informazioni su $\mu$. In questo caso $\alpha = 0.05$, $\alpha/2= 0.025$ e $1 - \alpha/2 = 0.975$.  I valori di $X^{1}_{1-\alpha/2,n-1} = X^{2}_{0.975,99}$ e $X^{2}_{\alpha/2,n-1} = X^{2}_{0.025,99}$ possono essere calcolati grazie ad R.\\
+\begin{lstlisting}
+	> alpha <- 0.05
+	> alpha_mezzi <- alpha/2
+	> varianza <- var(x)
+	> z1<-qchisq(1-alpha_mezzi ,df=n-1)
+	> z2<-qchisq(alpha_mezzi ,df=n-1)
+	> lowC <- ((n-1)*varianza)/qchisq(1-alpha_mezzi ,df=n-1)
+	> highC <- ((n-1)*varianza)/qchisq(alpha_mezzi ,df=n-1)
+	> alpha
+	[1] 0.05
+	> alpha_mezzi
+	[1] 0.025
+	> varianza
+	[1] 109.7469
+	> z1
+	[1] 128.422
+	> z2
+	[1] 73.36108
+	> lowC
+	[1] 84.60344
+	> highC
+	[1] 148.1023
+\end{lstlisting}
+La stima dell'intervallo di confidenza di grado $1-\alpha= 0.95$ è $(84.60344, 148.1023)$ e la lunghezza dell'intervallo è pari a$ 148.1023-84.60344 = 63.49886$. I risultati ottenuti possono essere rappresentati graficamente attraverso il seguente codice R:
+\begin{lstlisting}
+	> n <- 100
+	> x <- sample(popolazione1 , n, replace=TRUE)
+	> alpha <- 0.05
+	> alpha_mezzi <- alpha/2
+	> varianza <- var(x)
+	> z1<-qchisq(1-alpha_mezzi ,df=n-1)
+	> z2<-qchisq(alpha_mezzi ,df=n-1)
+	> lowC <- ((n-1)*varianza)/qchisq(1-alpha_mezzi ,df=n-1)
+	> highC <- ((n-1)*varianza)/qchisq(alpha_mezzi ,df=n-1)
+	> curve(dchisq(x, df=n), from=z2-z2/5, to=z1+z1/5, axes=FALSE,
+	   xlab="",ylab="Densita'",main="Densita' chi-quadrato per intervallo
+	   di confidenza 1-alpha=0.95")
+	> axis(1,c(z2-z2/4,z2,n-2,z1,z1+z1/4),c("",abbreviate(z2,minl=5),n-2,
+	   abbreviate(z1,minl=5),""))
+	> vals<-seq(z2-z2/5,z2, length =100)
+	> x1<-c(z2-z2/5,vals ,z2 ,0)
+	> y1<-c(0,dchisq(vals ,n) ,0,0)
+	> polygon (x1,y1,density =20,angle=45, col="blue")
+	> vals<-seq(z1,z1+z1/5, length =100)
+	> x1<-c(z1,vals ,z1+z1/5,1)
+	> y1<-c(0,dchisq(vals ,n) ,0,0)
+	> polygon (x1,y1,density =20,angle=45,col="blue")
+	> abline(h=0)
+	> text(z1+3.5,0.004,expression(alpha/2))
+	> text(z1+3.5,0.0066,"Regione di\n rifiuto")
+	> text(98,0.003,expression(1-alpha))
+	> text(98,0.0045,"Regione di accettazione")
+	> text(z2 -3.5,0.0066,"Regione di \n rifiuto")
+	> text(z2 -3.5,0.004,expression(alpha/2))
+\end{lstlisting}
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/confidenzaNo5.png}
+\\\end{figure}
+
+\subsubsection*{Esempio di applicazione con $1-\alpha = 0.99$}
+Riprendiamo in considerazione il campione esaminato in precedenza e calcoliamo un intervallo di confidenza di grado $1-\alpha= 0.99$.
+In questo caso $\alpha= 0.01$, $\alpha/2= 0.005$ e $1-\alpha/2 = 0.995$.
+I valori di $X^{2}_{1-\alpha/2,n-1} = X^{2}_{0.995,99}$ e $X^{2}_{\alpha/2,n-1} = X^{2}_{0.005,99}$ possono essere calcolati grazie ad R.\\
+\begin{lstlisting}
+	> alpha <- 0.01
+	> alpha_mezzi <- alpha/2
+	> varianzaCampionaria <- var(x)
+	> varianzaCampionaria
+	> z1<-qchisq(1-alpha_mezzi ,df=n-1)
+	> z2<-qchisq(alpha_mezzi ,df=n-1)
+	> lowC <- ((n-1)*varianzaCampionaria)/qchisq(1-alpha_mezzi ,df=n-1)
+	> highC <- ((n-1)*varianzaCampionaria)/qchisq(alpha_mezzi ,df=n-1)
+	> alpha
+	[1] 0.01
+	> alpha_mezzi
+	[1] 0.005
+	> varianzaCampionaria
+	[1] 109.0861
+	> z1
+	[1] 138.9868
+	> z2
+	[1] 66.51011
+	> lowC
+	[1] 77.70179
+	> highC
+	[1] 162.3742
+\end{lstlisting}
+La stima dell'intervallo di confidenza di grado $1-\alpha= 0.95$ è $(77.70179, 162.3742)$ e la lunghezza di tale intervallo è pari a $162.3742-77.70179 = 84.67241$ che è maggiore rispetto a quello calcolato in precedenza. I risultati ottenuti possono essere rappresentati graficamente attraverso il codice R eseguito nell'esempio precedente.
+\begin{figure}[H]\centering
+	\includegraphics[width=17truecm]{Figure/confidenza6.png}
+\\\end{figure}
+

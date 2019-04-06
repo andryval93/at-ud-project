@@ -1,0 +1,295 @@
+In questo capitolo verranno rappresentati graficamente in R i dati discussi in precedenza.
+La prima analisi riguarderà i dati percentuali, mentre tutte le altre riguarderanno quelli numerici e per ogni sezione sarà presente sia il codice utilizzato sia conclusioni eseguite.\\
+\subsection{Rappresentazione grafica}
+Di seguito sono stati creati vari grafici per la rappresentazione dei dati.\\
+Prima di iniziare con la rappresentazione dettagliata della raccolta differenziata di ogni singolo rifiuto, viene presentato un diagramma a torta che darà un'idea del risultato finale, e che rappresenta la frequenza assoluta del totale dei rifiuti riciclati nell'anno 2012 dalle regioni italiane e il diagramma per le regioni ripartire in Nord, Centro e sud. Il codice utilizzato è il seguente:
+\begin{lstlisting}
+	> pie(matriceAnalisi[,8], main = "Rifiuti totali differenziati tra le regioni",
+	col=rainbow(21,s=0.7))
+	> pie(matriceRipartita[,8], main = "Rifiuti totali differenziati tra Nord, Centro 
+	e Sud",col=rainbow(3,s=0.7))
+\end{lstlisting}
+Con il seguente risultato
+\begin{figure}[ht]\centering
+	\includegraphics[width=17truecm]{Figure/graficoTortaRifiuti.png}
+\end{figure}
+\newpage
+\begin{figure}[ht]\centering
+	\includegraphics[width=17truecm]{Figure/graficoTortaRipartita.png}
+\\\end{figure}
+Da questi due grafici si evince quali sono le regioni in cui gli abitanti differenziano di più in italia.\\
+Successivamente è stato costruito in R, per ogni tipologia di rifiuto, il corrispettivo grafico  a barre utilizzando il comando barplot ed il comando text per inserire il testo.\\
+Con barplot, infatti, non è possibile inserire le etichette delle variabili in obliquo e ciò si può ottenere soltando utilizzando opportunamente il parametro srt della funzione text.\\
+Il codice utilizzato è il seguente:
+\begin{lstlisting}
+	#grafico a barre sulle percentuali
+	> for(i in 1:7){
+	>		valPerc<-max(matricePercentuale[,i])
+	>		livelloPercentuale<-valPerc+(valPerc/4.5)
+	>		bptl7 <- barplot(matricePercentuale[,i],main=labelRifiuti[i], xlab="Regioni",
+	    ylab="%", names.arg="", ylim=c(0,livelloPercentuale),las=2,col=rainbow(21,s=0.9))
+	>		text(seq(0.5,25,by=1.22), par("usr")[3]-0.15, srt = 30, adj = 1, xpd = TRUE,
+	    labels = paste(rownames(matriceAnalisi)),cex=0.8)
+	>    }
+\end{lstlisting}
+Essendo che, per ogni tipo di rifiuto, era da applicare la stessa funzione, il tutto è stato inserito all'interno di un ciclo for, modificando opportuneamente le variabili, in modo da non essere ripetitivi.\\
+Di seguito sono riportati i 7 grafici dati restituiti dal codice precedente.
+\subsubsection{Carta e Cartone}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=18truecm]{Figure/barreCartaPerc.png}
+	\\
+\end{figure}
+Dal grafico risulta che l'Emilia Romagna è la regione in cui gli abitanti riciclano la maggior quantità di carta e cartone, con il 7.84\%, seguita dalla Provincia Autonoma del Trento, con il 6.85\%, e dall'Umbria con il 6.64\%. Mentre nelle ultime posizioni abbiamo il Molise con l'1.17\%, la Sicilia con l'1.65\% e la Calabria con l'1.71\%.
+
+\subsubsection{Vetro}
+\begin{figure}[H]\centering
+	\includegraphics[width=18.5truecm]{Figure/barreVetroPerc.png}
+	\\
+\end{figure}
+Dal grafico risulta che la Lombardia è la regione in cui gli abitanti riciclano la maggior quantità di vetro, con il 7.92\%, subito seguita dal Veneto con il 7.89\% e dalla Valle D'Aosta con il 7.75\%. Mentre nelle ultime posizioni abbiamo la Calabria con lo 0.51\% e dalla Sicilia con lo 0.89\%.
+
+\subsubsection{Plastica}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/barrePlasticaPerc.png}
+	\\
+\end{figure}
+
+Dal grafico risulta che il Piemonte è la regione in cui gli abitanti differenziano la maggior quantità materiale plastico, con il 9.57\%, seguita dall'Emilia Romagna, con l'8.29\%, e la campania con il 7.99\%. Mentre nelle ultime posizioni abbiamo la Calabria con lo 0.70\%, la Basilicata con lo 0.98\% e la Calabria con l'1.15\%.
+
+\subsubsection{Metalli}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/barreMetalliPerc.png}
+	\\\end{figure}
+
+Dal grafico risulta che l'Emilia Romagna è la regione in cui gli abitanti differenziano la maggior quantità di metalli, con il 10.16\%, seguita dalla Valle D'Aosta, con l'8.52\%, e il Veneto con il 7.49\%. Mentre nelle ultime posizioni abbiamo la Puglia con lo 0.69\%, la Liguria con il 2.06\% e la Provincia Autonoma di Bolzano con il 2.31\%.
+
+\subsubsection{Raccolta Selettiva}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/barreSelettivaPerc.png}
+	\\\end{figure}
+
+Dal grafico risulta che la Provincia Autonoma di Bolzano è la regione in cui gli abitanti differenziano la maggior quantità di raccolta selettiva, con il 19.44\%, seguita dalla Provincia Autonoma del Trento, con il 14.35\%, e la Valle D'Aosta con il 7.90\%. Mentre nelle ultime posizioni abbiamo la Calabria con lo 0\%, probabilmente perchè non viene effettuato questo tipo di riciclaggio, la Basilicata con lo 0.45\% e la Sicilia con l'0.54\%.
+
+\subsubsection{Rifiuti verdi, organici e legno}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/barreOrganicoPerc.png}
+	\\\end{figure}
+
+Dal grafico risulta che l'Emilia Romagna è la regione in cui gli abitanti riciclano la maggior quantità di rifiuti verdi, organici e legno, con il 7.84\%, seguita dalla Provincia Autonoma del Trento, con l'8.23\%, e dal Veneto con il 7.35\%. Mentre nelle ultime posizioni abbiamo il Molise con lo 0.42\%, la Calabria con lo 0.91\% e la Sicilia con lo 0.97\%.
+
+\subsubsection{Altro}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/barreAltroPerc.png}
+	\\\end{figure}
+
+Dal grafico risulta che la Valle D'Aosta è la regione in cui gli abitanti riciclano la maggior quantità di altri rifiuti non indicati, con il 12.11\%, seguita dall'Emilia Romagna, con l'8.22\%, e dalla Provincia Autonoma del Trento con il 7.82\%. Mentre nelle ultime posizioni abbiamo il Molise con lo 0.92\%, la Basilicata con l'1.18\% e la Sicilia con l'1.89\%. 
+
+\subsection{Rappresentazione dei valori numerici}
+Oltre alla rappresentazione dei valori percentuali è stata effettuata anche un'analisi sui corrispondenti valori numerici sia in base alla frequenza relativa che a quella assoluta.\\
+Consideriamo una variabile X ed indichiamo con $x_{1}, x_{2}, ..., x_{k}$ le modalità distinte da essa assunte, consideriamo poi un campione di n osservazioni di X. Se indichiamo con $n_{i}$ il numero di volte in cui ciascuna modalità $x_{i}$ è presente nel campione, ossia, la frequenza assoluta con la quale appare nel campione, l'insieme $x_{i}, n_{i}, i=1,2,...,k$ si chiama distribuzione di frequenza.\\
+Se non esistono dati mancanti, la somma delle frequenze assolute è sempre uguale alla numerosità del campione, ovvero $n= n_{1}, n_{2}, ..., n_{k}$. La frequenza relativa, invece, risulta essere il rapporto tra la frequenza assoluta e la numerosità del campione, ovvero $f_{i} = n_{i}*n$.\\
+Se non esistono dati mancanti la somma delle frequenze relative è sempre unitaria, ovvero $f_{1}, f_{2}, ..., f_{n}=1$.\\
+Nelle successive sezioni saranno presentati i grafici relativi alla distribuzione di frequenza assoluta e relativa per ogni indicatore, per la prima sono sta- ti utilizati grafici a barre creati tramite il comando barplot, per la seconda grafici a bastoncino creati tramite il comando plot.\\
+Il codice utilizzato è il seguente:
+\begin{lstlisting}
+	#grafici a barra sui chili pro capite
+	> for(i in 1:7){
+	> 	valPerc<-max(matriceAnalisi[,i])
+	> 	livelloPercentuale<-valPerc+(valPerc/4.5)
+	> 	livelloLabel<-(valPerc/50)
+	> 	bptl7 <- barplot(matriceAnalisi[,i],main=paste(labelRifiuti[i],"
+	   (frequenza assoluta)",... = ""), xlab="Regioni",ylab="Kg pro capite", 
+	    names.arg="", ylim=c(0,livelloPercentuale),las=2,col=rainbow(21,s=0.9))
+	> 	text(seq(0.5,25,by=1.22), par("usr")[3], srt = 30, adj = 1, xpd = TRUE,
+	    labels = paste(rownames(matriceAnalisi)),cex=0.8)
+	> 	text(x=bptl, y=matriceAnalisi[,i]+livelloLabel, labels=matriceAnalisi[,i],
+	    xpd=TRUE, cex=0.8)
+	> }
+	
+	#grafici a bastoncini su frequenze relative di ogni singolo rifiuto
+	> for(i in 1:7){
+	> 	valPerc<-max(matriceRelativa[,i])
+	> 	livelloPercentuale<-valPerc+(valPerc/4.5)
+	> 	livelloLabel<-(valPerc/50)
+	> 	frequenzeRelative<-round(prop.table(matriceAnalisi[,i]),2)
+	> 	plot(as.table(frequenzeRelative),main=paste(labelRifiuti[i],"
+	   (frequenza relativa)",... = ""),xlab="Regioni",ylab="",xaxt="n",
+	    ylim=c (0,livelloPercentuale),las=2,col=rainbow(21,s=0.9))
+	> 	axis(1,at=1:22,labels=FALSE)
+	> 	text(seq(1,21,by=1), par("usr")[3]-0.0028, srt = 30, adj = 1, xpd = TRUE,
+	    labels = paste(rownames(matriceRelativa)),cex=0.8)
+
+\end{lstlisting}
+Sia la funzione che crea il grafico a barre sulle frequenze assolute che la funzione che crea il grafico a bastoncino per le frequenze relative, sono state inserite all'interno di un ciclo for, poichè per tutti i tipi di rifiuti erano da applicare entrambe le funzioni.\\
+Sia nella funzione barplot che nella funzione plot, sono state modificate le variabili in modo da poter essere compatibili con qualsiasi grafico dei rifiuti. Ad esempio in entrambe le funzioni è stata usata una variabile chiamata livelloPercentuale per settare in modo opportuno, il valore di ylim, che rappresenta la lunghezza dell'asse y. Per fare in modo che questo valore fosse adatto per tutti i valori relativi ai vari tipi di rifiuti, sono state effettuate numerose prove, finchè non è stata trovata una funzione che era adatta a tutti i valori.\\
+Di seguito vengono riportati i risultati ottenuti.
+\subsubsection{Carta e Cartone}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreCarta.png}
+	\\
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreRelCarta.png}
+\\\end{figure}
+
+\subsubsection{Vetro}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreVetro.png}
+	\\
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreRelVetro.png}
+	\\
+\end{figure}
+
+\subsubsection{Plastica}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barrePlastica.png}
+	\\
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreRelPlastica.png}
+	\\
+\end{figure}
+
+\subsubsection{Metalli}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreMetalli.png}
+\\\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreRelMetalli.png}
+\\\end{figure}
+
+\subsubsection{Raccolta Selettiva}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreSelettiva.png}
+\\\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreRelSelettiva.png}
+\\\end{figure}
+
+\subsubsection{Rifiuti verdi, organici e legno}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreOrganico.png}
+\\\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreRelOrganico.png}
+\\\end{figure}
+
+\subsubsection{Altro}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreAltro.png}
+\\\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17.8truecm]{Figure/barreRelAltro.png}
+\\\end{figure}
+
+\subsection{Confronto tra Nord, Centro e Sud}
+In precedenza sono stati raggruppati i dati relativi alle regioni in modo da suddividere il tutto in eree geografiche, quali Nord, Centro e Sud in modo da ottenere una visione generale della situazione in Italia.\\
+Dal momento che le categorie da analizzare sono poche, si è scento di rappresentare tali dati utilizzando dei grafici a torta.\\
+Il codice utilizzato per generare i 7 grafici è il seguente:\\
+\begin{lstlisting}
+	#grafici a torta sulle precentuali
+	> for(i in 1:7){
+	> 	pie(matriceRipartitaPerc[,i], labels=paste(rownames(matriceRipartitaPerc),
+	    matriceRipartitaPerc[,1],"%"),
+	    main = paste(labelRifiuti[i]," (Percentuale tra Nord, Centro e Sud)",... = ""),
+	    col=rainbow(3,s=0.9))
+	> }
+\end{lstlisting}
+I risultati ottenuti da questo codice vengono riportati di seguito.\\
+
+\subsubsection{Carta e Cartone}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=18truecm]{Figure/tortaCarta.png}
+	\\
+\end{figure}
+Dal grafico si può vedere in modo marcato che al Sud si differenzia di meno la carta e il cartone, metre tra Centro e Nord la differenza è minima.
+
+\subsubsection{Vetro}
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/tortaVetro.png}
+	\\
+\end{figure}
+Dal grafico risulta che la quantità maggiore di vetro viene differenziata al Nord, mentre a Sud la quantità minore.
+
+\subsubsection{Plastica}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/tortaPlastica.png}
+	\\
+\end{figure}
+
+Dal grafico si nota che al Sud, come nei casi precedenti, si differenzia la minor quantità di plastica, mentre al Nord la quantità maggiore. 
+
+\subsubsection{Metalli}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/tortaMetalli.png}
+	\\\end{figure}
+
+Dal grafico si nota, che il Sud differenzia la quantità minore di metalli, ed il Nord la quantità maggiore, ma a differenza degli altri rifiuti visti in precedenza, abbiamo dei valori ravvicinati.
+
+\subsubsection{Raccolta Selettiva}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/tortaSelettiva.png}
+	\\\end{figure}
+
+Dal grafico si nota in maniera molto marcata, che il Nord effettua la maggior quantità di raccolta selettiva, con il 62.5\%, mentre il sud la quantità minore, con solo l'11.82\%
+
+\subsubsection{Rifiuti verdi, organici e legno}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/tortaOrganico.png}
+	\\\end{figure}
+
+Dal grafico risulta che la quantità maggiore di rifiuti verdi, organici e legno viene differenziata al Nord, mentre a Sud la quantità minore.
+
+\subsubsection{Altro}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/tortaAltro.png}
+	\\\end{figure}
+
+Dal grafico risulta che la quantità maggiore di altri rifiuri non riportati viene differenziata al Nord, mentre a Sud la quantità minore.
+
+\subsection{Variabili a confronto}
+In questa sezione è stato fatto un confronto tra le variabili al fine di capire quali sono i rifiuti maggiormente riciclati da ogni regione.\\
+Per fare ciò è stato compilato il seguente codice:
+\begin{lstlisting}
+	> barplot(t(matricePercentuale[,1:7]), beside=TRUE, space = c(0, 2),
+	   main="Percentuale rifiuti differenziati" , xlab = "Regioni",ylim=c(0,22),
+	   xaxt = "n",col=rainbow(7,s=0.9))
+	> legend(x=150,y=20, legend = c(labelRifiuti2[1:7]), fill = rainbow(7,s=0.9),
+	   cex = 0.75)
+	> text(seq(6,190,by=9), par("usr")[3]-0.2, srt = 30, adj = 1, xpd = TRUE,
+	   labels = rownames(matricePercentuale),cex=0.8)
+
+\end{lstlisting}
+Con il seguente risultato:
+\begin{figure}[H]\centering
+	\includegraphics[width=18truecm]{Figure/barreTot.png}
+\\\end{figure}
+

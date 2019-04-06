@@ -1,0 +1,85 @@
+<!--
+  Generated template for the UserProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      <p style="color:white">Profile</p>
+    </ion-title>
+
+    <ion-buttons end>
+      <button *ngIf="utenteLoggato.id == usr.id" ion-button icon-only color="light" (click)="editProfile()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card style="border-radius:50%;width: 200px;height: 200px;margin-bottom: 10px;margin-left: auto;margin-right: auto;"
+    class="profile-top">
+    <div class="profile-photo">
+      <img style="border-radius:50%;width: 200px; height: 200px; object-fit: cover;" [src]="usr.photoPath || 'assets/imgs/noavatar.png'">
+    </div>
+  </ion-card>
+  <ion-list class="profile-detail">
+    <h2 text-center style="margin-top: 5px; margin-bottom: 5px">{{usr.nome}} {{usr.cognome}}</h2>
+
+    <ion-item icon-left *ngIf="usr.email != ''">
+      <h4>
+        <ion-icon name="mail" style="margin-top: 5px;"></ion-icon>Email Address</h4>
+      <p><a [href]="'mailto:' + usr.email">{{usr.email}}</a></p>
+    </ion-item>
+    <ion-item *ngIf="usr.numero != '' && usr.numero != undefined && usr.numero != null" icon-left>
+      <h4>
+        <ion-icon name="call" style="margin-top: 5px;"></ion-icon>Number</h4>
+      <p (click)="callNumber(usr.numero)">{{usr.numero}}</p>
+    </ion-item>
+
+    <div style="border-radius: 18%" id="learnedWords" *ngIf="learnedWords.length > 0">
+      <fieldset style="color: rgb(0, 229, 117); margin-top: 50px; border-radius: 18%">
+        <legend style="color:rgb(148, 148, 148); font-weight:bold;">Words Learned</legend>
+
+        <div text-center>
+          <div *ngFor="let word of learnedWords">
+            <img [src]="word" style="width:50%; height:50%" (click)="openImage(post.images.original.url)">
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div style="border-radius: 18%" id="socials" *ngIf="numberOfSocials > 0">
+      <fieldset style="color: rgb(0, 229, 117); margin-top: 50px; border-radius: 18%">
+        <legend style="color:rgb(148, 148, 148); font-weight:bold;">Socials</legend>
+
+        <div text-center>
+          <a [href]="socials['facebook']" *ngIf="socials['facebook'] != null" class="fa fa-facebook"></a>
+
+          <a [href]="socials['google']" *ngIf="socials['google'] != null" class="fa fa-google"></a>
+
+          <a [href]="socials['instagram']" *ngIf="socials['instagram'] != null" class="fa fa-instagram"></a>
+
+          <a [href]="socials['linkedin']" *ngIf="socials['linkedin'] != null" class="fa fa-linkedin"></a>
+
+          <a [href]="socials['telegram']" *ngIf="socials['telegram'] != null" class="fa fa-telegram"></a>
+
+          <a [href]="socials['twitter']" *ngIf="socials['twitter'] != null" class="fa fa-twitter"></a>
+
+          <a [href]="socials['whatsapp']" *ngIf="socials['whatsapp'] != null" class="fa fa-whatsapp"></a>
+
+          <a [href]="socials['youtube']" *ngIf="socials['youtube'] != null" class="fa fa-youtube"></a>
+
+        </div>
+
+      </fieldset>
+    </div>
+  </ion-list>
+</ion-content>

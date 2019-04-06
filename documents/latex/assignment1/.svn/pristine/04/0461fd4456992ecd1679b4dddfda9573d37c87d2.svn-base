@@ -1,0 +1,4 @@
+\subsection{La classe HelloServer}\label{sec:esempioCodice}
+In questa sezione spiegheremo i contenuti e la struttura della classe indicata, etc. etc. e poi forniamo il codice usando il comando \verb|\listinginput| che ha gli stessi parametri di \verb|listing| (senza begin end) ma con la differenza che specifica il file di cui si deve fare input. Questi file li metteremo tutti (per convenzione, nella cartella \verb|Codice|. 
+
+\listinginput{1}{Codice/HelloServer.java}

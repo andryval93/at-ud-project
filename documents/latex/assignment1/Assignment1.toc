@@ -1,0 +1,33 @@
+\contentsline {section}{\numberline {1}Contextual Investigation Plan}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Presentation of the problem}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Planning the collection of information during contextual investigations}{2}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Field interview}{2}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Online Survey Interview}{3}{subsubsection.1.2.2}
+\contentsline {section}{\numberline {2}Analysis of the Contextual Investigation}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Interviews Answers}{4}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Interviews with deaf peolple}{4}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Interviews with friends and family}{5}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}Result of the contextual survey}{8}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Question 1: What activities do users currently perform?}{8}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Question 2: Which tasks would you like to do?}{8}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}Question 3: How are the activities to be learned?}{8}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.4}Question 4: Where are the activities carried out?}{8}{subsubsection.2.2.4}
+\contentsline {subsubsection}{\numberline {2.2.5}Question 5: What is the relationship between the user and the data (personal data, private data, public data, their meaning for the user, etc.)?}{9}{subsubsection.2.2.5}
+\contentsline {subsubsection}{\numberline {2.2.6}Question 6: What other tools does the user have to complete the task?}{9}{subsubsection.2.2.6}
+\contentsline {subsubsection}{\numberline {2.2.7}Question 7: How often are tasks executed?}{9}{subsubsection.2.2.7}
+\contentsline {subsubsection}{\numberline {2.2.8}Question 8: What are the time constraints on tasks, if any?}{9}{subsubsection.2.2.8}
+\contentsline {subsubsection}{\numberline {2.2.9}Question 9: What happens when things go wrong during task execution?}{9}{subsubsection.2.2.9}
+\contentsline {subsubsection}{\numberline {2.2.10}Question 10: How do users communicate with each other about tasks?}{9}{subsubsection.2.2.10}
+\contentsline {section}{\numberline {3}Problem Design}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Personas}{10}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Mario - Studente}{10}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Luca - Studente}{10}{subsubsection.3.1.2}
+\contentsline {subsection}{\numberline {3.2}Scenarios}{10}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Mario}{10}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Luca}{10}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}Claim}{11}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Mario}{11}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Luca}{11}{subsubsection.3.3.2}
+\contentsline {section}{\numberline {4}Functional and Non-Functional Requirements}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}Functional Requirements}{12}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Non-Functional Requirements}{12}{subsection.4.2}

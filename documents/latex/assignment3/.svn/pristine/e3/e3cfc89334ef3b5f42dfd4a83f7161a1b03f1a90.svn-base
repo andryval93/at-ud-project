@@ -1,0 +1,190 @@
+\subsection{Indici di sintesi: posizione e dispersione}
+Gli indici di sintesi sono utili per descrivere dati numerici, in particolare ne prenderemo in considerazione due:
+\begin{itemize}
+	\item \textbf{Indici di posizione:} rappresentano misure di centralità, ovvero sono utili per individuare attorno a quali valori è centrato l’insieme dei dati,in particolare utilizzeremo media, mediana, moda e quartili.
+	\item \textbf{Indici di dispersione:} servono per quantificare la dispersione dei dati, in particolare utilizzeremo varianza, deviazione standard e coefficiente di variazione.
+\end{itemize}
+
+\subsubsection{Indice di posizione}
+Definiamo di seguito con maggiore dettaglio gli indici di posizione prima introdotti.\\\\
+\textbf{\large Media e mediana campionaria}\\
+Supponiamo di avere un insieme $x_{1}, x_{2}, ..., x_{n}$ di n valori statistici detto campione o ampiezza di numerosità n. La media campionaria è la media artimetica di questi valori e si denota con $\bar x $:\\
+
+\[\bar x = \dfrac{1}{n} \sum\limits_{i=1}^n x_{i} \]
+Prendiamo l’intervallo di ampiezza n considerato in precedenza ed ordiniamolo dal minore al maggiore. Se n è dispari si definisce mediana campionaria il valore in posizione $  \dfrac{(n + 1)}{2} $ mentre se n è pari la mediana campionaria è invece definita come la media aritmetica dei valori che occupano le posizioni  $\dfrac{n}{2} $ e $(\dfrac{n}{2} +1) $
+Questa definizione della mediana campionaria assicura che lo stesso numero dei valori cada sia a sinistra che a destra della mediana stessa.\\\\
+La media e la mediana sono due statistiche utili per descrivere misure di centralità dei dati, presentano però delle differenze e vanno usate opportunamente a seconda dei casi. La media campionaria, infatti, utilizza tutti i
+dati ed è influenzata in maniera sensibile da valori molto alti o bassi mentre la mediana dipende solo da uno o due valori centrali senza risentire dei dati che si trovano agli estremi. Inoltre, l’uso della mediana presenta lo svantaggio di dover riordinare i dati, il che non è richiesto nella media ma è da preferire a quest’ultima quando si desidera eliminare gli effetti di valori
+estremi molto diversi tra di loro.\\\\
+\textbf{\large Moda campionaria}\\
+La moda campionaria di un insieme di dati, se esiste, è il valore a cui corrisponde la massima frequenza. Se esistono più valori con frequenza massima ciascuno di essi è detto valore modale.\\
+La moda campionaria è maggiormente utilizzata quando si trattano dati di tipo qualitativo per i quali non è possibile calcolare media e mediana. La moda campionaria può non essere utile quando i dati sono numerosi e per la maggior parte diversi tra di loro; in tali casi la moda può non esistere o essere lontana dal centro dell’insieme dei dati.\\\\
+\textbf{\large Quartili}\\
+Si definiscono quartili e si indicano con Q1, Q2 e Q3, i tre valori che dividono l'insieme dei dati ordinati in quattro parti uguali:  
+\begin{itemize}
+	\item \textbf{Q1} è il minimo valore osservato tale che almeno il 25\% (1/4) dei dati è minore o uguale a questo;
+	\item \textbf{Q2} è il minimo valore osservato tale che almeno il 50\% (1/2) dei dati è minore o uguale a questo e coincide con la mediana;
+	\item \textbf{Q3} è il minimo valore osservato tale che almeno il 75\% (3/4) dei dati è minore o uguale a questo;
+\end{itemize}
+\subsubsection{Calcolo degli indici di posizione con R}
+In R è possibile calcolare tutti gli indici di posizione (tranne la moda)
+utilizzando la funzione \textit{summary()}.\\
+Per fare ciò è stato eseguito il seguente codice:
+\begin{lstlisting}
+	> indicePosizione<-summary(matriceAnalisi)
+\end{lstlisting}
+Con il seguente risultato:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17truecm]{Figure/indicePosizione.png}
+\\\end{figure}
+Confrontando la media campionaria e la mediana campionaria è possibile conoscere la forma della distribuzione. Infatti, se queste misure sono uguali la distribuzione di frequenza è simmetrica; se la media campionaria è sensibilmente maggiore della mediana campionaria la distribuzione è più sbilanciata verso destra, se accade il contrario è sbilanciata verso sinistra.
+\subsubsection{Indici di dispersione}
+Per quanto utili, gli indici di posizione purtroppo non tengono conto della variabilità esistente tra i dati. Infatti esistono distribuzioni di frequenza che, pur avendo la stessa media campionaria, sono molto diverse tra loro.\\
+Per sopperire a tale mancanza consideriano una seconda categoria d’indici di sintesi ovvero gli indici di dispersione, che misurano la dispersione dei dati intorno alla media.\\\\
+\textbf{\large Varianza campionaria}\\
+Dato un insieme di dati numerici $x_{1}, x_{2}, ..., x_{n}$ si definisce varianza campionaria, e si denota con $s^{2}$, la quantità:
+\[s^{2} =  \dfrac{1}{n-1} \sum\limits_{i=1}^n (x_{i}-\bar x)^{2} \]
+dove $\bar x$ denota la media campionaria dei dati.
+In R è possibile calcolare la varianza camponaria di un vettore numerico v attraverso il comando \textit{var(v)}.\\
+Si noti che la varianza campionaria è una stima della varianza, più è grande e più i dati si discostano dalla media.\\\\
+\textbf{\large Deviazione standard campionaria}\\
+Si definisce deviazione standard campionaria la radice quadrata della varianza campionaria, ovvero:
+\[s =  \sqrt{\dfrac{1}{n-1} \sum\limits_{i=1}^n (x_{i}-\bar x)^{2}} \]
+In R è possibile calcolare la deviazione standard di un vettore numero v attraverso il comando \textit{sd(v)}.\\\\
+\textbf{\large Coefficiente di variazione}\\
+Il coefficiente di variazione è utile per calcolare variazioni esistenti tra diversi campioni dei dati.
+Dato un insieme di dati numerici $x_{1}, x_{2}, ..., x_{n}$ si definisce coefficiente di variazione il rapporto tra la deviazione standard campionaria ed il modulo della media campionaria, ovvero:
+\[CV = \dfrac{s}{|x|}\]
+In R non esiste una funzione specifica per il calcolo del coefficiente di variazione, ma può essere facilmente definita nel seguente modo:\\
+\begin{lstlisting}
+	> cv <- function(x){ sd(x) / abs(mean(x))}
+\end{lstlisting}
+Utilizzeremo di seguito questa nuova funzione cv per il calcolo del coefficiente di variazione.
+\subsubsection{Calcolo degli indici di dispersione con R}
+di seguito sono stati calcolati tutti gli indici di dispersione relativi ad ogni rifiuto e per ognuno di questo è stato creato un vettore.\\
+Di seguito viene riportato il codice utilizzato per effettuare questi calcoli:
+\begin{lstlisting}
+
+	#creo il vettore delle varianze
+	> vettoreVarianza<-c()
+	> for(i in 1:7)
+	>	vettoreVarianza[i]<-var(matriceAnalisi[,i])
+	
+	#creo il vettore della deviazione standard 
+	> vettoreDS<-c()
+	> for(i in 1:7)
+	>	vettoreDS[i]<-sd(matriceAnalisi[,i])
+	
+	#creo il vettore dei coefficienti di variazione
+	> vettoreCV<-c()
+	> for(i in 1:7)
+	>	vettoreCV[i]<-cv(matriceAnalisi[,i])
+															.
+\end{lstlisting}	
+I dati raccolti, insieme alla media, sono stati inseriti all'interno di una matrice. 
+\begin{lstlisting}
+	> matriceIndiceDispersione<-matrix(c(vettoreMedia, vettoreVarianza, vettoreDS,
+    	   vettoreCV), nrow=7,ncol=4,byrow=FALSE)
+	> labelIndici <- c("        Media", "            Varianza", "    Deviazione Standard", "   Coefficiente di variazione")
+	> colnames(matriceIndiceDispersione)<-labelIndici
+	> rownames(matriceIndiceDispersione)<-labelRifiuti2[1:7]
+\end{lstlisting}
+Con il seguente risultato:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16.5truecm]{Figure/matriceDispersione.png}
+\\\end{figure}
+\subsubsection{Boxplot}
+Il boxplot è utile per rappresentare graficamente le informazioni ottenute
+grazie agli indici descrittivi, consiste nel disegno di una scatola i cui estremi sono Q1 e Q3, tagliata da una linea orizzontale in corrispondenza di Q2 (ossia della mediana). Dalla scatola, inoltre, escono due segmenti che terminano in corrispondenza dei valori minimo e massimo ed è possibile anche verificare l’eventuale presenza di outlier, ovvero di valori che si discostano notevolmente dalla media e che sono rappresentati da piccoli cerchi.\\
+Di seguito viene riportato il codice R utilizzato per costruire il boxplox, i valori degli outlier sono stati individuati salvando l’output del comando boxplot in una variabile, esaminandolo e trovando le corrispettive regioni.
+\begin{lstlisting}
+	> indiciDescrittivi <- boxplot(matriceAnalisi[,1:7],main="Boxplot",
+	   ylab="Numero",xlab="Frequenza",col=rainbow(7,s=0.9))
+\end{lstlisting}
+Di seguito eseguendo il comando 
+\begin{lstlisting}
+	> indiciDescrittivi$out
+\end{lstlisting}
+è possibile poter vedere i valori degli outlier che sono stati confrontanti con i dati in nostro possesso.\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16.5truecm]{Figure/controlloIndici.png}
+\newline\end{figure}
+Una volta identificati gli outlier, sono state aggiunte le label con le corrispettive regioni all'interno del nostro grafico, utilizzando i seguenti comandi:
+\begin{lstlisting}
+	> text(5, 16.0,labels="Provincia Autonoma Bolzano")
+	> text(5,10,labels="Provincia Autonoma Trento")
+	> text(7,65,labels="Valle D'Aosta")
+\end{lstlisting}
+Il risultato finale è il seguente:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16.5truecm]{Figure/boxplot.png}
+\\\end{figure}
+Come si può notare dal boxplot per quanto riguarda la raccolta selettiva i valori della Provincia Autonoma Del Trento e della Provincia Autonoma Di Bolzano si discostano dalla media, mentre per altri tipi di rifiuti sono i valori della Valle D'Aosta che si discostano dalla media. Ciò sta a significare che per la raccolta selettiva, le Province Autonome del Trento e di Bolzano, differenziano una quantità significativa in più rispetto alla media, mentre per altri tipi di rifiuto è la Valle D'Aosta.
+
+\subsection{Correlazioni tra le variabili}
+Spesso nelle indagini statistiche si osservano più variabili quantitative per uno stesso gruppo d’individui ed in tal caso è necessario vedere se esiste una correlazione tra esse.
+Date due variabili X e Y per verificare se esiste una dipendenza si può disegnare il diagramma di dispersione o scatterplot: si pongono in ascissa i dati relativi ad una delle due variabili (variabile indipendente) e in ordinata quelli relativi all’altra variabile (variabile dipendente).\\
+Lo scatterplot serve ad evidenziare se i punti sono sparsi senza apparente
+regolarità oppure se ne esiste una (ossia le variabili sono connesse mediante una relazione lineare, quadratica, etc).
+Per ottenere una misura quantitiva della correlazione si possono inoltre
+usare:
+\begin{itemize}
+	\item Covarianza campionaria;
+	\item Coefficiente di correlazione campionario.
+\end{itemize}
+
+\subsubsection{Covarianza campionaria}
+Per ottenere una misura quantitativa della correlazione tra le variabili si considera la covarianza campionaria.
+Assegnato un campione bivariato $(x_{i}, y_{i})$ per $i = 1, 2, ..., n $ di una variabile quantitativa bidimensionale (X, Y), siano x e y rispettivamente le medie campionarie di $x_{1}, x_{2}, ..., x_{n}$ e $y_{1}, y_{2}, ..., y_{n}$.
+La covarianza campionaria tra le due variabili X e Y è così definita:
+\[C_{xy} =  \sqrt{\dfrac{1}{n-1} \sum\limits_{i=1}^n (x_{i}-\bar x)(y_{i}-\bar y)} \]
+La covarianza campionaria può avere segno positivo, negativo o nullo:
+\begin{itemize}
+	\item Se $C_{xy} > 0$ si dice che le variabili sono correlate positivamente;
+	\item Se $C_{xy} < 0$ si dice che le variabili sono correlate negativamente;
+	\item Se $C_{xy} = 0$ si dice che le variabili sono non correlate.
+\end{itemize}
+In R la covarianza campionaria è calcolata attraverso il comando cov().
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16.5truecm]{Figure/covarianza.png}
+\\\end{figure}
+Come si può notare, le variabili dei rifiuti, sono tutte correlate positivamente.
+\subsubsection{Coefficiente di correlazione campionario}
+Date due variabili X e Y, il coefficiente di correlazione tra le due variabili è definito come:
+\[ r_{xy} = \dfrac{C_{xy}} {s_{x}s_{y}} \]
+Ovvero è il rapporto tra la covarianza di X e Y e il prodotto della deviazione standard di X indicata con $s_{x}$ e la deviazione standard di Y indicata con  $s_{y}$.
+Il coefficiente di correlazione campionario ha lo stesso segno della covarianza campionaria e può positivo, negativo o nullo:
+\begin{itemize}
+	\item Se $r_{xy} > 0$ si dice che le variabili sono correlate positivamente;
+	\item Se $r_{xy} < 0$ si dice che le variabili sono correlate negativamente;
+	\item Se $r_{xy} = 0$ si dice che le variabili non sono correlate.
+\end{itemize}
+A differenza della covarianza campionaria però il suo valore è compreso
+nell'intervallo [-1, 1].\\
+In R può essere calcolato attraverso il comando cor().
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16.5truecm]{Figure/coefficienteCorrelazione.png}
+\\\end{figure}
+Come si può notare, le variabili dei rifiuti, sono tutte correlate positivamente. Le due correlazioni maggiori sono tra carta/cartone e verde/organico/legno.
+
+\subsubsection{Scatterplot}
+Di seguito viene riportato il diagramma scatterplot dei due indicatori che
+presentano il coefficiente di correlazione più alto, carta/cartone e verde/organico/legno, per evidenziare la relazione lineare tra i dati.
+Il codice R utilizzato è il seguente:
+\begin{lstlisting}
+	#scatterplot carta/cartone e verde/organico/legno
+	> plot(matriceAnalisi[,1], matriceAnalisi[,6], xlab="carta e cartone",
+	   ylab ="verde organici e legno")
+	> abline(lm(matriceAnalisi[,6]~matriceAnalisi[,1]), col="gray")
+\end{lstlisting}
+Con il seguente risultato
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16.5truecm]{Figure/scatterplot.png}
+	\\\end{figure}

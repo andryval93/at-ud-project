@@ -1,0 +1,26 @@
+In statistica una variabile casuale (detta anche aleatoria) è una variabile che può assumere valori differenti in dipendenza di un certo evento casuale.\\
+Le variabili aleatorie vengono utilizzate per descrivere fenomeni dei quali non è possibile prevedere il risultato con certezza come, ad esempio, il lancio di un dado.\\
+Questi tipi di variabili si dividono in due categorie:
+\begin{enumerate}
+	\item \textbf{Variabili discrete:} i valori possibili sono rappresentati da un numero finito o da un infinito numerabile, ovvero possono essere descritti attraverso l'insieme dei numeri naturali.\\
+	Tra le variabili aleatorie discrete abbiamo:
+	\begin{itemize}
+		\item Distribuzione di Bernoulli.
+		\item Distribuzione binomiale.
+		\item Distribuzione geometrica e di Pascal.
+		\item Distribuzione ipergeometrica.
+		\item Distribuzione di Poisson.
+	\end{itemize}
+	\item \textbf{Variabili continue:} i valori possono essere rappresentati da tutti i numeri reali.\\
+	Tra le variabili aleatorie continue abbiamo:
+	\begin{itemize}
+		\item Distribuzione uniforme.
+		\item Distribuzione esponenziale.
+		\item Distribuzione normale.
+		\item Distribuzione chi quadrato.
+		\item Distribuzione di Student.
+	\end{itemize}
+\end{enumerate}
+In questo lavoro verranno presentate la distribuzione normale, la chi-quadrato e la Student poichè giocano un ruolo rilevante nell'inferenza statistica.\\
+L'inferenza statistica è un insieme di metodi con cui si cerca di trarre una conclusione su una popolazione(insieme che raccoglie tutte le osservazioni possibili relativamente ad un certo fenomeno) in base ai dati conosciuti relativi ad un campione (raccolta finita di elementi estratti da una popolazione con il fine di estrarre e di ottenere informazioni sulla popolazione). Uno dei modi in cui è possibile fare ciò è con gli intervalli di confidenza, che verranno descritti in dettaglio nei capitoli successivi.\\
+Per ogni argomento, inoltre, verranno anche descritti gli strumenti messi a disposizione da R.

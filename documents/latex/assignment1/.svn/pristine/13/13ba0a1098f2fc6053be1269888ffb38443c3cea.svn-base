@@ -1,0 +1,27 @@
+In questa sezione verranno descritti gli strumenti utilizzati per l’analisi e successivamente i dati presi in considerazione.
+\subsection{Strumenti}
+L'analisi dei dati è stata effettuata utilizzando il software RStudio che utilizza come motore il linguaggio R versione 3.1.1 su piattaforma Apple.
+\subsection{Fonte Dati}
+Come annunciato precedentemente, i dati utilizzati per eseguire l’analisi sono stati estratti dal sito dell’ISTAT. Questi ultimi, si riferiscono all'indagine che raccoglie informazioni ambientali relative alle regioni italiane.\\ 
+In particolare sono stati prelevati i dati relativi all'anno 2012 riguardanti i chili pro capite di raccolta differenziata per tipo di tifiuto per le regioni italiane.\\
+Nella seguente tabella vengono mostrati i dati utilizzati espressi in chili pro capite:\newline
+\\
+\pgfplotstabletypeset[
+col sep=comma,
+string type,
+columns/TipologiaRifiutoDifferenziato/.style={column name=, column type={|l}},
+columns/cartacartone/.style={column name=cartone, column type={|r}},
+columns/vetro/.style={column name=Vetro, column type={|r}},
+columns/materieplastiche/.style={column name=plastiche, column type={|r}},
+columns/metalli/.style={column name=metalli, column type={|r}},
+columns/raccoltaselettiva/.style={column name=selettiva, column type={|r}},
+columns/organicolegno/.style={column name=e legno, column type={|r}},
+columns/altro/.style={column name=altro, column type={|r}},		
+columns/totale/.style={column name=totale, column type={|r|}},
+every even row/.style={before row=\rowcolor{Gray}},
+every head row/.style={before row=\hline \multicolumn{1}{|l|}{} & {Carta e}&{} &{materie}&{}&{Raccolta}&{Organico}&{}&{}\\,after row=\hline},
+every last row/.style={after row=\hline },
+]{datirifiuti2.csv}
+\\\\\\
+Sono stati scelti questi tipi di dati per verificare quali sono le regioni che differenziano di più in Italia.
+I dati e l’informazione statistica, derivati dall’indagine e annualmente diffusi, rappresentano un essenziale strumento informativo a supporto del monitoraggio dello stato dell’ambiente urbano e delle attività poste in essere dalle amministrazioni per assicurare la buona qualità dell’ambiente nelle città.

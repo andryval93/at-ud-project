@@ -1,0 +1,24 @@
+\select@language {english}
+\select@language {italian}
+\contentsline {chapter}{\numberline {1}Introduzione}{2}
+\contentsline {subsection}{\numberline {1.0.1}Organizzazione della tesina}{3}
+\contentsline {chapter}{\numberline {2}Il PageRank}{4}
+\contentsline {subsection}{\numberline {2.0.2}Perch\`e Hadoop?}{6}
+\contentsline {chapter}{\numberline {3}Il PageRank e il paradigma MapReduce}{7}
+\contentsline {section}{\numberline {3.1}Input iniziale}{7}
+\contentsline {subsection}{\numberline {3.1.1}Il formato dell'input}{8}
+\contentsline {section}{\numberline {3.2}Il paradigma MapReduce}{9}
+\contentsline {section}{\numberline {3.3}Il codice}{10}
+\contentsline {subsection}{\numberline {3.3.1}Map}{10}
+\contentsline {subsection}{\numberline {3.3.2}Reduce}{11}
+\contentsline {chapter}{\numberline {4}Risultati dei test}{12}
+\contentsline {section}{\numberline {4.1}La configurazione di Hadoop}{12}
+\contentsline {section}{\numberline {4.2}Test di scalabilit\`a con input di grandi dimensioni}{13}
+\contentsline {subsection}{\numberline {4.2.1}Localit\`a}{14}
+\contentsline {section}{\numberline {4.3}Test di scalabilit\`a con input di dimensioni ridotte}{15}
+\contentsline {section}{\numberline {4.4}Approcci di splitting differenti}{16}
+\contentsline {section}{\numberline {4.5}Numero di repliche differenti}{17}
+\contentsline {subsection}{\numberline {4.5.1}Localit\`a}{18}
+\contentsline {section}{\numberline {4.6}Il numero di reduce}{19}
+\contentsline {chapter}{\numberline {5}Conclusioni}{20}
+\contentsline {chapter}{Bibliografia}{21}

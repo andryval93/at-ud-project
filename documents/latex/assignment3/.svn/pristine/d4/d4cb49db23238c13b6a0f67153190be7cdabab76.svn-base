@@ -1,0 +1,99 @@
+\documentclass[11pt,oneside]{article}
+\usepackage{amssymb}
+\usepackage{diagbox}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{latexsym}
+\usepackage[italian,english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{pgfplotstable}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig}
+\usepackage{psfig}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{pgfplotstable}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{csvsimple}
+\usepackage[section]{placeins}
+\usepackage{float}
+\definecolor{Gray}{gray}{0.75}
+\setlength\arrayrulewidth{0.9pt}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+\pagestyle{fancy}
+\cfoot{Metodi e tecniche per l'analisi dei dati 2014/2015}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+\selectlanguage{italian}
+%\thispagestyle{empty}
+\lstset{
+	label=a_label,
+	basicstyle=\small\ttfamily,
+	language=R,
+	numberstyle=\tiny
+	numbers=left
+	frame=tb,
+	columns=fullflexible,
+	showstringspaces=false
+}
+
+\begin{center}
+\begin{figure}[ht]\centering
+\includegraphics[width=3truecm]{Figure/logounisa.eps}
+\end{figure}
+
+{\Large Università degli Studi di Salerno}\\[0.2truecm]
+{\large Dipartimento di Informatica}\\ 
+
+\hrulefill
+\vfill
+
+{\large Corso di Metodi e tecniche per l'analisi dei dati}\\[0.2truecm]
+
+\vfill\vfill
+{\Huge \bfseries Dati ambientali nella città} \\[0.2truecm]
+{\bf \large Indicatori sulla raccolta differenziata per le regioni}
+\vfill\vfill
+
+
+{\bf Docente} \hfill {\bf Studente}\ \ \\
+Prof.ssa Amelia Giuseppina Nobile\hfill Maria Domenica Guida\\
+\hfill Matr. 0522500236
+
+\vfill
+
+Anno Accademico 2014/15
+\end{center}
+
+\newpage
+\pagenumbering{arabic}
+\vfill
+
+
+\vspace*{-0.5cm}
+\tableofcontents
+\newpage
+
+\section{Introduzione} %Qui va inserito il nome del paragrafo
+\input {capitolo1bis.tex} %qui va inserito il file contente il paragrafo
+\newpage
+
+\section{Distribuzione normale, chi-quadrato e Student}
+\input {capitolo2bis.tex} 
+\newpage
+
+\section{Intervalli di confidenza}
+\input {capitolo3bis.tex} 
+\newpage
+\end{document}

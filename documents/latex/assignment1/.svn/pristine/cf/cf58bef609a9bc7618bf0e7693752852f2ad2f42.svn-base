@@ -1,0 +1,14 @@
+I metodi di stima puntuali anche se sembrano ipoteticamente sempre desiderabili, difficilmente potranno fornire delle stime che coincidono con un parametro incognito, poiché bisogna sempre tener conto di un certo errore di campionamento. Per questo motivo, alla stima puntuale di un parametro non noto di una popolazione (costituita da un singolo valore reale) spesso si preferisce sostituire un intervallo di valori, detto interval lo di confidenza.\\
+In pratica, si cerca di determinare in base ai dati in possesso due limiti (uno superiore ed uno inferiore) entro i quali sia compreso il parametro non noto con un certo coefficiente di confidenza (detto anche grado di fiducia) 1 − 
+che rappresenta la probabilità di contenere il vero parametro della popolazione.
+Definiamo formalmente quanto appena detto.
+Sia X1,X2, ...,Xn un campione casuale di ampiezza n estratto da una popolazione
+con funzione di probabilità (nel caso discreto) oppure densità di
+probabilità (nel caso assolutamente continuo) f(x; #), dove # denota il parametro
+non noto della popolazione. Denotiamo con Cn = g1(X1,X2, ...,Xn) e
+con Cn = g2(X1,X2, ...,Xn) due statistiche (funzioni osservabili del campione
+casuale) che soddisfino la condizione Cn < Cn, cioè che godono della proprietà
+che per ogni possibile fisasato campione osservato x = (x1, x2, ..., xn)
+risulti g1(x) < g2(x).
+Fissato un coefficiente di confidenza 1 −  con (0 <  < 1), se possibile
+scegliere le statistiche Cn e Cn in modo tale che:

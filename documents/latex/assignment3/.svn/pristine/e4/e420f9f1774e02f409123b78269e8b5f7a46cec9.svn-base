@@ -1,0 +1,11 @@
+\select@language {english}
+\select@language {italian}
+\contentsline {section}{\numberline {1}Introduzione}{2}
+\contentsline {section}{\numberline {2}Distribuzione normale, chi-quadrato e Student}{3}
+\contentsline {subsection}{\numberline {2.1}Distribuzione Normale}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Distribuzione chi-quadrato}{8}
+\contentsline {subsubsection}{\numberline {2.1.2}Distribuzione Student}{10}
+\contentsline {section}{\numberline {3}Intervalli di confidenza}{13}
+\contentsline {subsection}{\numberline {3.1}Intervallo di confidenza per $\mu $ con $\sigma ^{2}$ nota}{14}
+\contentsline {subsection}{\numberline {3.2}Intervallo di confidenza $\mu $ con $\sigma ^{2}$ non nota}{17}
+\contentsline {subsection}{\numberline {3.3}Intervallo di confidenza per $\sigma ^2$ con $\mu $ nota}{20}
