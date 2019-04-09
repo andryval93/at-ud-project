@@ -40,6 +40,8 @@ import { AslWordsPage } from '../pages/asl-words/asl-words';
 import { SpeechPage } from '../pages/speech/speech';
 import { GestioneWordsProvider } from '../providers/gestione-words/gestione-words';
 import { Keyboard } from '@ionic-native/keyboard';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+
 
 export const config = {
   apiKey: "AIzaSyC305cznoM_BAt-S92IDwxY-p8e18Z_AlM",
@@ -103,6 +105,7 @@ firebase.storage();
   providers: [
     StatusBar,
     SplashScreen,
+    SpeechRecognition,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     GestioneUtenteProvider,
     GestioneHelpProvider,

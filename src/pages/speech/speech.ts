@@ -4,6 +4,7 @@ import { Utente } from '../../entity/utente';
 import { Storage } from '@ionic/storage';
 import { UserProfilePage } from '../user-profile/user-profile';
 import { Http } from '@angular/http';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 import 'rxjs/add/operator/map';
 
 /**
@@ -26,10 +27,28 @@ export class SpeechPage {
   keyWordsLink: Array<string> = new Array<string>();
   termToSpeech: string;
 
-  constructor(private viewCtrl: ViewController, public http: Http, public storage: Storage, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private viewCtrl: ViewController, public http: Http, public storage: Storage,
+    public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition) {
     this.storage.get('usr').then(res => {
       this.usr = res;
     });
+  }
+
+  ngOnInit() {
+
+    this.speechRecognition.hasPermission()
+      .then((hasPermission: boolean) => {
+
+        if (!hasPermission) {
+        this.speechRecognition.requestPermission()
+          .then(
+            () => console.log('Granted'),
+            () => console.log('Denied')
+          )
+        }
+
+     });
+
   }
 
   ionViewDidLoad() {
@@ -43,7 +62,13 @@ export class SpeechPage {
   }
 
   start() {
-    
+    this.speechRecognition.startListening()
+          .subscribe(
+            (matches: Array<string>) => {
+              this.listenedText = matches[0];
+            },
+            (onerror) => console.log('error:', onerror)
+          )
   }
 
   talk() {

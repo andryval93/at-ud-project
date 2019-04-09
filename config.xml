@@ -131,4 +131,5 @@
     <plugin name="call-number" />
     <plugin name="cordova-plugin-tts" spec="^0.2.3" />
     <engine name="ios" spec="~4.5.5" />
+    <plugin name="cordova-plugin-speechrecognition" spec="1.2.0" />
 </widget>
