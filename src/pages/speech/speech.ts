@@ -6,6 +6,11 @@ import { UserProfilePage } from '../user-profile/user-profile';
 import { Http } from '@angular/http';
 import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 import 'rxjs/add/operator/map';
+//@ts-ignore
+//@ts-nocheck
+//var AWS = require("aws-sdk");
+
+console.log("AWS test",AWS);
 
 /**
  * Generated class for the SpeechPage page.
