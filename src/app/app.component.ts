@@ -3,6 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 import { FirstPage } from '../pages/firstPage/firstPage';
 import { GestioneUtenteProvider } from '../providers/gestione-utente/gestione-utente';
