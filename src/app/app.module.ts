@@ -40,7 +40,7 @@ import { AslWordsPage } from '../pages/asl-words/asl-words';
 import { SpeechPage } from '../pages/speech/speech';
 import { GestioneWordsProvider } from '../providers/gestione-words/gestione-words';
 import { Keyboard } from '@ionic-native/keyboard';
-import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 
 export const config = {

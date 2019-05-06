@@ -4,7 +4,7 @@ import { Utente } from '../../entity/utente';
 import { Storage } from '@ionic/storage';
 import { UserProfilePage } from '../user-profile/user-profile';
 import { Http } from '@angular/http';
-import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import {SpeechRecognition } from "@ionic-native/speech-recognition";
 import 'rxjs/add/operator/map';
 //@ts-ignore
 //@ts-nocheck
