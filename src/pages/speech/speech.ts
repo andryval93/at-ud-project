@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { Utente } from '../../entity/utente';
-import { Storage } from '@ionic/storage';
-import { UserProfilePage } from '../user-profile/user-profile';
-import { Http } from '@angular/http';
-import {SpeechRecognition } from "@ionic-native/speech-recognition";
 import 'rxjs/add/operator/map';
+
+import { Component } from '@angular/core';
+import { Http } from '@angular/http';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
+import { Storage } from '@ionic/storage';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+
+import { Utente } from '../../entity/utente';
+import { UserProfilePage } from '../user-profile/user-profile';
+
 //@ts-ignore
 //@ts-nocheck
 //var AWS = require("aws-sdk");
 
-console.log("AWS test",AWS);
 
 /**
  * Generated class for the SpeechPage page.
