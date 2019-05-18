@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
-import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Platform } from 'ionic-angular';
@@ -9,7 +8,39 @@ import { FirstPage } from '../pages/firstPage/firstPage';
 import { GestioneUtenteProvider } from '../providers/gestione-utente/gestione-utente';
 
 declare var AWS;
-console.log("AWS test",AWS);
+AWS.config.region = 'us-east-1';
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+  IdentityPoolId: 'us-east-1:cbadba96-0039-4bb8-8d3f-0da6066c0612',
+});
+// Make the call to obtain credentials
+AWS.config.credentials.get(function () {
+// Credentials will be available when this function is called.
+var accessKeyId = AWS.config.credentials.accessKeyId;
+var secretAccessKey = AWS.config.credentials.secretAccessKey;
+var sessionToken = AWS.config.credentials.sessionToken;
+});
+console.log("AWS test", AWS);
+var comprehend = new AWS.Comprehend({ apiVersion: '2017-11-27' });
+
+/*var params = {
+  LanguageCode: 'it',
+  TextList: [    
+    'Andrea beve il caffè',
+  ]
+};
+comprehend.batchDetectEntities(params, function (err, data) {
+  if (err) console.log(err, err.stack); // an error occurred
+  else console.log(data);           // successful response
+});*/
+
+var params = {
+  LanguageCode: "it",
+  Text: 'Andrea beve il caffè'
+};
+comprehend.detectSyntax(params, function(err, data) {
+  if (err) console.log(err, err.stack); // an error occurred
+  else     console.log("successful response",data);           // successful response
+});
 
 
 @Component({
@@ -50,7 +81,7 @@ export class MyApp {
         this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA]);
       }
 
-      
+
     });
   }
 }
