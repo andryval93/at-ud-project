@@ -8,11 +8,11 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 
 import { Utente } from '../../entity/utente';
 import { UserProfilePage } from '../user-profile/user-profile';
+import { checkAndUpdateTextDynamic } from '@angular/core/src/view/text';
 
 //@ts-ignore
 //@ts-nocheck
 //var AWS = require("aws-sdk");
-
 
 /**
  * Generated class for the SpeechPage page.
@@ -21,12 +21,27 @@ import { UserProfilePage } from '../user-profile/user-profile';
  * Ionic pages and navigation.
  */
 
+declare var AWS;
+AWS.config.region = 'us-east-1';
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+  IdentityPoolId: 'us-east-1:cbadba96-0039-4bb8-8d3f-0da6066c0612',
+});
+// Make the call to obtain credentials
+AWS.config.credentials.get(function () {
+  // Credentials will be available when this function is called.
+  var accessKeyId = AWS.config.credentials.accessKeyId;
+  var secretAccessKey = AWS.config.credentials.secretAccessKey;
+  var sessionToken = AWS.config.credentials.sessionToken;
+});
+var comprehend = new AWS.Comprehend({ apiVersion: '2017-11-27' });
+
 @IonicPage()
 @Component({
   selector: 'page-speech',
   templateUrl: 'speech.html',
 })
 export class SpeechPage {
+
   usr: Utente;
   listenedText: string;
   keyWords: Array<string> = new Array<string>();
@@ -34,8 +49,10 @@ export class SpeechPage {
   keyWordsLink: Array<string> = new Array<string>();
   termToSpeech: string;
 
+  translatedText: string = '';
+
   constructor(private viewCtrl: ViewController, public http: Http, public storage: Storage,
-    public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition) {
+    public navCtrl: NavController, public navParams: NavParams, /*private speechRecognition: SpeechRecognition*/) {
     this.storage.get('usr').then(res => {
       this.usr = res;
     });
@@ -43,6 +60,7 @@ export class SpeechPage {
 
   ngOnInit() {
 
+    /*
     this.speechRecognition.hasPermission()
       .then((hasPermission: boolean) => {
 
@@ -55,7 +73,41 @@ export class SpeechPage {
         }
 
      });
+     */
 
+  }
+
+  translate() {
+    // console.log("AWS test", AWS);
+    /*var params = {
+      LanguageCode: 'it',
+      TextList: [    
+        'Andrea beve il caffè',
+      ]
+    };
+    comprehend.batchDetectEntities(params, function (err, data) {
+      if (err) console.log(err, err.stack); // an error occurred
+      else console.log(data);           // successful response
+    });*/
+    
+    var params = {
+      LanguageCode: "it",
+      Text: 'Andrea beve il caffè'
+    };
+    comprehend.detectSyntax(params, function(err, data) {
+      if (err) console.log(err, err.stack); // an error occurred
+      else { 
+        console.log("successful response", data); // successful response
+        // DA VEDERE
+        translatedText = data['SyntaxTokens'][0]['Text'];
+        console.log("ROBERTO'S OUTPUT: ", data['SyntaxTokens'][0]['Text']);
+      }
+    });
+    
+  }
+
+  updateText() {
+    this.translatedText = 'Roberto';
   }
 
   ionViewDidLoad() {
@@ -69,6 +121,7 @@ export class SpeechPage {
   }
 
   start() {
+    /*
     this.speechRecognition.startListening()
           .subscribe(
             (matches: Array<string>) => {
@@ -76,6 +129,7 @@ export class SpeechPage {
             },
             (onerror) => console.log('error:', onerror)
           )
+          */
   }
 
   talk() {
@@ -100,8 +154,6 @@ export class SpeechPage {
         console.log(data.data)
       });
     })
-
-
   }
 
 }
