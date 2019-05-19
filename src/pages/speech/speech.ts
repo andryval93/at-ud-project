@@ -49,7 +49,8 @@ export class SpeechPage {
   keyWordsLink: Array<string> = new Array<string>();
   termToSpeech: string;
 
-  translatedText: string = '';
+  insertedText: string;
+  translatedText: string;
 
   constructor(private viewCtrl: ViewController, public http: Http, public storage: Storage,
     public navCtrl: NavController, public navParams: NavParams, /*private speechRecognition: SpeechRecognition*/) {
@@ -92,22 +93,27 @@ export class SpeechPage {
     
     var params = {
       LanguageCode: "it",
-      Text: 'Andrea beve il caffè'
+      Text: this.insertedText
     };
-    comprehend.detectSyntax(params, function(err, data) {
+    comprehend.detectSyntax(params, (err, data) => {
       if (err) console.log(err, err.stack); // an error occurred
       else { 
         console.log("successful response", data); // successful response
-        // DA VEDERE
-        translatedText = data['SyntaxTokens'][0]['Text'];
-        console.log("ROBERTO'S OUTPUT: ", data['SyntaxTokens'][0]['Text']);
+        this.translateText(data);
       }
     });
     
   }
 
-  updateText() {
-    this.translatedText = 'Roberto';
+  translateText(data) {
+    this.translatedText = '<h3>';
+    for (let d of data['SyntaxTokens']) {
+      let id = d['TokenId'];
+      let text = d['Text'];
+      let partOfSpeech = d['PartOfSpeech']['Tag'];
+      this.translatedText += id + ': \"' + text + '\" - ' + partOfSpeech + '<br/>';
+    }
+    this.translatedText += '</h3>';
   }
 
   ionViewDidLoad() {

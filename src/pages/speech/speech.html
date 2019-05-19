@@ -39,9 +39,12 @@
     <ion-slide>
     -->
       <!--<button ion-button id="recButton" class="notRec" style="border-radius: 50%;width: 150px;height: 150px;" (click)="talk()"><ion-icon style="font-size: 50px" name="microphone"></ion-icon></button>-->
-      <button ion-button id="recButton" class="notRec" style="border-radius: 50%;width: 150px;height: 150px;" (click)="translate()"><ion-icon style="font-size: 50px" name="microphone"></ion-icon></button>
-      <ion-textarea style="resize: none;border:solid 1px blue; margin-top: 30px" rows="8" placeholder="Enter text here..." [(ngModel)]="termToSpeech"></ion-textarea>
-      <h3>Il messaggio è {{translatedText}}</h3>
+      <br/>
+      <ion-textarea style="resize: none;border:solid 1px blue; margin-top: 30px" rows="8" placeholder="Enter text here..." [(ngModel)]="insertedText"></ion-textarea>
+      <br/>
+      <button ion-button id="recButton" class="notRec" style="width: 150px;height: 32px;" (click)="translate()">Analyze</button>
+      <br/>
+      <div [innerHTML]="translatedText"></div>
     <!--
     </ion-slide>
   </ion-slides>
