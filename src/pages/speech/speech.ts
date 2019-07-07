@@ -99,10 +99,93 @@ export class SpeechPage {
       if (err) console.log(err, err.stack); // an error occurred
       else { 
         console.log("successful response", data); // successful response
+        this.parseResponse(data);
         this.translateText(data);
       }
     });
     
+  }
+
+  parseResponse(data) {
+    const modali = this.findModali(data);
+    const verbo = this.findVerbo(data)
+    const isNegative = this.findNegazione(data); 
+    let fraseTradotta = "";
+    data.SyntaxTokens.forEach(element => {
+      if(element.PartOfSpeech.Tag == "PROPN") {
+        fraseTradotta += " "+element.Text;
+      }
+
+      if(element.PartOfSpeech.Tag == "NOUN") {
+        fraseTradotta += " "+element.Text;
+      }
+    })
+
+    if(verbo.find) {
+      fraseTradotta += " "+verbo.verbo
+    }
+    if(modali.find){
+      fraseTradotta += " "+modali.modale
+    }
+
+    if(isNegative.find) {
+      fraseTradotta += " "+isNegative.negazione
+    }
+
+    console.log('verbo', verbo);
+    console.log('modali', modali);
+    console.log('isNegative', isNegative);
+    console.log('fraseTradotta', fraseTradotta)
+  }
+
+  findModali(data) {
+    let toReturn = {find: false, modale: ''}
+    data.SyntaxTokens.forEach(element => {
+      if(element.PartOfSpeech.Tag == "AUX") {
+        switch (element.Text.toLowerCase()) {
+          case 'può':
+            toReturn.find = true;
+            toReturn.modale = 'potere'
+            break;
+          case 'deve':
+              toReturn.find = true;
+              toReturn.modale = 'dovere'
+              break;
+        }
+      }
+    });
+    return toReturn;
+  }
+
+  findVerbo (data) {
+    let toReturn = {find: false, verbo: ''} 
+    data.SyntaxTokens.forEach(element => {
+      if(element.PartOfSpeech.Tag == "VERB") {
+        console.log('Verbo', element.PartOfSpeech.Tag);
+        toReturn.find = true;
+        toReturn.verbo = element.Text;
+      }
+    });
+    
+    return toReturn;
+  }
+
+  findNegazione (data) {
+    let toReturn = {find: false, negazione: 'neg'}
+    data.SyntaxTokens.forEach(element => {
+      if(element.PartOfSpeech.Tag == "ADV") {
+        switch (element.Text.toLowerCase()) {
+          case 'no':
+          case 'non':
+          case 'né' :
+          case 'neppure':
+          case 'neanche' :
+          case 'nemmeno' :
+            toReturn.find = true;
+        }
+      }
+    });
+    return toReturn;
   }
 
   translateText(data) {
