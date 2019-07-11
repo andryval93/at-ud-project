@@ -48,7 +48,7 @@ export class SpeechPage {
   values: string;
   keyWordsLink: Array<string> = new Array<string>();
   termToSpeech: string;
-
+  gifs = ['../../assets/parole/ama.gif', '../../assets/parole/contratto.gif'];
   insertedText: string;
   translatedText: string;
 

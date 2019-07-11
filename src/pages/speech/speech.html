@@ -45,6 +45,7 @@
       <button ion-button id="recButton" class="notRec" style="width: 150px;height: 32px;" (click)="translate()">Analyze</button>
       <br/>
       <div [innerHTML]="translatedText"></div>
+      <img *ngFor="let yourGifURL of gifs" src="{{yourGifURL}}" alt="Description" />
     <!--
     </ion-slide>
   </ion-slides>
