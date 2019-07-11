@@ -50,7 +50,8 @@ export class SpeechPage {
   termToSpeech: string;
   gifs = ['../../assets/parole/ama.gif', '../../assets/parole/contratto.gif'];
   insertedText: string;
-  translatedText: string;
+  analyzedText: string;
+  fraseTradotta: string;
 
   constructor(private viewCtrl: ViewController, public http: Http, public storage: Storage,
     public navCtrl: NavController, public navParams: NavParams, /*private speechRecognition: SpeechRecognition*/) {
@@ -100,7 +101,7 @@ export class SpeechPage {
       else { 
         console.log("successful response", data); // successful response
         this.parseResponse(data);
-        this.translateText(data);
+        this.analyzeText(data);
       }
     });
     
@@ -110,32 +111,32 @@ export class SpeechPage {
     const modali = this.findModali(data);
     const verbo = this.findVerbo(data)
     const isNegative = this.findNegazione(data); 
-    let fraseTradotta = "";
+    this.fraseTradotta = "";
     data.SyntaxTokens.forEach(element => {
       if(element.PartOfSpeech.Tag == "PROPN") {
-        fraseTradotta += " "+element.Text;
+        this.fraseTradotta += " "+element.Text;
       }
 
       if(element.PartOfSpeech.Tag == "NOUN") {
-        fraseTradotta += " "+element.Text;
+        this.fraseTradotta += " "+element.Text;
       }
     })
 
     if(verbo.find) {
-      fraseTradotta += " "+verbo.verbo
+      this.fraseTradotta += " "+verbo.verbo
     }
     if(modali.find){
-      fraseTradotta += " "+modali.modale
+      this.fraseTradotta += " "+modali.modale
     }
 
     if(isNegative.find) {
-      fraseTradotta += " "+isNegative.negazione
+      this.fraseTradotta += " "+isNegative.negazione
     }
 
     console.log('verbo', verbo);
     console.log('modali', modali);
     console.log('isNegative', isNegative);
-    console.log('fraseTradotta', fraseTradotta)
+    console.log('fraseTradotta', this.fraseTradotta)
   }
 
   findModali(data) {
@@ -188,15 +189,14 @@ export class SpeechPage {
     return toReturn;
   }
 
-  translateText(data) {
-    this.translatedText = '<h3>';
+  analyzeText(data) {
+    this.analyzedText = "";
     for (let d of data['SyntaxTokens']) {
       let id = d['TokenId'];
       let text = d['Text'];
       let partOfSpeech = d['PartOfSpeech']['Tag'];
-      this.translatedText += id + ': \"' + text + '\" - ' + partOfSpeech + '<br/>';
+      this.analyzedText += id + ': \"' + text + '\" - ' + partOfSpeech + '<br/>';
     }
-    this.translatedText += '</h3>';
   }
 
   ionViewDidLoad() {
