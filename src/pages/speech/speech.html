@@ -44,9 +44,12 @@
       <br/>
       <button ion-button id="recButton" class="notRec" style="width: 150px;height: 32px;" (click)="translate()">Analyze</button>
       <br/>
-      <div [innerHTML]="analyzedText"></div>
-      <div [innerHTML]="fraseTradotta"></div>
-      <img *ngFor="let yourGifURL of gifs" src="{{yourGifURL}}" alt="Description" />
+      <p>La parola in LIS è:</p>      
+      <span *ngFor="let parola of fraseTradotta">{{parola + ' '}}</span>
+      <div>
+        <img *ngFor="let yourGifURL of gifs" src="{{yourGifURL}}" alt="Description" />
+      </div>
+      
     <!--
     </ion-slide>
   </ion-slides>

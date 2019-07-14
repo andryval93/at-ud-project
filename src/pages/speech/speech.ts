@@ -48,10 +48,11 @@ export class SpeechPage {
   values: string;
   keyWordsLink: Array<string> = new Array<string>();
   termToSpeech: string;
-  gifs = ['../../assets/parole/ama.gif', '../../assets/parole/contratto.gif'];
+  gifs = [];
+  gifDictionary = ['ama', 'amare', 'amato', 'contratto', 'domanda', 'dovere', 'potere', 'cane', 'cibo', 'mangiare', 'mangia', 'neg']
   insertedText: string;
   analyzedText: string;
-  fraseTradotta: string;
+  fraseTradotta: Array<string>;
 
   constructor(private viewCtrl: ViewController, public http: Http, public storage: Storage,
     public navCtrl: NavController, public navParams: NavParams, /*private speechRecognition: SpeechRecognition*/) {
@@ -108,35 +109,53 @@ export class SpeechPage {
   }
 
   parseResponse(data) {
+    this.gifs = [];
     const modali = this.findModali(data);
     const verbo = this.findVerbo(data)
     const isNegative = this.findNegazione(data); 
-    this.fraseTradotta = "";
+    this.fraseTradotta = [""];
     data.SyntaxTokens.forEach(element => {
       if(element.PartOfSpeech.Tag == "PROPN") {
-        this.fraseTradotta += " "+element.Text;
+        this.fraseTradotta.push(element.Text);
       }
 
       if(element.PartOfSpeech.Tag == "NOUN") {
-        this.fraseTradotta += " "+element.Text;
+        this.fraseTradotta.push(element.Text);
       }
     })
 
     if(verbo.find) {
-      this.fraseTradotta += " "+verbo.verbo
+      this.fraseTradotta.push(verbo.verbo)
     }
     if(modali.find){
-      this.fraseTradotta += " "+modali.modale
+      this.fraseTradotta.push(modali.modale)
     }
 
     if(isNegative.find) {
-      this.fraseTradotta += " "+isNegative.negazione
+      this.fraseTradotta.push(isNegative.negazione)
     }
 
     console.log('verbo', verbo);
     console.log('modali', modali);
     console.log('isNegative', isNegative);
     console.log('fraseTradotta', this.fraseTradotta)
+
+    this.fraseTradotta.forEach(element => {
+
+      if(element != "" && element != " ") {
+        if( this.gifDictionary.indexOf(element.toLowerCase()) > -1) {
+          this.gifs.push('../../assets/parole/'+element+'.gif')
+          this.gifs.push('../../assets/separatore.png');
+          console.log("Parola trovata "+ element);
+        } else {
+          console.log('Parola non trovata '+ element);
+          for (var i = 0; i < element.length; i++) {
+            this.gifs.push('../../assets/alfabeto/'+element.charAt(i).toUpperCase()+'.gif')
+          }
+          this.gifs.push('../../assets/separatore.png');
+        }
+      }
+    });
   }
 
   findModali(data) {
