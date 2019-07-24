@@ -9,6 +9,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { Utente } from '../../entity/utente';
 import { UserProfilePage } from '../user-profile/user-profile';
 import { checkAndUpdateTextDynamic } from '@angular/core/src/view/text';
+import { v } from '@angular/core/src/render3';
+import { EACCES } from 'constants';
 
 //@ts-ignore
 //@ts-nocheck
@@ -49,7 +51,11 @@ export class SpeechPage {
   keyWordsLink: Array<string> = new Array<string>();
   termToSpeech: string;
   gifs = [];
-  gifDictionary = ['ama', 'amare', 'amato', 'contratto', 'domanda', 'dovere', 'potere', 'cane', 'cibo', 'mangiare', 'mangia', 'neg']
+  gifDictionary = ['abbracciare', 'acqua', 'amare', 'amato', 'contratto', 'avere paura', 'avere',
+  'ballare', 'bambino', 'bere', 'camminare', 'cane', 'cibo', 'contratto', 'cura', 'domanda', 
+  'dovere', 'essere', 'fatto', 'fidanzata', 'fidanzato', 'fratello', 'gatto', 'giocare', 'guidare',
+  'io', 'lei', 'loro', 'lui', 'madre', 'mangiare', 'mare', 'mela', 'motorino', 'neg', 'noi', 
+  'nuotare', 'palla', 'parlare', 'pesce', 'potere', 'scrivere', 'te', 'torta'];
   insertedText: string;
   analyzedText: string;
   fraseTradotta: Array<string>;
@@ -102,55 +108,64 @@ export class SpeechPage {
       else { 
         console.log("successful response", data); // successful response
         this.parseResponse(data);
-        this.analyzeText(data);
+        // this.analyzeText(data);
       }
     });
-    
   }
 
   parseResponse(data) {
     this.gifs = [];
     const modali = this.findModali(data);
-    const verbo = this.findVerbo(data)
-    const isNegative = this.findNegazione(data); 
+    const aggettivo = this.findAggettivi(data);
+    const verbo = this.findVerbo(data);
+    const ausiliare = this.findAux(data);
+    const avverbio = this.findAvverbio(data);
+    const isNegative = this.findNegazione(data);
     this.fraseTradotta = [""];
     data.SyntaxTokens.forEach(element => {
       if(element.PartOfSpeech.Tag == "PROPN") {
-        this.fraseTradotta.push(element.Text);
+          this.fraseTradotta.push(element.Text);
       }
-
       if(element.PartOfSpeech.Tag == "NOUN") {
         this.fraseTradotta.push(element.Text);
       }
+      if(element.PartOfSpeech.Tag == "PRON") {
+        this.fraseTradotta.push(element.Text);
+      }
     })
-
-    if(verbo.find) {
-      this.fraseTradotta.push(verbo.verbo)
+    if (verbo.find) {
+      this.fraseTradotta.push(verbo.verbo);
+    } else if (ausiliare.find) {
+      this.fraseTradotta.push(ausiliare.aux);
     }
-    if(modali.find){
-      this.fraseTradotta.push(modali.modale)
+    if (modali.find) {
+      this.fraseTradotta.push(modali.modale);
     }
-
-    if(isNegative.find) {
-      this.fraseTradotta.push(isNegative.negazione)
+    if (avverbio.find) {
+      this.fraseTradotta.push(avverbio.avverbio);
+    }
+    if (isNegative.find) {
+      this.fraseTradotta.push(isNegative.negazione);
+    } else if (ausiliare.find && verbo.find) {
+        this.fraseTradotta.push('fatto');
     }
 
     console.log('verbo', verbo);
+    // console.log('aggettivo', aggettivo);
     console.log('modali', modali);
     console.log('isNegative', isNegative);
     console.log('fraseTradotta', this.fraseTradotta)
 
     this.fraseTradotta.forEach(element => {
-
-      if(element != "" && element != " ") {
-        if( this.gifDictionary.indexOf(element.toLowerCase()) > -1) {
-          this.gifs.push('../../assets/parole/'+element+'.gif')
+      if (element != "" && element != " ") {
+        if (this.gifDictionary.indexOf(element.toLowerCase()) > -1) {
+          this.gifs.push('../../assets/parole/' + element + '.gif');
           this.gifs.push('../../assets/separatore.png');
-          console.log("Parola trovata "+ element);
+          console.log("Parola trovata: " + element);
         } else {
-          console.log('Parola non trovata '+ element);
+          console.log('Parola non trovata: ' + element);
           for (var i = 0; i < element.length; i++) {
-            this.gifs.push('../../assets/alfabeto/'+element.charAt(i).toUpperCase()+'.gif')
+            this.gifs.push('../../assets/alfabeto/' + element.charAt(i).toUpperCase() + '.gif');
           }
           this.gifs.push('../../assets/separatore.png');
         }
@@ -158,19 +173,81 @@ export class SpeechPage {
     });
   }
 
+  findVerboInfinito(verbo): string {
+    let ausiliare = this.checkEssereAvere(verbo);
+    if (ausiliare != '') {
+      return ausiliare;
+    }
+    for (var i = 0; i < verbo.length - 1; i++) {
+      var wordToSearch = verbo.substring(0, verbo.length - i);
+      for (let gifWord of this.gifDictionary) {
+        if (gifWord.indexOf(wordToSearch.toLowerCase()) == 0) {
+          var gifSuffix = gifWord.substring(gifWord.length - 3, gifWord.length);
+          if (gifSuffix === 'are' || gifSuffix === 'ere' || gifSuffix === 'ire') {
+            return gifWord;
+          }
+        }
+      }
+    }
+    return verbo;
+  }
+
+  findAggettivi(data) {
+    let toReturn = {find: false, aggettivo: ''}
+    data.SyntaxTokens.forEach(element => {
+      if(element.PartOfSpeech.Tag == "ADJ") {
+        console.log('Aggettivo', element.PartOfSpeech.Tag);
+        toReturn.find = true;
+        toReturn.aggettivo = element.Text;
+      }
+      if(element.PartOfSpeech.Tag == "DET") {
+        switch (element.Text.toLowerCase()) {
+          case 'tutto':
+          case 'tutta':
+          case 'tutti':
+          case 'tutte':
+            console.log('Determinante', element.PartOfSpeech.Tag);
+            toReturn.find = true;
+            toReturn.aggettivo = element.Text;
+            break;
+        }
+      }
+    });
+    return toReturn;
+  }
+
   findModali(data) {
     let toReturn = {find: false, modale: ''}
     data.SyntaxTokens.forEach(element => {
       if(element.PartOfSpeech.Tag == "AUX") {
         switch (element.Text.toLowerCase()) {
+          case 'posso':
+          case 'puoi':
           case 'può':
+          case 'possiamo':
+          case 'potete':
+          case 'possono':
             toReturn.find = true;
-            toReturn.modale = 'potere'
+            toReturn.modale = 'potere';
             break;
+          case 'devo':
+          case 'devi':
           case 'deve':
-              toReturn.find = true;
-              toReturn.modale = 'dovere'
-              break;
+          case 'dobbiamo':
+          case 'dovete':
+          case 'devono':
+            toReturn.find = true;
+            toReturn.modale = 'dovere';
+            break;
+          case 'voglio':
+          case 'vuoi':
+          case 'vuole':
+          case 'vogliamo':
+          case 'volete':
+          case 'vogliono':
+            toReturn.find = true;
+            toReturn.modale = 'volere';
+            break;
         }
       }
     });
@@ -178,34 +255,100 @@ export class SpeechPage {
   }
 
   findVerbo (data) {
-    let toReturn = {find: false, verbo: ''} 
+    let toReturn = {find: false, verbo: ''}
     data.SyntaxTokens.forEach(element => {
       if(element.PartOfSpeech.Tag == "VERB") {
-        console.log('Verbo', element.PartOfSpeech.Tag);
         toReturn.find = true;
-        toReturn.verbo = element.Text;
+        toReturn.verbo = this.findVerboInfinito(element.Text);
       }
     });
-    
     return toReturn;
   }
 
-  findNegazione (data) {
-    let toReturn = {find: false, negazione: 'neg'}
+  findAux(data) {
+    let toReturn = {find: false, aux: ''}
+    data.SyntaxTokens.forEach(element => {
+      if(element.PartOfSpeech.Tag == "AUX") {
+        console.log('Aux', element.Text);
+        let ausiliare = this.checkEssereAvere(element.Text);
+        if (ausiliare != '') {
+          toReturn.find = true;
+          toReturn.aux = ausiliare;
+        }
+      }
+    });
+    return toReturn;
+  }
+
+  findAvverbio(data) {
+    let toReturn = {find: false, avverbio: ''}
     data.SyntaxTokens.forEach(element => {
       if(element.PartOfSpeech.Tag == "ADV") {
         switch (element.Text.toLowerCase()) {
           case 'no':
           case 'non':
-          case 'né' :
+          case 'né':
           case 'neppure':
-          case 'neanche' :
-          case 'nemmeno' :
+          case 'neanche':
+          case 'nemmeno':
+            break;
+          default:
+            toReturn.find = true;
+            toReturn.avverbio = element.Text;
+        }
+      }
+    });
+    return toReturn;
+  }
+
+  findNegazione(data) {
+    let toReturn = {find: false, negazione: 'non'}
+    data.SyntaxTokens.forEach(element => {
+      if(element.PartOfSpeech.Tag == "ADV") {
+        switch (element.Text.toLowerCase()) {
+          case 'no':
+          case 'non':
+          case 'né':
+          case 'neppure':
+          case 'neanche':
+          case 'nemmeno':
             toReturn.find = true;
         }
       }
     });
     return toReturn;
+  }
+
+  checkEssereAvere(verbo): string {
+    switch (verbo) {
+      case 'sono':
+      case 'sei':
+      case 'è':
+      case 'siamo':
+      case 'siete':
+      case 'ero':
+      case 'eri':
+      case 'era':
+      case 'eravamo':
+      case 'eravate':
+      case 'erano':
+        return 'essere';
+      case 'ho':
+      case 'hai':
+      case 'ha':
+      case 'abbiamo':
+      case 'avete':
+      case 'hanno':
+      case 'avevo':
+      case 'avevi':
+      case 'aveva':
+      case 'avevamo':
+      case 'avevate':
+      case 'avevano':
+        return 'avere';
+      default:
+        return '';
+    }
   }
 
   analyzeText(data) {
