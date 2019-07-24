@@ -22,27 +22,6 @@ var sessionToken = AWS.config.credentials.sessionToken;
 console.log("AWS test", AWS);
 var comprehend = new AWS.Comprehend({ apiVersion: '2017-11-27' });
 
-/*var params = {
-  LanguageCode: 'it',
-  TextList: [    
-    'Andrea beve il caffè',
-  ]
-};
-comprehend.batchDetectEntities(params, function (err, data) {
-  if (err) console.log(err, err.stack); // an error occurred
-  else console.log(data);           // successful response
-});*/
-
-var params = {
-  LanguageCode: "it",
-  Text: 'Andrea beve il caffè'
-};
-comprehend.detectSyntax(params, function(err, data) {
-  if (err) console.log(err, err.stack); // an error occurred
-  else     console.log("successful response",data);           // successful response
-});
-
-
 @Component({
   templateUrl: 'app.html'
 })

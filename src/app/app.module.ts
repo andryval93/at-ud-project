@@ -41,6 +41,7 @@ import { SpeechPage } from '../pages/speech/speech';
 import { GestioneWordsProvider } from '../providers/gestione-words/gestione-words';
 import { Keyboard } from '@ionic-native/keyboard';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
+import { TranslatePage } from '../pages/translate/translate';
 
 
 export const config = {
@@ -73,7 +74,8 @@ firebase.storage();
     LisSinglePageAlphabetPage,
     AslSinglePageWordPage,
     AslWordsPage,
-    SpeechPage
+    SpeechPage,
+    TranslatePage
   ],
   imports: [
     BrowserModule,
@@ -100,7 +102,8 @@ firebase.storage();
     LisSinglePageAlphabetPage,
     AslSinglePageWordPage,
     AslWordsPage,
-    SpeechPage
+    SpeechPage,
+    TranslatePage
   ],
   providers: [
     StatusBar,

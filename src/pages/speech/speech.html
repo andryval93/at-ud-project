@@ -21,7 +21,7 @@
 
 
 <ion-content padding>
-  <!-- 
+
   <ion-slides pager="true" [options]="slideOpts">
     <ion-slide>
       <button ion-button class="Rec" (click)="start()" style="border-radius: 50%;width: 150px;height: 150px;">
@@ -37,21 +37,10 @@
       </div>
     </ion-slide>
     <ion-slide>
-    -->
-      <!--<button ion-button id="recButton" class="notRec" style="border-radius: 50%;width: 150px;height: 150px;" (click)="talk()"><ion-icon style="font-size: 50px" name="microphone"></ion-icon></button>-->
-      <br/>
-      <ion-textarea style="resize: none;border:solid 1px blue; margin-top: 30px" rows="8" placeholder="Enter text here..." [(ngModel)]="insertedText"></ion-textarea>
-      <br/>
-      <button ion-button id="recButton" class="notRec" style="width: 150px;height: 32px;" (click)="translate()">Analyze</button>
-      <br/>
-      <p>La parola in LIS è:</p>      
-      <span *ngFor="let parola of fraseTradotta">{{parola + ' '}}</span>
-      <div>
-        <img *ngFor="let yourGifURL of gifs" src="{{yourGifURL}}" alt="Description" />
-      </div>
+    <button ion-button id="recButton" class="notRec" style="border-radius: 50%;width: 150px;height: 150px;" (click)="talk()"><ion-icon style="font-size: 50px" name="microphone"></ion-icon></button>
       
     <!--
     </ion-slide>
   </ion-slides>
   -->
-</ion-content>
+  
