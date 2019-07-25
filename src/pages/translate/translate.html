@@ -22,12 +22,12 @@
 <ion-content padding>
 
       <!--<button ion-button id="recButton" class="notRec" style="border-radius: 50%;width: 150px;height: 150px;" (click)="talk()"><ion-icon style="font-size: 50px" name="microphone"></ion-icon></button>-->
-      <ion-textarea style="resize: none; border: solid 1px blue; margin-top: 30px; font-size: 18px" rows="2" 
+      <ion-textarea style="resize: none; border: solid 1px blue; margin-top: 12px; font-size: 18px" rows="3" 
                     placeholder="Enter text here..." [(ngModel)]="insertedText">
       </ion-textarea>
       <br/>
       <ion-grid no-padding>
-        <ion-row padding-horizontal text-center>
+        <ion-row text-center>
           <ion-col align-self-end bottom-form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
             <button ion-button id="translateButton" class="translate" style="width: 150px; height: 60px;" 
                     large text-capitalize (click)="translate()">
@@ -37,15 +37,15 @@
         </ion-row>
       </ion-grid>
       <br/>
-      <span style="font-size: 24px; padding-top: 50px; padding-bottom: 50px"
+      <span style="font-size: 30px; margin-top: 60px; margin-bottom: 24px; color: blue"
             *ngFor="let parola of fraseTradotta">{{parola + ' '}}
       </span>
       <br/>
       <div>
         <!-- output[0] contiene la parola, output[1] contiene la lista di gif -->
-        <div *ngFor="let output of outputs" style="font-size: 20px; padding-top: 36px; padding-bottom: 36px">
+        <div *ngFor="let output of outputs" style="font-size: 24px; margin-top: 18px; margin-bottom: 6px">
           {{output[0]}}
-          <img *ngFor="let gifURL of output[1]" src="{{gifURL}}" 
+          <img *ngFor="let gifURL of output[1]" src="{{gifURL}}" style="margin-top: 6px; margin-bottom: 6px" 
           alt="----------------------------------------------------------------------------------"/>
         </div>
       </div>
