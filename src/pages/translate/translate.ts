@@ -42,11 +42,12 @@ var comprehend = new AWS.Comprehend({ apiVersion: '2017-11-27' });
 export class TranslatePage {
 
   usr: Utente;
-  gifs = [];
+  outputs = [];
+  // gifs = [];
   gifDictionary = ['abbracciare', 'acqua', 'amare', 'amato', 'contratto', 'avere paura', 'avere',
   'ballare', 'bambino', 'bere', 'camminare', 'cane', 'cibo', 'contratto', 'cura', 'domanda', 
   'dovere', 'essere', 'fatto', 'fidanzata', 'fidanzato', 'fratello', 'gatto', 'giocare', 'guidare',
-  'io', 'lei', 'loro', 'lui', 'madre', 'mangiare', 'mare', 'mela', 'motorino', 'neg', 'noi', 
+  'io', 'lei', 'loro', 'lui', 'madre', 'mangiare', 'mare', 'mela', 'motorino', 'non', 'noi', 
   'nuotare', 'palla', 'parlare', 'pesce', 'potere', 'scrivere', 'te', 'torta'];
   insertedText: string;
   analyzedText: string;
@@ -79,23 +80,24 @@ export class TranslatePage {
   }
 
   parseResponse(data) {
-    this.gifs = [];
-    const modali = this.findModali(data);
-    const aggettivo = this.findAggettivi(data);
-    const verbo = this.findVerbo(data);
-    const ausiliare = this.findAux(data);
-    const avverbio = this.findAvverbio(data);
-    const isNegative = this.findNegazione(data);
+    // this.gifs = [];
+    this.outputs = [];
+    var modali = this.findModali(data);
+    var aggettivo = this.findAggettivi(data);
+    var verbo = this.findVerbo(data);
+    var ausiliare = this.findAux(data);
+    var avverbio = this.findAvverbio(data);
+    var isNegative = this.findNegazione(data);
     this.fraseTradotta = [""];
     data.SyntaxTokens.forEach(element => {
       if(element.PartOfSpeech.Tag == "PROPN") {
-          this.fraseTradotta.push(element.Text);
+          this.fraseTradotta.push(element.Text.toUpperCase());
       }
       if(element.PartOfSpeech.Tag == "NOUN") {
-        this.fraseTradotta.push(element.Text);
+        this.fraseTradotta.push(element.Text.toUpperCase());
       }
       if(element.PartOfSpeech.Tag == "PRON") {
-        this.fraseTradotta.push(element.Text);
+        this.fraseTradotta.push(element.Text.toUpperCase());
       }
     })
     if (verbo.find) {
@@ -112,7 +114,7 @@ export class TranslatePage {
     if (isNegative.find) {
       this.fraseTradotta.push(isNegative.negazione);
     } else if (ausiliare.find && verbo.find) {
-        this.fraseTradotta.push('fatto');
+        this.fraseTradotta.push('FATTO');
     }
 
     console.log('verbo', verbo);
@@ -120,21 +122,36 @@ export class TranslatePage {
     console.log('modali', modali);
     console.log('isNegative', isNegative);
     console.log('fraseTradotta', this.fraseTradotta)
-
+    
+    type output = [string, any[]];
     this.fraseTradotta.forEach(element => {
       if (element != "" && element != " ") {
+        var op: output;
+        var gifArray = [];
+        // gifArray = [''];
         if (this.gifDictionary.indexOf(element.toLowerCase()) > -1) {
-          this.gifs.push(element);
-          this.gifs.push('../../assets/parole/' + element + '.gif');
+          // this.gifs.push(element);
+          // this.gifs.push('../../assets/parole/' + element + '.gif');
           // this.gifs.push('../../assets/separatore.png');
+          op = [element, ['../../assets/parole/' + element + '.gif']];
+          this.outputs.push(op);
           console.log("Parola trovata: " + element);
         } else {
           console.log('Parola non trovata: ' + element);
-          this.gifs.push(element);
+          // this.gifs.push(element);
+          // this.gifs.push('../../assets/alfabeto/' + element.charAt(0).toUpperCase() + '.gif');
+          // gifArray[0] = '../../assets/alfabeto/' + element.charAt(0).toUpperCase() + '.gif';
           for (var i = 0; i < element.length; i++) {
-            this.gifs.push('../../assets/alfabeto/' + element.charAt(i).toUpperCase() + '.gif');
+            // this.gifs.push('../../assets/alfabeto/' + element.charAt(i).toUpperCase() + '.gif');
+            gifArray.push('../../assets/alfabeto/' + element.charAt(i).toUpperCase() + '.gif');
+          }
+          if (gifArray != null) {
+            op = [element, gifArray];
+          } else {
+            op = [element, ['']];
           }
           // this.gifs.push('../../assets/separatore.png');
+          this.outputs.push(op);
         }
       }
     });
@@ -151,7 +168,7 @@ export class TranslatePage {
         if (gifWord.indexOf(wordToSearch.toLowerCase()) == 0) {
           var gifSuffix = gifWord.substring(gifWord.length - 3, gifWord.length);
           if (gifSuffix === 'are' || gifSuffix === 'ere' || gifSuffix === 'ire') {
-            return gifWord;
+            return gifWord.toUpperCase();
           }
         }
       }
@@ -165,7 +182,7 @@ export class TranslatePage {
       if(element.PartOfSpeech.Tag == "ADJ") {
         console.log('Aggettivo', element.PartOfSpeech.Tag);
         toReturn.find = true;
-        toReturn.aggettivo = element.Text;
+        toReturn.aggettivo = element.Text.toUpperCase();
       }
       if(element.PartOfSpeech.Tag == "DET") {
         switch (element.Text.toLowerCase()) {
@@ -175,7 +192,7 @@ export class TranslatePage {
           case 'tutte':
             console.log('Determinante', element.PartOfSpeech.Tag);
             toReturn.find = true;
-            toReturn.aggettivo = element.Text;
+            toReturn.aggettivo = element.Text.toUpperCase();
             break;
         }
       }
@@ -195,7 +212,7 @@ export class TranslatePage {
           case 'potete':
           case 'possono':
             toReturn.find = true;
-            toReturn.modale = 'potere';
+            toReturn.modale = 'POTERE';
             break;
           case 'devo':
           case 'devi':
@@ -204,7 +221,7 @@ export class TranslatePage {
           case 'dovete':
           case 'devono':
             toReturn.find = true;
-            toReturn.modale = 'dovere';
+            toReturn.modale = 'DOVERE';
             break;
           case 'voglio':
           case 'vuoi':
@@ -213,7 +230,7 @@ export class TranslatePage {
           case 'volete':
           case 'vogliono':
             toReturn.find = true;
-            toReturn.modale = 'volere';
+            toReturn.modale = 'VOLERE';
             break;
         }
       }
@@ -226,7 +243,7 @@ export class TranslatePage {
     data.SyntaxTokens.forEach(element => {
       if(element.PartOfSpeech.Tag == "VERB") {
         toReturn.find = true;
-        toReturn.verbo = this.findVerboInfinito(element.Text);
+        toReturn.verbo = this.findVerboInfinito(element.Text.toUpperCase());
       }
     });
     return toReturn;
@@ -261,7 +278,7 @@ export class TranslatePage {
             break;
           default:
             toReturn.find = true;
-            toReturn.avverbio = element.Text;
+            toReturn.avverbio = element.Text.toUpperCase();
         }
       }
     });
@@ -269,7 +286,7 @@ export class TranslatePage {
   }
 
   findNegazione(data) {
-    let toReturn = {find: false, negazione: 'non'}
+    let toReturn = {find: false, negazione: 'NON'}
     data.SyntaxTokens.forEach(element => {
       if(element.PartOfSpeech.Tag == "ADV") {
         switch (element.Text.toLowerCase()) {
@@ -299,7 +316,7 @@ export class TranslatePage {
       case 'eravamo':
       case 'eravate':
       case 'erano':
-        return 'essere';
+        return 'ESSERE';
       case 'ho':
       case 'hai':
       case 'ha':
@@ -312,7 +329,7 @@ export class TranslatePage {
       case 'avevamo':
       case 'avevate':
       case 'avevano':
-        return 'avere';
+        return 'AVERE';
       default:
         return '';
     }

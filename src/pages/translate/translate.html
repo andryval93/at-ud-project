@@ -19,7 +19,6 @@
 
 </ion-header>
 
-
 <ion-content padding>
 
       <!--<button ion-button id="recButton" class="notRec" style="border-radius: 50%;width: 150px;height: 150px;" (click)="talk()"><ion-icon style="font-size: 50px" name="microphone"></ion-icon></button>-->
@@ -43,7 +42,12 @@
       </span>
       <br/>
       <div>
-        <img *ngFor="let yourGifURL of gifs" src="{{yourGifURL}}" alt="-------------------------------------------------------------------------------"/>
+        <!-- output[0] contiene la parola, output[1] contiene la lista di gif -->
+        <div *ngFor="let output of outputs" style="font-size: 20px; padding-top: 36px; padding-bottom: 36px">
+          {{output[0]}}
+          <img *ngFor="let gifURL of output[1]" src="{{gifURL}}" 
+          alt="----------------------------------------------------------------------------------"/>
+        </div>
       </div>
       
 </ion-content>
