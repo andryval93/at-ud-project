@@ -57,7 +57,11 @@ export class LoginPage {
   }
 
   onLogin() {
-    this.gestioneUtente.login(this.username, this.password).then(result => {
+    this.navCtrl.push(TabsPage, {
+      utente: {},
+      callId: 'id'
+    });
+    /* this.gestioneUtente.login(this.username, this.password).then(result => {
       if (result == true) {
         if (this.connesso) {
           this.storage.get('email').then(email => {
@@ -83,7 +87,7 @@ export class LoginPage {
           message: "Email o Password errati o account non registrato"
         }).present();
       }
-    });
+    }); */
   }
 
   ionViewDidLoad() {
