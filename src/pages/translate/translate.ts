@@ -48,7 +48,7 @@ export class TranslatePage {
   'ballare', 'bambino', 'bere', 'camminare', 'cane', 'cibo', 'contratto', 'cura', 'domanda', 
   'dovere', 'essere', 'fatto', 'fidanzata', 'fidanzato', 'fratello', 'gatto', 'giocare', 'guidare',
   'io', 'lei', 'loro', 'lui', 'madre', 'mangiare', 'mare', 'mela', 'motorino', 'non', 'noi', 
-  'nuotare', 'palla', 'parlare', 'pesce', 'potere', 'scrivere', 'te', 'torta'];
+  'nuotare', 'palla', 'parlare', 'pesce', 'potere', 'scrivere', 'te', 'torta', 'volere'];
   insertedText: string;
   analyzedText: string;
   fraseTradotta: Array<string>;
